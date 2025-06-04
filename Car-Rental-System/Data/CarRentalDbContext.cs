@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,9 @@ public class CarRentalDbContext : DbContext
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Rental> Rentals { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
     {
-        options.UseSqlite("Data Source=car_rental.db");
+       optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Car-Rental-DB;Trusted_Connection=True;Encrypt=False");
     }
 }

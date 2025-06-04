@@ -9,6 +9,7 @@ namespace Car_Rental_System.Models
         public string CustomerName { get; set; }
         public string Contact { get; set; }
 
+        public Customer() { }
         public Customer(int customerId, string customerName, string contact)
         {
             CustomerId = customerId;

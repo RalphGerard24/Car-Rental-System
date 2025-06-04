@@ -7,7 +7,7 @@ namespace Car_Rental_System.Models
         public int RentalId { get; set; }
         public int CarId { get; set; }
         public int CustomerId { get; set; }
-        public DateTime RentDatee { get; set; }
+        public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public double? TotalCost { get; set; }
 
@@ -18,7 +18,7 @@ namespace Car_Rental_System.Models
             RentalId = rentalId;
             CarId = carId;
             CustomerId = customerId;
-            RentDatee = rentDate;
+            RentDate = rentDate;
             ReturnDate = returnDate;
             TotalCost = totalCost;
         }

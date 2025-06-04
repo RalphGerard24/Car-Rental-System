@@ -12,6 +12,7 @@ namespace Car_Rental_System.Models
         public double PriceRate { get; set; }
         public bool IsAvailable { get; set; }
 
+        public Car() { }
         public Car(int carId, string brand, string model, double priceRate, bool isAvailable)
         {
             CarId = carId;

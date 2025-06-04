@@ -1,4 +1,36 @@
-﻿namespace Car_Rental_System
+﻿using System;
+using System.Windows.Forms;
+
+namespace Car_Rental_System.Forms
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            this.Text = "Main Dashboard";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.ClientSize = new System.Drawing.Size(500, 300);
+
+            Button sampleButton = new Button();
+            sampleButton.Text = "Hello";
+            sampleButton.Location = new System.Drawing.Point(200, 120);
+            sampleButton.Click += (sender, e) =>
+            {
+                MessageBox.Show("You clicked the button!", "Demo");
+            };
+
+            this.Controls.Add(sampleButton);
+        }
+    }
+}
+
+
+namespace Car_Rental_System
 {
     partial class Form1
     {
