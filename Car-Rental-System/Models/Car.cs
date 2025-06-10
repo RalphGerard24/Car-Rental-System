@@ -14,9 +14,12 @@ namespace Car_Rental_System.Models
         public string ImagePath { get; set; }
         public string PlateNumber { get; set; }
         public double PriceRate { get; set; }
+        public DateTime DateRegistered { get; set; }
         public bool IsAvailable { get; set; }
 
-        public Car(int carId, string brand, string model, string year, string color, string imagePath, string plateNumber, double priceRate, bool isAvailable)
+        public Car() { }
+
+        public Car(int carId, string brand, string model, string year, string color, string imagePath, string plateNumber, double priceRate, bool isAvailable, DateTime dateRegistered)
         {
             CarId = carId;
             Brand = brand;
@@ -27,12 +30,7 @@ namespace Car_Rental_System.Models
             PlateNumber = plateNumber;
             PriceRate = priceRate;
             IsAvailable = isAvailable;
-
-        }
-
-        public static void CarTest()
-        {
-            Console.WriteLine("The Car.cs is used successfulyy!!!");
+            DateRegistered = dateRegistered;
         }
 
 

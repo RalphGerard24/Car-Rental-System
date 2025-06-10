@@ -26,7 +26,7 @@ namespace Car_Rental_System.Models
         }
 
         public string TransactionId { get; set;  }
-
+        public Rental() { }
 
         public Rental(int rentalId, int carId, int customerId, DateTime rentDate, DateTime returnDate, double totalCost, string status, string transactionId)
         {
@@ -36,7 +36,7 @@ namespace Car_Rental_System.Models
             RentDatee = rentDate;
             ReturnDate = returnDate;
             TotalCost = totalCost;
-            Status = status;
+           // Status = status;
             TransactionId = transactionId;
         }
 
