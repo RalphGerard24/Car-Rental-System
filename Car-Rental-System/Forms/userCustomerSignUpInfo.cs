@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace gumana_ka_be_pls
+namespace Car_Rental_System
 {
     public partial class userCustomerSignUpInfo : Form
     {
         public userCustomerSignUpInfo()
         {
             InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

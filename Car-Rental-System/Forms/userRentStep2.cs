@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace gumana_ka_be_pls
+namespace Car_Rental_System
 {
     public partial class userRentStep2 : Form
     {
         public userRentStep2()
         {
             InitializeComponent();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

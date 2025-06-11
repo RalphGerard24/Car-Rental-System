@@ -1,4 +1,4 @@
-﻿namespace gumana_ka_be_pls
+﻿namespace Car_Rental_System
 {
     partial class userEditInfo
     {
