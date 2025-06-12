@@ -154,7 +154,7 @@ namespace Car_Rental_System
                 }
 
                 //Proceed to manage cars form after adding or editing
-                var manageForm = new ManageCars();  
+                var manageForm = new ManageCars();
                 manageForm.Show();
                 this.Hide();
             }
@@ -178,5 +178,15 @@ namespace Car_Rental_System
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

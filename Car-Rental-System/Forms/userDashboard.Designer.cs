@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button7 = new Button();
             groupBox2 = new GroupBox();
             groupBox1 = new GroupBox();
+            textBox15 = new TextBox();
+            label7 = new Label();
+            textBox8 = new TextBox();
+            label6 = new Label();
+            textBox6 = new TextBox();
+            label5 = new Label();
             button5 = new Button();
             textBox7 = new TextBox();
             textBox1 = new TextBox();
@@ -63,25 +68,10 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
-            textBox6 = new TextBox();
-            label5 = new Label();
-            textBox8 = new TextBox();
-            label6 = new Label();
-            textBox15 = new TextBox();
-            label7 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
-            // 
-            // button7
-            // 
-            button7.Location = new Point(996, 25);
-            button7.Name = "button7";
-            button7.Size = new Size(75, 55);
-            button7.TabIndex = 14;
-            button7.Text = "Log Out";
-            button7.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -122,6 +112,66 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Customer Details";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // textBox15
+            // 
+            textBox15.Font = new Font("Arial", 11.25F);
+            textBox15.Location = new Point(132, 309);
+            textBox15.Name = "textBox15";
+            textBox15.ReadOnly = true;
+            textBox15.Size = new Size(207, 29);
+            textBox15.TabIndex = 36;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Arial", 11.25F);
+            label7.Location = new Point(15, 316);
+            label7.Name = "label7";
+            label7.Size = new Size(80, 22);
+            label7.TabIndex = 35;
+            label7.Text = "Zipcode";
+            label7.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // textBox8
+            // 
+            textBox8.Font = new Font("Arial", 11.25F);
+            textBox8.Location = new Point(132, 265);
+            textBox8.Name = "textBox8";
+            textBox8.ReadOnly = true;
+            textBox8.Size = new Size(207, 29);
+            textBox8.TabIndex = 34;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Arial", 11.25F);
+            label6.Location = new Point(15, 272);
+            label6.Name = "label6";
+            label6.Size = new Size(89, 22);
+            label6.TabIndex = 33;
+            label6.Text = "Barangay";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // textBox6
+            // 
+            textBox6.Font = new Font("Arial", 11.25F);
+            textBox6.Location = new Point(132, 222);
+            textBox6.Name = "textBox6";
+            textBox6.ReadOnly = true;
+            textBox6.Size = new Size(207, 29);
+            textBox6.TabIndex = 32;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 11.25F);
+            label5.Location = new Point(15, 229);
+            label5.Name = "label5";
+            label5.Size = new Size(91, 22);
+            label5.TabIndex = 31;
+            label5.Text = "City/State";
+            label5.TextAlign = ContentAlignment.TopCenter;
             // 
             // button5
             // 
@@ -387,7 +437,7 @@
             button3.Name = "button3";
             button3.Size = new Size(214, 87);
             button3.TabIndex = 12;
-            button3.Text = "Reports";
+            button3.Text = "Send Report";
             button3.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -396,7 +446,7 @@
             button4.Name = "button4";
             button4.Size = new Size(214, 87);
             button4.TabIndex = 11;
-            button4.Text = "Customers";
+            button4.Text = "Return";
             button4.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -405,7 +455,7 @@
             button2.Name = "button2";
             button2.Size = new Size(214, 87);
             button2.TabIndex = 10;
-            button2.Text = "Manage Cars";
+            button2.Text = "Rent";
             button2.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -427,72 +477,11 @@
             label1.TabIndex = 8;
             label1.Text = "Car Rental";
             // 
-            // textBox6
-            // 
-            textBox6.Font = new Font("Arial", 11.25F);
-            textBox6.Location = new Point(132, 222);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new Size(207, 29);
-            textBox6.TabIndex = 32;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial", 11.25F);
-            label5.Location = new Point(15, 229);
-            label5.Name = "label5";
-            label5.Size = new Size(91, 22);
-            label5.TabIndex = 31;
-            label5.Text = "City/State";
-            label5.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // textBox8
-            // 
-            textBox8.Font = new Font("Arial", 11.25F);
-            textBox8.Location = new Point(132, 265);
-            textBox8.Name = "textBox8";
-            textBox8.ReadOnly = true;
-            textBox8.Size = new Size(207, 29);
-            textBox8.TabIndex = 34;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Arial", 11.25F);
-            label6.Location = new Point(15, 272);
-            label6.Name = "label6";
-            label6.Size = new Size(89, 22);
-            label6.TabIndex = 33;
-            label6.Text = "Barangay";
-            label6.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // textBox15
-            // 
-            textBox15.Font = new Font("Arial", 11.25F);
-            textBox15.Location = new Point(132, 309);
-            textBox15.Name = "textBox15";
-            textBox15.ReadOnly = true;
-            textBox15.Size = new Size(207, 29);
-            textBox15.TabIndex = 36;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Arial", 11.25F);
-            label7.Location = new Point(15, 316);
-            label7.Name = "label7";
-            label7.Size = new Size(80, 22);
-            label7.TabIndex = 35;
-            label7.Text = "Zipcode";
-            label7.TextAlign = ContentAlignment.TopCenter;
-            // 
             // userDashboard
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 668);
-            Controls.Add(button7);
             Controls.Add(groupBox2);
             Controls.Add(button3);
             Controls.Add(button4);

@@ -1,0 +1,2009 @@
+[33mcommit ae9b4cb31170d7a128e5fcc203ae2000f8720f4b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Ralph Gerard I. Dueñas <ralphgerardiduenas@iskolarngbayan.pup.edu.ph>
+Date:   Wed Jun 11 18:21:36 2025 +0800
+
+    Add address in forms and update namespaces
+
+[1mdiff --git a/Car-Rental-System/Forms/userCarDetails.Designer.cs b/Car-Rental-System/Forms/userCarDetails.Designer.cs[m
+[1mindex dabdf3b..83d828e 100644[m
+[1m--- a/Car-Rental-System/Forms/userCarDetails.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userCarDetails.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userCarDetails[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userCarDetails.cs b/Car-Rental-System/Forms/userCarDetails.cs[m
+[1mindex 6ae7007..27e7545 100644[m
+[1m--- a/Car-Rental-System/Forms/userCarDetails.cs[m
+[1m+++ b/Car-Rental-System/Forms/userCarDetails.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userCarDetails : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userCustomerSignUpInfo.Designer.cs b/Car-Rental-System/Forms/userCustomerSignUpInfo.Designer.cs[m
+[1mindex 6e2b005..2c404e5 100644[m
+[1m--- a/Car-Rental-System/Forms/userCustomerSignUpInfo.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userCustomerSignUpInfo.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userCustomerSignUpInfo[m
+     {[m
+[36m@@ -44,6 +44,12 @@[m
+             textBox10 = new TextBox();[m
+             button1 = new Button();[m
+             button6 = new Button();[m
+[32m+[m[32m            textBox1 = new TextBox();[m
+[32m+[m[32m            label2 = new Label();[m
+[32m+[m[32m            textBox2 = new TextBox();[m
+[32m+[m[32m            label3 = new Label();[m
+[32m+[m[32m            textBox3 = new TextBox();[m
+[32m+[m[32m            label4 = new Label();[m
+             groupBox2.SuspendLayout();[m
+             SuspendLayout();[m
+             // [m
+[36m@@ -51,14 +57,20 @@[m
+             // [m
+             label1.AutoSize = true;[m
+             label1.Font = new Font("Arial", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);[m
+[31m-            label1.Location = new Point(12, 21);[m
+[32m+[m[32m            label1.Location = new Point(14, 28);[m
+             label1.Name = "label1";[m
+[31m-            label1.Size = new Size(265, 55);[m
+[32m+[m[32m            label1.Size = new Size(328, 68);[m
+             label1.TabIndex = 24;[m
+             label1.Text = "Car Rental";[m
+             // [m
+             // groupBox2[m
+             // [m
+[32m+[m[32m            groupBox2.Controls.Add(textBox3);[m
+[32m+[m[32m            groupBox2.Controls.Add(label4);[m
+[32m+[m[32m            groupBox2.Controls.Add(textBox2);[m
+[32m+[m[32m            groupBox2.Controls.Add(label3);[m
+[32m+[m[32m            groupBox2.Controls.Add(textBox1);[m
+[32m+[m[32m            groupBox2.Controls.Add(label2);[m
+             groupBox2.Controls.Add(textBox7);[m
+             groupBox2.Controls.Add(textBox12);[m
+             groupBox2.Controls.Add(label13);[m
+[36m@@ -71,9 +83,11 @@[m
+             groupBox2.Controls.Add(label16);[m
+             groupBox2.Controls.Add(label15);[m
+             groupBox2.Controls.Add(textBox10);[m
+[31m-            groupBox2.Location = new Point(27, 91);[m
+[32m+[m[32m            groupBox2.Location = new Point(31, 121);[m
+[32m+[m[32m            groupBox2.Margin = new Padding(3, 4, 3, 4);[m
+             groupBox2.Name = "groupBox2";[m
+[31m-            groupBox2.Size = new Size(355, 283);[m
+[32m+[m[32m            groupBox2.Padding = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            groupBox2.Size = new Size(406, 501);[m
+             groupBox2.TabIndex = 23;[m
+             groupBox2.TabStop = false;[m
+             groupBox2.Text = "Customer Details";[m
+[36m@@ -81,28 +95,30 @@[m
+             // textBox7[m
+             // [m
+             textBox7.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox7.Location = new Point(138, 238);[m
+[32m+[m[32m            textBox7.Location = new Point(158, 439);[m
+[32m+[m[32m            textBox7.Margin = new Padding(3, 4, 3, 4);[m
+             textBox7.Name = "textBox7";[m
+             textBox7.ReadOnly = true;[m
+[31m-            textBox7.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox7.Size = new Size(229, 29);[m
+             textBox7.TabIndex = 29;[m
+             // [m
+             // textBox12[m
+             // [m
+             textBox12.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox12.Location = new Point(138, 29);[m
+[32m+[m[32m            textBox12.Location = new Point(158, 39);[m
+[32m+[m[32m            textBox12.Margin = new Padding(3, 4, 3, 4);[m
+             textBox12.Name = "textBox12";[m
+             textBox12.ReadOnly = true;[m
+[31m-            textBox12.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox12.Size = new Size(229, 29);[m
+             textBox12.TabIndex = 19;[m
+             // [m
+             // label13[m
+             // [m
+             label13.AutoSize = true;[m
+             label13.Font = new Font("Arial", 11.25F);[m
+[31m-            label13.Location = new Point(15, 232);[m
+[32m+[m[32m            label13.Location = new Point(17, 431);[m
+             label13.Name = "label13";[m
+[31m-            label13.Size = new Size(113, 34);[m
+[32m+[m[32m            label13.Size = new Size(146, 44);[m
+             label13.TabIndex = 28;[m
+             label13.Text = "Driver's License\r\nNo.\r\n";[m
+             // [m
+[36m@@ -110,28 +126,29 @@[m
+             // [m
+             label18.AutoSize = true;[m
+             label18.Font = new Font("Arial", 11.25F);[m
+[31m-            label18.Location = new Point(15, 32);[m
+[32m+[m[32m            label18.Location = new Point(17, 43);[m
+             label18.Name = "label18";[m
+[31m-            label18.Size = new Size(91, 17);[m
+[32m+[m[32m            label18.Size = new Size(118, 22);[m
+             label18.TabIndex = 18;[m
+             label18.Text = "Customer ID";[m
+             // [m
+             // textBox8[m
+             // [m
+             textBox8.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox8.Location = new Point(138, 197);[m
+[32m+[m[32m            textBox8.Location = new Point(158, 385);[m
+[32m+[m[32m            textBox8.Margin = new Padding(3, 4, 3, 4);[m
+             textBox8.Name = "textBox8";[m
+             textBox8.ReadOnly = true;[m
+[31m-            textBox8.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox8.Size = new Size(229, 29);[m
+             textBox8.TabIndex = 27;[m
+             // [m
+             // label17[m
+             // [m
+             label17.AutoSize = true;[m
+             label17.Font = new Font("Arial", 11.25F);[m
+[31m-            label17.Location = new Point(15, 75);[m
+[32m+[m[32m            label17.Location = new Point(17, 93);[m
+             label17.Name = "label17";[m
+[31m-            label17.Size = new Size(116, 17);[m
+[32m+[m[32m            label17.Size = new Size(148, 22);[m
+             label17.TabIndex = 20;[m
+             label17.Text = "Customer Name";[m
+             // [m
+[36m@@ -139,37 +156,39 @@[m
+             // [m
+             label14.AutoSize = true;[m
+             label14.Font = new Font("Arial", 11.25F);[m
+[31m-            label14.Location = new Point(15, 200);[m
+[32m+[m[32m            label14.Location = new Point(17, 389);[m
+             label14.Name = "label14";[m
+[31m-            label14.Size = new Size(102, 17);[m
+[32m+[m[32m            label14.Size = new Size(133, 22);[m
+             label14.TabIndex = 26;[m
+             label14.Text = "Email Address";[m
+             // [m
+             // textBox11[m
+             // [m
+             textBox11.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox11.Location = new Point(138, 72);[m
+[32m+[m[32m            textBox11.Location = new Point(158, 89);[m
+[32m+[m[32m            textBox11.Margin = new Padding(3, 4, 3, 4);[m
+             textBox11.Name = "textBox11";[m
+             textBox11.ReadOnly = true;[m
+[31m-            textBox11.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox11.Size = new Size(229, 29);[m
+             textBox11.TabIndex = 21;[m
+             // [m
+             // textBox9[m
+             // [m
+             textBox9.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox9.Location = new Point(138, 154);[m
+[32m+[m[32m            textBox9.Location = new Point(158, 181);[m
+[32m+[m[32m            textBox9.Margin = new Padding(3, 4, 3, 4);[m
+             textBox9.Name = "textBox9";[m
+             textBox9.ReadOnly = true;[m
+[31m-            textBox9.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox9.Size = new Size(229, 29);[m
+             textBox9.TabIndex = 25;[m
+             // [m
+             // label16[m
+             // [m
+             label16.AutoSize = true;[m
+             label16.Font = new Font("Arial", 11.25F);[m
+[31m-            label16.Location = new Point(15, 116);[m
+[32m+[m[32m            label16.Location = new Point(17, 139);[m
+             label16.Name = "label16";[m
+[31m-            label16.Size = new Size(33, 17);[m
+[32m+[m[32m            label16.Size = new Size(45, 22);[m
+             label16.TabIndex = 22;[m
+             label16.Text = "Age";[m
+             // [m
+[36m@@ -177,27 +196,29 @@[m
+             // [m
+             label15.AutoSize = true;[m
+             label15.Font = new Font("Arial", 11.25F);[m
+[31m-            label15.Location = new Point(15, 157);[m
+[32m+[m[32m            label15.Location = new Point(17, 185);[m
+             label15.Name = "label15";[m
+[31m-            label15.Size = new Size(85, 17);[m
+[32m+[m[32m            label15.Size = new Size(109, 22);[m
+             label15.TabIndex = 24;[m
+             label15.Text = "Contact No.";[m
+             // [m
+             // textBox10[m
+             // [m
+             textBox10.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox10.Location = new Point(138, 113);[m
+[32m+[m[32m            textBox10.Location = new Point(158, 135);[m
+[32m+[m[32m            textBox10.Margin = new Padding(3, 4, 3, 4);[m
+             textBox10.Name = "textBox10";[m
+             textBox10.ReadOnly = true;[m
+[31m-            textBox10.Size = new Size(201, 25);[m
+[32m+[m[32m            textBox10.Size = new Size(229, 29);[m
+             textBox10.TabIndex = 23;[m
+             // [m
+             // button1[m
+             // [m
+             button1.Font = new Font("Arial", 9F);[m
+[31m-            button1.Location = new Point(130, 389);[m
+[32m+[m[32m            button1.Location = new Point(149, 630);[m
+[32m+[m[32m            button1.Margin = new Padding(3, 4, 3, 4);[m
+             button1.Name = "button1";[m
+[31m-            button1.Size = new Size(114, 25);[m
+[32m+[m[32m            button1.Size = new Size(130, 33);[m
+             button1.TabIndex = 28;[m
+             button1.Text = "Cancel";[m
+             button1.UseVisualStyleBackColor = true;[m
+[36m@@ -205,22 +226,85 @@[m
+             // button6[m
+             // [m
+             button6.Font = new Font("Arial", 9F);[m
+[31m-            button6.Location = new Point(256, 389);[m
+[32m+[m[32m            button6.Location = new Point(293, 630);[m
+[32m+[m[32m            button6.Margin = new Padding(3, 4, 3, 4);[m
+             button6.Name = "button6";[m
+[31m-            button6.Size = new Size(126, 25);[m
+[32m+[m[32m            button6.Size = new Size(144, 33);[m
+             button6.TabIndex = 27;[m
+             button6.Text = "Save and Proceed";[m
+             button6.UseVisualStyleBackColor = true;[m
+             // [m
+[32m+[m[32m            // textBox1[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox1.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox1.Location = new Point(158, 279);[m
+[32m+[m[32m            textBox1.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox1.Name = "textBox1";[m
+[32m+[m[32m            textBox1.ReadOnly = true;[m
+[32m+[m[32m            textBox1.Size = new Size(229, 29);[m
+[32m+[m[32m            textBox1.TabIndex = 31;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label2.AutoSize = true;[m
+[32m+[m[32m            label2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label2.Location = new Point(17, 283);[m
+[32m+[m[32m            label2.Name = "label2";[m
+[32m+[m[32m            label2.Size = new Size(89, 22);[m
+[32m+[m[32m            label2.TabIndex = 30;[m
+[32m+[m[32m            label2.Text = "Barangay";[m
+[32m+[m[32m            label2.Click += label2_Click;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox2.Location = new Point(158, 326);[m
+[32m+[m[32m            textBox2.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox2.Name = "textBox2";[m
+[32m+[m[32m            textBox2.ReadOnly = true;[m
+[32m+[m[32m            textBox2.Size = new Size(229, 29);[m
+[32m+[m[32m            textBox2.TabIndex = 33;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label3.AutoSize = true;[m
+[32m+[m[32m            label3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label3.Location = new Point(17, 330);[m
+[32m+[m[32m            label3.Name = "label3";[m
+[32m+[m[32m            label3.Size = new Size(80, 22);[m
+[32m+[m[32m            label3.TabIndex = 32;[m
+[32m+[m[32m            label3.Text = "Zipcode";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox3.Location = new Point(158, 228);[m
+[32m+[m[32m            textBox3.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox3.Name = "textBox3";[m
+[32m+[m[32m            textBox3.ReadOnly = true;[m
+[32m+[m[32m            textBox3.Size = new Size(229, 29);[m
+[32m+[m[32m            textBox3.TabIndex = 35;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label4[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label4.AutoSize = true;[m
+[32m+[m[32m            label4.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label4.Location = new Point(17, 232);[m
+[32m+[m[32m            label4.Name = "label4";[m
+[32m+[m[32m            label4.Size = new Size(91, 22);[m
+[32m+[m[32m            label4.TabIndex = 34;[m
+[32m+[m[32m            label4.Text = "City/State";[m
+[32m+[m[32m            //[m[41m [m
+             // userCustomerSignUpInfo[m
+             // [m
+[31m-            AutoScaleDimensions = new SizeF(7F, 15F);[m
+[32m+[m[32m            AutoScaleDimensions = new SizeF(8F, 20F);[m
+             AutoScaleMode = AutoScaleMode.Font;[m
+[31m-            ClientSize = new Size(410, 437);[m
+[32m+[m[32m            ClientSize = new Size(548, 697);[m
+             Controls.Add(button1);[m
+             Controls.Add(button6);[m
+             Controls.Add(label1);[m
+             Controls.Add(groupBox2);[m
+[32m+[m[32m            Margin = new Padding(3, 4, 3, 4);[m
+             Name = "userCustomerSignUpInfo";[m
+             Text = "Customer Info - Car Rental System";[m
+             groupBox2.ResumeLayout(false);[m
+[36m@@ -247,5 +331,11 @@[m
+         private TextBox textBox10;[m
+         private Button button1;[m
+         private Button button6;[m
+[32m+[m[32m        private TextBox textBox2;[m
+[32m+[m[32m        private Label label3;[m
+[32m+[m[32m        private TextBox textBox1;[m
+[32m+[m[32m        private Label label2;[m
+[32m+[m[32m        private TextBox textBox3;[m
+[32m+[m[32m        private Label label4;[m
+     }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/Car-Rental-System/Forms/userCustomerSignUpInfo.cs b/Car-Rental-System/Forms/userCustomerSignUpInfo.cs[m
+[1mindex 3a0bf31..e604a97 100644[m
+[1m--- a/Car-Rental-System/Forms/userCustomerSignUpInfo.cs[m
+[1m+++ b/Car-Rental-System/Forms/userCustomerSignUpInfo.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userCustomerSignUpInfo : Form[m
+     {[m
+[36m@@ -16,5 +16,10 @@[m [mnamespace gumana_ka_be_pls[m
+         {[m
+             InitializeComponent();[m
+         }[m
+[32m+[m
+[32m+[m[32m        private void label2_Click(object sender, EventArgs e)[m
+[32m+[m[32m        {[m
+[32m+[m
+[32m+[m[32m        }[m
+     }[m
+ }[m
+[1mdiff --git a/Car-Rental-System/Forms/userCustomerSignUpInfo.resx b/Car-Rental-System/Forms/userCustomerSignUpInfo.resx[m
+[1mindex af32865..8b2ff64 100644[m
+[1m--- a/Car-Rental-System/Forms/userCustomerSignUpInfo.resx[m
+[1m+++ b/Car-Rental-System/Forms/userCustomerSignUpInfo.resx[m
+[36m@@ -1,7 +1,7 @@[m
+ ﻿<?xml version="1.0" encoding="utf-8"?>[m
+ <root>[m
+   <!--[m
+[31m-    Microsoft ResX Schema [m
+[32m+[m[32m    Microsoft ResX Schema[m
+ [m
+     Version 2.0[m
+ [m
+[36m@@ -48,7 +48,7 @@[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter[m
+             : and then encoded with base64 encoding.[m
+[31m-    [m
+[32m+[m
+     mimetype: application/x-microsoft.net.object.soap.base64[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter[m
+[1mdiff --git a/Car-Rental-System/Forms/userDashboard.Designer.cs b/Car-Rental-System/Forms/userDashboard.Designer.cs[m
+[1mindex 21dbcdc..e736ce1 100644[m
+[1m--- a/Car-Rental-System/Forms/userDashboard.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userDashboard.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userDashboard[m
+     {[m
+[36m@@ -30,6 +30,20 @@[m
+         {[m
+             button7 = new Button();[m
+             groupBox2 = new GroupBox();[m
+[32m+[m[32m            groupBox1 = new GroupBox();[m
+[32m+[m[32m            button5 = new Button();[m
+[32m+[m[32m            textBox7 = new TextBox();[m
+[32m+[m[32m            textBox1 = new TextBox();[m
+[32m+[m[32m            label2 = new Label();[m
+[32m+[m[32m            label18 = new Label();[m
+[32m+[m[32m            textBox2 = new TextBox();[m
+[32m+[m[32m            label17 = new Label();[m
+[32m+[m[32m            label3 = new Label();[m
+[32m+[m[32m            textBox3 = new TextBox();[m
+[32m+[m[32m            textBox4 = new TextBox();[m
+[32m+[m[32m            label16 = new Label();[m
+[32m+[m[32m            label4 = new Label();[m
+[32m+[m[32m            textBox5 = new TextBox();[m
+             groupBox3 = new GroupBox();[m
+             button6 = new Button();[m
+             label15 = new Label();[m
+[36m@@ -49,23 +63,15 @@[m
+             button2 = new Button();[m
+             button1 = new Button();[m
+             label1 = new Label();[m
+[31m-            groupBox1 = new GroupBox();[m
+[31m-            textBox7 = new TextBox();[m
+[31m-            textBox1 = new TextBox();[m
+[31m-            label2 = new Label();[m
+[31m-            label18 = new Label();[m
+[31m-            textBox2 = new TextBox();[m
+[31m-            label17 = new Label();[m
+[31m-            label3 = new Label();[m
+[31m-            textBox3 = new TextBox();[m
+[31m-            textBox4 = new TextBox();[m
+[31m-            label16 = new Label();[m
+[31m-            label4 = new Label();[m
+[31m-            textBox5 = new TextBox();[m
+[31m-            button5 = new Button();[m
+[32m+[m[32m            textBox6 = new TextBox();[m
+[32m+[m[32m            label5 = new Label();[m
+[32m+[m[32m            textBox8 = new TextBox();[m
+[32m+[m[32m            label6 = new Label();[m
+[32m+[m[32m            textBox15 = new TextBox();[m
+[32m+[m[32m            label7 = new Label();[m
+             groupBox2.SuspendLayout();[m
+[31m-            groupBox3.SuspendLayout();[m
+             groupBox1.SuspendLayout();[m
+[32m+[m[32m            groupBox3.SuspendLayout();[m
+             SuspendLayout();[m
+             // [m
+             // button7[m
+[36m@@ -83,11 +89,164 @@[m
+             groupBox2.Controls.Add(groupBox3);[m
+             groupBox2.Location = new Point(272, 94);[m
+             groupBox2.Name = "groupBox2";[m
+[31m-            groupBox2.Size = new Size(799, 429);[m
+[32m+[m[32m            groupBox2.Size = new Size(975, 546);[m
+             groupBox2.TabIndex = 13;[m
+             groupBox2.TabStop = false;[m
+             groupBox2.Text = "Dashboard";[m
+             // [m
+[32m+[m[32m            // groupBox1[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            groupBox1.Controls.Add(textBox15);[m
+[32m+[m[32m            groupBox1.Controls.Add(label7);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox8);[m
+[32m+[m[32m            groupBox1.Controls.Add(label6);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox6);[m
+[32m+[m[32m            groupBox1.Controls.Add(label5);[m
+[32m+[m[32m            groupBox1.Controls.Add(button5);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox7);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox1);[m
+[32m+[m[32m            groupBox1.Controls.Add(label2);[m
+[32m+[m[32m            groupBox1.Controls.Add(label18);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox2);[m
+[32m+[m[32m            groupBox1.Controls.Add(label17);[m
+[32m+[m[32m            groupBox1.Controls.Add(label3);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox3);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox4);[m
+[32m+[m[32m            groupBox1.Controls.Add(label16);[m
+[32m+[m[32m            groupBox1.Controls.Add(label4);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox5);[m
+[32m+[m[32m            groupBox1.Location = new Point(25, 24);[m
+[32m+[m[32m            groupBox1.Name = "groupBox1";[m
+[32m+[m[32m            groupBox1.Size = new Size(355, 495);[m
+[32m+[m[32m            groupBox1.TabIndex = 22;[m
+[32m+[m[32m            groupBox1.TabStop = false;[m
+[32m+[m[32m            groupBox1.Text = "Customer Details";[m
+[32m+[m[32m            groupBox1.Enter += groupBox1_Enter;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // button5[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            button5.Location = new Point(15, 446);[m
+[32m+[m[32m            button5.Name = "button5";[m
+[32m+[m[32m            button5.Size = new Size(324, 33);[m
+[32m+[m[32m            button5.TabIndex = 30;[m
+[32m+[m[32m            button5.Text = "Edit";[m
+[32m+[m[32m            button5.UseVisualStyleBackColor = true;[m
+[32m+[m[32m            button5.Click += button5_Click;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox7[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox7.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox7.Location = new Point(144, 402);[m
+[32m+[m[32m            textBox7.Name = "textBox7";[m
+[32m+[m[32m            textBox7.ReadOnly = true;[m
+[32m+[m[32m            textBox7.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox7.TabIndex = 29;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox1[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox1.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox1.Location = new Point(144, 29);[m
+[32m+[m[32m            textBox1.Name = "textBox1";[m
+[32m+[m[32m            textBox1.ReadOnly = true;[m
+[32m+[m[32m            textBox1.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox1.TabIndex = 19;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label2.AutoSize = true;[m
+[32m+[m[32m            label2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label2.Location = new Point(15, 396);[m
+[32m+[m[32m            label2.Name = "label2";[m
+[32m+[m[32m            label2.Size = new Size(146, 44);[m
+[32m+[m[32m            label2.TabIndex = 28;[m
+[32m+[m[32m            label2.Text = "Driver's License\r\nNo.\r\n";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label18[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label18.AutoSize = true;[m
+[32m+[m[32m            label18.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label18.Location = new Point(15, 32);[m
+[32m+[m[32m            label18.Name = "label18";[m
+[32m+[m[32m            label18.Size = new Size(118, 22);[m
+[32m+[m[32m            label18.TabIndex = 18;[m
+[32m+[m[32m            label18.Text = "Customer ID";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox2.Location = new Point(144, 354);[m
+[32m+[m[32m            textBox2.Name = "textBox2";[m
+[32m+[m[32m            textBox2.ReadOnly = true;[m
+[32m+[m[32m            textBox2.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox2.TabIndex = 27;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label17[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label17.AutoSize = true;[m
+[32m+[m[32m            label17.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label17.Location = new Point(15, 82);[m
+[32m+[m[32m            label17.Name = "label17";[m
+[32m+[m[32m            label17.Size = new Size(148, 22);[m
+[32m+[m[32m            label17.TabIndex = 20;[m
+[32m+[m[32m            label17.Text = "Customer Name";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label3.AutoSize = true;[m
+[32m+[m[32m            label3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label3.Location = new Point(15, 357);[m
+[32m+[m[32m            label3.Name = "label3";[m
+[32m+[m[32m            label3.Size = new Size(133, 22);[m
+[32m+[m[32m            label3.TabIndex = 26;[m
+[32m+[m[32m            label3.Text = "Email Address";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox3.Location = new Point(144, 79);[m
+[32m+[m[32m            textBox3.Name = "textBox3";[m
+[32m+[m[32m            textBox3.ReadOnly = true;[m
+[32m+[m[32m            textBox3.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox3.TabIndex = 21;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox4[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox4.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox4.Location = new Point(144, 177);[m
+[32m+[m[32m            textBox4.Name = "textBox4";[m
+[32m+[m[32m            textBox4.ReadOnly = true;[m
+[32m+[m[32m            textBox4.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox4.TabIndex = 25;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label16[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label16.AutoSize = true;[m
+[32m+[m[32m            label16.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label16.Location = new Point(15, 130);[m
+[32m+[m[32m            label16.Name = "label16";[m
+[32m+[m[32m            label16.Size = new Size(45, 22);[m
+[32m+[m[32m            label16.TabIndex = 22;[m
+[32m+[m[32m            label16.Text = "Age";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label4[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label4.AutoSize = true;[m
+[32m+[m[32m            label4.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label4.Location = new Point(15, 180);[m
+[32m+[m[32m            label4.Name = "label4";[m
+[32m+[m[32m            label4.Size = new Size(109, 22);[m
+[32m+[m[32m            label4.TabIndex = 24;[m
+[32m+[m[32m            label4.Text = "Contact No.";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox5[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox5.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox5.Location = new Point(144, 127);[m
+[32m+[m[32m            textBox5.Name = "textBox5";[m
+[32m+[m[32m            textBox5.ReadOnly = true;[m
+[32m+[m[32m            textBox5.Size = new Size(195, 29);[m
+[32m+[m[32m            textBox5.TabIndex = 23;[m
+[32m+[m[32m            //[m[41m [m
+             // groupBox3[m
+             // [m
+             groupBox3.Controls.Add(button6);[m
+[36m@@ -105,14 +264,14 @@[m
+             groupBox3.Controls.Add(textBox11);[m
+             groupBox3.Location = new Point(408, 24);[m
+             groupBox3.Name = "groupBox3";[m
+[31m-            groupBox3.Size = new Size(372, 384);[m
+[32m+[m[32m            groupBox3.Size = new Size(372, 495);[m
+             groupBox3.TabIndex = 8;[m
+             groupBox3.TabStop = false;[m
+             groupBox3.Text = "Recently Rented Car";[m
+             // [m
+             // button6[m
+             // [m
+[31m-            button6.Location = new Point(26, 331);[m
+[32m+[m[32m            button6.Location = new Point(6, 446);[m
+             button6.Name = "button6";[m
+             button6.Size = new Size(324, 33);[m
+             button6.TabIndex = 21;[m
+[36m@@ -124,7 +283,7 @@[m
+             label15.AutoSize = true;[m
+             label15.Location = new Point(26, 32);[m
+             label15.Name = "label15";[m
+[31m-            label15.Size = new Size(50, 17);[m
+[32m+[m[32m            label15.Size = new Size(65, 22);[m
+             label15.TabIndex = 14;[m
+             label15.Text = "Car ID";[m
+             // [m
+[36m@@ -133,7 +292,7 @@[m
+             textBox14.Location = new Point(155, 29);[m
+             textBox14.Name = "textBox14";[m
+             textBox14.ReadOnly = true;[m
+[31m-            textBox14.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox14.Size = new Size(195, 29);[m
+             textBox14.TabIndex = 15;[m
+             // [m
+             // label14[m
+[36m@@ -141,7 +300,7 @@[m
+             label14.AutoSize = true;[m
+             label14.Location = new Point(26, 82);[m
+             label14.Name = "label14";[m
+[31m-            label14.Size = new Size(46, 17);[m
+[32m+[m[32m            label14.Size = new Size(62, 22);[m
+             label14.TabIndex = 16;[m
+             label14.Text = "Model";[m
+             // [m
+[36m@@ -150,7 +309,7 @@[m
+             textBox9.Location = new Point(155, 274);[m
+             textBox9.Name = "textBox9";[m
+             textBox9.ReadOnly = true;[m
+[31m-            textBox9.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox9.Size = new Size(195, 29);[m
+             textBox9.TabIndex = 26;[m
+             // [m
+             // textBox13[m
+[36m@@ -158,7 +317,7 @@[m
+             textBox13.Location = new Point(155, 79);[m
+             textBox13.Name = "textBox13";[m
+             textBox13.ReadOnly = true;[m
+[31m-            textBox13.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox13.Size = new Size(195, 29);[m
+             textBox13.TabIndex = 17;[m
+             // [m
+             // label10[m
+[36m@@ -166,16 +325,17 @@[m
+             label10.AutoSize = true;[m
+             label10.Location = new Point(26, 277);[m
+             label10.Name = "label10";[m
+[31m-            label10.Size = new Size(112, 17);[m
+[32m+[m[32m            label10.Size = new Size(147, 22);[m
+             label10.TabIndex = 25;[m
+[31m-            label10.Text = "Payment Status";[m
+[32m+[m[32m            label10.Text = " Payment Status";[m
+[32m+[m[32m            label10.Click += label10_Click;[m
+             // [m
+             // label13[m
+             // [m
+             label13.AutoSize = true;[m
+             label13.Location = new Point(26, 130);[m
+             label13.Name = "label13";[m
+[31m-            label13.Size = new Size(42, 17);[m
+[32m+[m[32m            label13.Size = new Size(55, 22);[m
+             label13.TabIndex = 18;[m
+             label13.Text = "Make";[m
+             // [m
+[36m@@ -184,7 +344,7 @@[m
+             textBox10.Location = new Point(155, 226);[m
+             textBox10.Name = "textBox10";[m
+             textBox10.ReadOnly = true;[m
+[31m-            textBox10.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox10.Size = new Size(195, 29);[m
+             textBox10.TabIndex = 24;[m
+             // [m
+             // textBox12[m
+[36m@@ -192,7 +352,7 @@[m
+             textBox12.Location = new Point(155, 127);[m
+             textBox12.Name = "textBox12";[m
+             textBox12.ReadOnly = true;[m
+[31m-            textBox12.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox12.Size = new Size(195, 29);[m
+             textBox12.TabIndex = 19;[m
+             // [m
+             // label11[m
+[36m@@ -200,7 +360,7 @@[m
+             label11.AutoSize = true;[m
+             label11.Location = new Point(26, 229);[m
+             label11.Name = "label11";[m
+[31m-            label11.Size = new Size(70, 17);[m
+[32m+[m[32m            label11.Size = new Size(90, 22);[m
+             label11.TabIndex = 23;[m
+             label11.Text = "Due Date";[m
+             // [m
+[36m@@ -209,7 +369,7 @@[m
+             label12.AutoSize = true;[m
+             label12.Location = new Point(26, 180);[m
+             label12.Name = "label12";[m
+[31m-            label12.Size = new Size(43, 17);[m
+[32m+[m[32m            label12.Size = new Size(56, 22);[m
+             label12.TabIndex = 20;[m
+             label12.Text = "Color";[m
+             // [m
+[36m@@ -218,7 +378,7 @@[m
+             textBox11.Location = new Point(155, 177);[m
+             textBox11.Name = "textBox11";[m
+             textBox11.ReadOnly = true;[m
+[31m-            textBox11.Size = new Size(195, 25);[m
+[32m+[m[32m            textBox11.Size = new Size(195, 29);[m
+             textBox11.TabIndex = 22;[m
+             // [m
+             // button3[m
+[36m@@ -263,160 +423,75 @@[m
+             label1.Font = new Font("Arial", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);[m
+             label1.Location = new Point(23, 25);[m
+             label1.Name = "label1";[m
+[31m-            label1.Size = new Size(265, 55);[m
+[32m+[m[32m            label1.Size = new Size(328, 68);[m
+             label1.TabIndex = 8;[m
+             label1.Text = "Car Rental";[m
+             // [m
+[31m-            // groupBox1[m
+[31m-            // [m
+[31m-            groupBox1.Controls.Add(button5);[m
+[31m-            groupBox1.Controls.Add(textBox7);[m
+[31m-            groupBox1.Controls.Add(textBox1);[m
+[31m-            groupBox1.Controls.Add(label2);[m
+[31m-            groupBox1.Controls.Add(label18);[m
+[31m-            groupBox1.Controls.Add(textBox2);[m
+[31m-            groupBox1.Controls.Add(label17);[m
+[31m-            groupBox1.Controls.Add(label3);[m
+[31m-            groupBox1.Controls.Add(textBox3);[m
+[31m-            groupBox1.Controls.Add(textBox4);[m
+[31m-            groupBox1.Controls.Add(label16);[m
+[31m-            groupBox1.Controls.Add(label4);[m
+[31m-            groupBox1.Controls.Add(textBox5);[m
+[31m-            groupBox1.Location = new Point(25, 24);[m
+[31m-            groupBox1.Name = "groupBox1";[m
+[31m-            groupBox1.Size = new Size(355, 384);[m
+[31m-            groupBox1.TabIndex = 22;[m
+[31m-            groupBox1.TabStop = false;[m
+[31m-            groupBox1.Text = "Customer Details";[m
+[31m-            // [m
+[31m-            // textBox7[m
+[31m-            // [m
+[31m-            textBox7.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox7.Location = new Point(144, 274);[m
+[31m-            textBox7.Name = "textBox7";[m
+[31m-            textBox7.ReadOnly = true;[m
+[31m-            textBox7.Size = new Size(195, 25);[m
+[31m-            textBox7.TabIndex = 29;[m
+[31m-            // [m
+[31m-            // textBox1[m
+[31m-            // [m
+[31m-            textBox1.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox1.Location = new Point(144, 29);[m
+[31m-            textBox1.Name = "textBox1";[m
+[31m-            textBox1.ReadOnly = true;[m
+[31m-            textBox1.Size = new Size(195, 25);[m
+[31m-            textBox1.TabIndex = 19;[m
+[31m-            // [m
+[31m-            // label2[m
+[31m-            // [m
+[31m-            label2.AutoSize = true;[m
+[31m-            label2.Font = new Font("Arial", 11.25F);[m
+[31m-            label2.Location = new Point(15, 268);[m
+[31m-            label2.Name = "label2";[m
+[31m-            label2.Size = new Size(113, 34);[m
+[31m-            label2.TabIndex = 28;[m
+[31m-            label2.Text = "Driver's License\r\nNo.\r\n";[m
+[31m-            // [m
+[31m-            // label18[m
+[31m-            // [m
+[31m-            label18.AutoSize = true;[m
+[31m-            label18.Font = new Font("Arial", 11.25F);[m
+[31m-            label18.Location = new Point(15, 32);[m
+[31m-            label18.Name = "label18";[m
+[31m-            label18.Size = new Size(91, 17);[m
+[31m-            label18.TabIndex = 18;[m
+[31m-            label18.Text = "Customer ID";[m
+[31m-            // [m
+[31m-            // textBox2[m
+[31m-            // [m
+[31m-            textBox2.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox2.Location = new Point(144, 226);[m
+[31m-            textBox2.Name = "textBox2";[m
+[31m-            textBox2.ReadOnly = true;[m
+[31m-            textBox2.Size = new Size(195, 25);[m
+[31m-            textBox2.TabIndex = 27;[m
+[31m-            // [m
+[31m-            // label17[m
+[31m-            // [m
+[31m-            label17.AutoSize = true;[m
+[31m-            label17.Font = new Font("Arial", 11.25F);[m
+[31m-            label17.Location = new Point(15, 82);[m
+[31m-            label17.Name = "label17";[m
+[31m-            label17.Size = new Size(116, 17);[m
+[31m-            label17.TabIndex = 20;[m
+[31m-            label17.Text = "Customer Name";[m
+[31m-            // [m
+[31m-            // label3[m
+[31m-            // [m
+[31m-            label3.AutoSize = true;[m
+[31m-            label3.Font = new Font("Arial", 11.25F);[m
+[31m-            label3.Location = new Point(15, 229);[m
+[31m-            label3.Name = "label3";[m
+[31m-            label3.Size = new Size(102, 17);[m
+[31m-            label3.TabIndex = 26;[m
+[31m-            label3.Text = "Email Address";[m
+[31m-            // [m
+[31m-            // textBox3[m
+[31m-            // [m
+[31m-            textBox3.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox3.Location = new Point(144, 79);[m
+[31m-            textBox3.Name = "textBox3";[m
+[31m-            textBox3.ReadOnly = true;[m
+[31m-            textBox3.Size = new Size(195, 25);[m
+[31m-            textBox3.TabIndex = 21;[m
+[31m-            // [m
+[31m-            // textBox4[m
+[31m-            // [m
+[31m-            textBox4.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox4.Location = new Point(144, 177);[m
+[31m-            textBox4.Name = "textBox4";[m
+[31m-            textBox4.ReadOnly = true;[m
+[31m-            textBox4.Size = new Size(195, 25);[m
+[31m-            textBox4.TabIndex = 25;[m
+[31m-            // [m
+[31m-            // label16[m
+[31m-            // [m
+[31m-            label16.AutoSize = true;[m
+[31m-            label16.Font = new Font("Arial", 11.25F);[m
+[31m-            label16.Location = new Point(15, 130);[m
+[31m-            label16.Name = "label16";[m
+[31m-            label16.Size = new Size(33, 17);[m
+[31m-            label16.TabIndex = 22;[m
+[31m-            label16.Text = "Age";[m
+[31m-            // [m
+[31m-            // label4[m
+[31m-            // [m
+[31m-            label4.AutoSize = true;[m
+[31m-            label4.Font = new Font("Arial", 11.25F);[m
+[31m-            label4.Location = new Point(15, 180);[m
+[31m-            label4.Name = "label4";[m
+[31m-            label4.Size = new Size(85, 17);[m
+[31m-            label4.TabIndex = 24;[m
+[31m-            label4.Text = "Contact No.";[m
+[31m-            // [m
+[31m-            // textBox5[m
+[31m-            // [m
+[31m-            textBox5.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox5.Location = new Point(144, 127);[m
+[31m-            textBox5.Name = "textBox5";[m
+[31m-            textBox5.ReadOnly = true;[m
+[31m-            textBox5.Size = new Size(195, 25);[m
+[31m-            textBox5.TabIndex = 23;[m
+[31m-            // [m
+[31m-            // button5[m
+[31m-            // [m
+[31m-            button5.Location = new Point(15, 331);[m
+[31m-            button5.Name = "button5";[m
+[31m-            button5.Size = new Size(324, 33);[m
+[31m-            button5.TabIndex = 30;[m
+[31m-            button5.Text = "Edit";[m
+[31m-            button5.UseVisualStyleBackColor = true;[m
+[32m+[m[32m            // textBox6[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox6.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox6.Location = new Point(132, 222);[m
+[32m+[m[32m            textBox6.Name = "textBox6";[m
+[32m+[m[32m            textBox6.ReadOnly = true;[m
+[32m+[m[32m            textBox6.Size = new Size(207, 29);[m
+[32m+[m[32m            textBox6.TabIndex = 32;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label5[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label5.AutoSize = true;[m
+[32m+[m[32m            label5.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label5.Location = new Point(15, 229);[m
+[32m+[m[32m            label5.Name = "label5";[m
+[32m+[m[32m            label5.Size = new Size(91, 22);[m
+[32m+[m[32m            label5.TabIndex = 31;[m
+[32m+[m[32m            label5.Text = "City/State";[m
+[32m+[m[32m            label5.TextAlign = ContentAlignment.TopCenter;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox8[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox8.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox8.Location = new Point(132, 265);[m
+[32m+[m[32m            textBox8.Name = "textBox8";[m
+[32m+[m[32m            textBox8.ReadOnly = true;[m
+[32m+[m[32m            textBox8.Size = new Size(207, 29);[m
+[32m+[m[32m            textBox8.TabIndex = 34;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label6[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label6.AutoSize = true;[m
+[32m+[m[32m            label6.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label6.Location = new Point(15, 272);[m
+[32m+[m[32m            label6.Name = "label6";[m
+[32m+[m[32m            label6.Size = new Size(89, 22);[m
+[32m+[m[32m            label6.TabIndex = 33;[m
+[32m+[m[32m            label6.Text = "Barangay";[m
+[32m+[m[32m            label6.TextAlign = ContentAlignment.TopCenter;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox15[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox15.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox15.Location = new Point(132, 309);[m
+[32m+[m[32m            textBox15.Name = "textBox15";[m
+[32m+[m[32m            textBox15.ReadOnly = true;[m
+[32m+[m[32m            textBox15.Size = new Size(207, 29);[m
+[32m+[m[32m            textBox15.TabIndex = 36;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label7[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label7.AutoSize = true;[m
+[32m+[m[32m            label7.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label7.Location = new Point(15, 316);[m
+[32m+[m[32m            label7.Name = "label7";[m
+[32m+[m[32m            label7.Size = new Size(80, 22);[m
+[32m+[m[32m            label7.TabIndex = 35;[m
+[32m+[m[32m            label7.Text = "Zipcode";[m
+[32m+[m[32m            label7.TextAlign = ContentAlignment.TopCenter;[m
+             // [m
+             // userDashboard[m
+             // [m
+[31m-            AutoScaleDimensions = new SizeF(8F, 17F);[m
+[32m+[m[32m            AutoScaleDimensions = new SizeF(11F, 22F);[m
+             AutoScaleMode = AutoScaleMode.Font;[m
+[31m-            ClientSize = new Size(1094, 549);[m
+[32m+[m[32m            ClientSize = new Size(1325, 668);[m
+             Controls.Add(button7);[m
+             Controls.Add(groupBox2);[m
+             Controls.Add(button3);[m
+[36m@@ -428,10 +503,10 @@[m
+             Name = "userDashboard";[m
+             Text = "Dashboard - Car Rental System";[m
+             groupBox2.ResumeLayout(false);[m
+[31m-            groupBox3.ResumeLayout(false);[m
+[31m-            groupBox3.PerformLayout();[m
+             groupBox1.ResumeLayout(false);[m
+             groupBox1.PerformLayout();[m
+[32m+[m[32m            groupBox3.ResumeLayout(false);[m
+[32m+[m[32m            groupBox3.PerformLayout();[m
+             ResumeLayout(false);[m
+             PerformLayout();[m
+         }[m
+[36m@@ -473,5 +548,11 @@[m
+         private Label label16;[m
+         private Label label4;[m
+         private TextBox textBox5;[m
+[32m+[m[32m        private TextBox textBox6;[m
+[32m+[m[32m        private Label label5;[m
+[32m+[m[32m        private TextBox textBox15;[m
+[32m+[m[32m        private Label label7;[m
+[32m+[m[32m        private TextBox textBox8;[m
+[32m+[m[32m        private Label label6;[m
+     }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/Car-Rental-System/Forms/userDashboard.cs b/Car-Rental-System/Forms/userDashboard.cs[m
+[1mindex f22968b..315fd03 100644[m
+[1m--- a/Car-Rental-System/Forms/userDashboard.cs[m
+[1m+++ b/Car-Rental-System/Forms/userDashboard.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userDashboard : Form[m
+     {[m
+[36m@@ -16,5 +16,20 @@[m [mnamespace gumana_ka_be_pls[m
+         {[m
+             InitializeComponent();[m
+         }[m
+[32m+[m
+[32m+[m[32m        private void button5_Click(object sender, EventArgs e)[m
+[32m+[m[32m        {[m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        private void label10_Click(object sender, EventArgs e)[m
+[32m+[m[32m        {[m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        private void groupBox1_Enter(object sender, EventArgs e)[m
+[32m+[m[32m        {[m
+[32m+[m
+[32m+[m[32m        }[m
+     }[m
+ }[m
+[1mdiff --git a/Car-Rental-System/Forms/userDashboard.resx b/Car-Rental-System/Forms/userDashboard.resx[m
+[1mindex af32865..8b2ff64 100644[m
+[1m--- a/Car-Rental-System/Forms/userDashboard.resx[m
+[1m+++ b/Car-Rental-System/Forms/userDashboard.resx[m
+[36m@@ -1,7 +1,7 @@[m
+ ﻿<?xml version="1.0" encoding="utf-8"?>[m
+ <root>[m
+   <!--[m
+[31m-    Microsoft ResX Schema [m
+[32m+[m[32m    Microsoft ResX Schema[m
+ [m
+     Version 2.0[m
+ [m
+[36m@@ -48,7 +48,7 @@[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter[m
+             : and then encoded with base64 encoding.[m
+[31m-    [m
+[32m+[m
+     mimetype: application/x-microsoft.net.object.soap.base64[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter[m
+[1mdiff --git a/Car-Rental-System/Forms/userEditInfo.Designer.cs b/Car-Rental-System/Forms/userEditInfo.Designer.cs[m
+[1mindex 2ea2884..0694056 100644[m
+[1m--- a/Car-Rental-System/Forms/userEditInfo.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userEditInfo.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userEditInfo[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userEditInfo.cs b/Car-Rental-System/Forms/userEditInfo.cs[m
+[1mindex d91aa83..d0d2c71 100644[m
+[1m--- a/Car-Rental-System/Forms/userEditInfo.cs[m
+[1m+++ b/Car-Rental-System/Forms/userEditInfo.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userEditInfo : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentConfirmed.Designer.cs b/Car-Rental-System/Forms/userRentConfirmed.Designer.cs[m
+[1mindex d81e72c..4347276 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentConfirmed.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentConfirmed.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userRentConfirmed[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentConfirmed.cs b/Car-Rental-System/Forms/userRentConfirmed.cs[m
+[1mindex 6c16202..17ffbb0 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentConfirmed.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentConfirmed.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userRentConfirmed : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentOnRent.cs b/Car-Rental-System/Forms/userRentOnRent.cs[m
+[1mindex c2df3b6..c2b89e7 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentOnRent.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentOnRent.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     public partial class userRentOnRent : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep1.cs b/Car-Rental-System/Forms/userRentStep1.cs[m
+[1mindex cba123d..35f3446 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep1.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep1.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userRentStep1 : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep2.Designer.cs b/Car-Rental-System/Forms/userRentStep2.Designer.cs[m
+[1mindex 6772812..1f145f5 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep2.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep2.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userRentStep2[m
+     {[m
+[36m@@ -35,19 +35,7 @@[m
+             label1 = new Label();[m
+             button7 = new Button();[m
+             groupBox2 = new GroupBox();[m
+[31m-            label3 = new Label();[m
+[31m-            button6 = new Button();[m
+[31m-            groupBox1 = new GroupBox();[m
+[31m-            textBox5 = new TextBox();[m
+[31m-            label6 = new Label();[m
+[31m-            textBox6 = new TextBox();[m
+[31m-            label7 = new Label();[m
+[31m-            textBox4 = new TextBox();[m
+[31m-            label5 = new Label();[m
+[31m-            textBox2 = new TextBox();[m
+[31m-            label2 = new Label();[m
+[31m-            textBox1 = new TextBox();[m
+[31m-            label8 = new Label();[m
+[32m+[m[32m            button5 = new Button();[m
+             groupBox3 = new GroupBox();[m
+             textBox7 = new TextBox();[m
+             textBox12 = new TextBox();[m
+[36m@@ -61,44 +49,66 @@[m
+             label16 = new Label();[m
+             label15 = new Label();[m
+             textBox10 = new TextBox();[m
+[31m-            button5 = new Button();[m
+[32m+[m[32m            groupBox1 = new GroupBox();[m
+[32m+[m[32m            textBox5 = new TextBox();[m
+[32m+[m[32m            label6 = new Label();[m
+[32m+[m[32m            textBox6 = new TextBox();[m
+[32m+[m[32m            label7 = new Label();[m
+[32m+[m[32m            textBox4 = new TextBox();[m
+[32m+[m[32m            label5 = new Label();[m
+[32m+[m[32m            textBox2 = new TextBox();[m
+[32m+[m[32m            label2 = new Label();[m
+[32m+[m[32m            textBox1 = new TextBox();[m
+[32m+[m[32m            label8 = new Label();[m
+[32m+[m[32m            label3 = new Label();[m
+[32m+[m[32m            button6 = new Button();[m
+[32m+[m[32m            textBox3 = new TextBox();[m
+[32m+[m[32m            label4 = new Label();[m
+[32m+[m[32m            textBox13 = new TextBox();[m
+[32m+[m[32m            label9 = new Label();[m
+[32m+[m[32m            textBox14 = new TextBox();[m
+[32m+[m[32m            label10 = new Label();[m
+             groupBox2.SuspendLayout();[m
+[31m-            groupBox1.SuspendLayout();[m
+             groupBox3.SuspendLayout();[m
+[32m+[m[32m            groupBox1.SuspendLayout();[m
+             SuspendLayout();[m
+             // [m
+             // button3[m
+             // [m
+[31m-            button3.Location = new Point(26, 435);[m
+[32m+[m[32m            button3.Location = new Point(30, 580);[m
+[32m+[m[32m            button3.Margin = new Padding(3, 4, 3, 4);[m
+             button3.Name = "button3";[m
+[31m-            button3.Size = new Size(214, 87);[m
+[32m+[m[32m            button3.Size = new Size(245, 116);[m
+             button3.TabIndex = 33;[m
+             button3.Text = "Reports";[m
+             button3.UseVisualStyleBackColor = true;[m
+             // [m
+             // button4[m
+             // [m
+[31m-            button4.Location = new Point(26, 324);[m
+[32m+[m[32m            button4.Location = new Point(30, 432);[m
+[32m+[m[32m            button4.Margin = new Padding(3, 4, 3, 4);[m
+             button4.Name = "button4";[m
+[31m-            button4.Size = new Size(214, 87);[m
+[32m+[m[32m            button4.Size = new Size(245, 116);[m
+             button4.TabIndex = 32;[m
+             button4.Text = "Customers";[m
+             button4.UseVisualStyleBackColor = true;[m
+             // [m
+             // button2[m
+             // [m
+[31m-            button2.Location = new Point(26, 212);[m
+[32m+[m[32m            button2.Location = new Point(30, 283);[m
+[32m+[m[32m            button2.Margin = new Padding(3, 4, 3, 4);[m
+             button2.Name = "button2";[m
+[31m-            button2.Size = new Size(214, 87);[m
+[32m+[m[32m            button2.Size = new Size(245, 116);[m
+             button2.TabIndex = 31;[m
+             button2.Text = "Manage Cars";[m
+             button2.UseVisualStyleBackColor = true;[m
+             // [m
+             // button1[m
+             // [m
+[31m-            button1.Location = new Point(26, 101);[m
+[32m+[m[32m            button1.Location = new Point(30, 135);[m
+[32m+[m[32m            button1.Margin = new Padding(3, 4, 3, 4);[m
+             button1.Name = "button1";[m
+[31m-            button1.Size = new Size(214, 87);[m
+[32m+[m[32m            button1.Size = new Size(245, 116);[m
+             button1.TabIndex = 30;[m
+             button1.Text = "Dashboard";[m
+             button1.UseVisualStyleBackColor = true;[m
+[36m@@ -107,17 +117,18 @@[m
+             // [m
+             label1.AutoSize = true;[m
+             label1.Font = new Font("Arial", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);[m
+[31m-            label1.Location = new Point(8, 24);[m
+[32m+[m[32m            label1.Location = new Point(9, 32);[m
+             label1.Name = "label1";[m
+[31m-            label1.Size = new Size(265, 55);[m
+[32m+[m[32m            label1.Size = new Size(328, 68);[m
+             label1.TabIndex = 29;[m
+             label1.Text = "Car Rental";[m
+             // [m
+             // button7[m
+             // [m
+[31m-            button7.Location = new Point(981, 24);[m
+[32m+[m[32m            button7.Location = new Point(1121, 32);[m
+[32m+[m[32m            button7.Margin = new Padding(3, 4, 3, 4);[m
+             button7.Name = "button7";[m
+[31m-            button7.Size = new Size(75, 55);[m
+[32m+[m[32m            button7.Size = new Size(86, 73);[m
+             button7.TabIndex = 35;[m
+             button7.Text = "Log Out";[m
+             button7.UseVisualStyleBackColor = true;[m
+[36m@@ -129,148 +140,33 @@[m
+             groupBox2.Controls.Add(groupBox1);[m
+             groupBox2.Controls.Add(label3);[m
+             groupBox2.Controls.Add(button6);[m
+[31m-            groupBox2.Location = new Point(257, 93);[m
+[32m+[m[32m            groupBox2.Location = new Point(294, 124);[m
+[32m+[m[32m            groupBox2.Margin = new Padding(3, 4, 3, 4);[m
+             groupBox2.Name = "groupBox2";[m
+[31m-            groupBox2.Size = new Size(799, 429);[m
+[32m+[m[32m            groupBox2.Padding = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            groupBox2.Size = new Size(913, 572);[m
+             groupBox2.TabIndex = 34;[m
+             groupBox2.TabStop = false;[m
+             groupBox2.Text = "Rent";[m
+             // [m
+[31m-            // label3[m
+[31m-            // [m
+[31m-            label3.AutoSize = true;[m
+[31m-            label3.Font = new Font("Arial", 11.25F);[m
+[31m-            label3.Location = new Point(17, 395);[m
+[31m-            label3.Name = "label3";[m
+[31m-            label3.Size = new Size(78, 17);[m
+[31m-            label3.TabIndex = 41;[m
+[31m-            label3.Text = "Step 2 of 3";[m
+[31m-            // [m
+[31m-            // button6[m
+[31m-            // [m
+[31m-            button6.Location = new Point(667, 390);[m
+[31m-            button6.Name = "button6";[m
+[31m-            button6.Size = new Size(114, 25);[m
+[31m-            button6.TabIndex = 29;[m
+[31m-            button6.Text = "Proceed";[m
+[31m-            button6.UseVisualStyleBackColor = true;[m
+[31m-            // [m
+[31m-            // groupBox1[m
+[31m-            // [m
+[31m-            groupBox1.Controls.Add(textBox5);[m
+[31m-            groupBox1.Controls.Add(label6);[m
+[31m-            groupBox1.Controls.Add(textBox6);[m
+[31m-            groupBox1.Controls.Add(label7);[m
+[31m-            groupBox1.Controls.Add(textBox4);[m
+[31m-            groupBox1.Controls.Add(label5);[m
+[31m-            groupBox1.Controls.Add(textBox2);[m
+[31m-            groupBox1.Controls.Add(label2);[m
+[31m-            groupBox1.Controls.Add(textBox1);[m
+[31m-            groupBox1.Controls.Add(label8);[m
+[31m-            groupBox1.Location = new Point(407, 28);[m
+[31m-            groupBox1.Name = "groupBox1";[m
+[31m-            groupBox1.Size = new Size(366, 242);[m
+[31m-            groupBox1.TabIndex = 37;[m
+[31m-            groupBox1.TabStop = false;[m
+[31m-            groupBox1.Text = "Car Details";[m
+[31m-            // [m
+[31m-            // textBox5[m
+[31m-            // [m
+[31m-            textBox5.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox5.Location = new Point(142, 190);[m
+[31m-            textBox5.Name = "textBox5";[m
+[31m-            textBox5.ReadOnly = true;[m
+[31m-            textBox5.Size = new Size(212, 25);[m
+[31m-            textBox5.TabIndex = 15;[m
+[31m-            // [m
+[31m-            // label6[m
+[31m-            // [m
+[31m-            label6.AutoSize = true;[m
+[31m-            label6.Font = new Font("Arial", 11.25F);[m
+[31m-            label6.Location = new Point(16, 200);[m
+[31m-            label6.Name = "label6";[m
+[31m-            label6.Size = new Size(43, 17);[m
+[31m-            label6.TabIndex = 14;[m
+[31m-            label6.Text = "Color";[m
+[31m-            // [m
+[31m-            // textBox6[m
+[31m-            // [m
+[31m-            textBox6.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox6.Location = new Point(142, 147);[m
+[31m-            textBox6.Name = "textBox6";[m
+[31m-            textBox6.ReadOnly = true;[m
+[31m-            textBox6.Size = new Size(212, 25);[m
+[31m-            textBox6.TabIndex = 13;[m
+[31m-            // [m
+[31m-            // label7[m
+[31m-            // [m
+[31m-            label7.AutoSize = true;[m
+[31m-            label7.Font = new Font("Arial", 11.25F);[m
+[31m-            label7.Location = new Point(15, 157);[m
+[31m-            label7.Name = "label7";[m
+[31m-            label7.Size = new Size(67, 17);[m
+[31m-            label7.TabIndex = 12;[m
+[31m-            label7.Text = "Plate No.";[m
+[31m-            // [m
+[31m-            // textBox4[m
+[31m-            // [m
+[31m-            textBox4.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox4.Location = new Point(142, 106);[m
+[31m-            textBox4.Name = "textBox4";[m
+[31m-            textBox4.ReadOnly = true;[m
+[31m-            textBox4.Size = new Size(212, 25);[m
+[31m-            textBox4.TabIndex = 11;[m
+[31m-            // [m
+[31m-            // label5[m
+[31m-            // [m
+[31m-            label5.AutoSize = true;[m
+[31m-            label5.Font = new Font("Arial", 11.25F);[m
+[31m-            label5.Location = new Point(16, 116);[m
+[31m-            label5.Name = "label5";[m
+[31m-            label5.Size = new Size(42, 17);[m
+[31m-            label5.TabIndex = 10;[m
+[31m-            label5.Text = "Make";[m
+[31m-            // [m
+[31m-            // textBox2[m
+[31m-            // [m
+[31m-            textBox2.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox2.Location = new Point(142, 65);[m
+[31m-            textBox2.Name = "textBox2";[m
+[31m-            textBox2.ReadOnly = true;[m
+[31m-            textBox2.Size = new Size(212, 25);[m
+[31m-            textBox2.TabIndex = 9;[m
+[31m-            // [m
+[31m-            // label2[m
+[31m-            // [m
+[31m-            label2.AutoSize = true;[m
+[31m-            label2.Font = new Font("Arial", 11.25F);[m
+[31m-            label2.Location = new Point(16, 75);[m
+[31m-            label2.Name = "label2";[m
+[31m-            label2.Size = new Size(46, 17);[m
+[31m-            label2.TabIndex = 8;[m
+[31m-            label2.Text = "Model";[m
+[31m-            // [m
+[31m-            // textBox1[m
+[31m-            // [m
+[31m-            textBox1.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox1.Location = new Point(142, 22);[m
+[31m-            textBox1.Name = "textBox1";[m
+[31m-            textBox1.ReadOnly = true;[m
+[31m-            textBox1.Size = new Size(212, 25);[m
+[31m-            textBox1.TabIndex = 7;[m
+[31m-            // [m
+[31m-            // label8[m
+[32m+[m[32m            // button5[m
+             // [m
+[31m-            label8.AutoSize = true;[m
+[31m-            label8.Font = new Font("Arial", 11.25F);[m
+[31m-            label8.Location = new Point(15, 32);[m
+[31m-            label8.Name = "label8";[m
+[31m-            label8.Size = new Size(50, 17);[m
+[31m-            label8.TabIndex = 6;[m
+[31m-            label8.Text = "Car ID";[m
+[32m+[m[32m            button5.Location = new Point(619, 520);[m
+[32m+[m[32m            button5.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            button5.Name = "button5";[m
+[32m+[m[32m            button5.Size = new Size(130, 33);[m
+[32m+[m[32m            button5.TabIndex = 42;[m
+[32m+[m[32m            button5.Text = "Back";[m
+[32m+[m[32m            button5.UseVisualStyleBackColor = true;[m
+             // [m
+             // groupBox3[m
+             // [m
+[32m+[m[32m            groupBox3.Controls.Add(textBox14);[m
+[32m+[m[32m            groupBox3.Controls.Add(label10);[m
+[32m+[m[32m            groupBox3.Controls.Add(textBox13);[m
+[32m+[m[32m            groupBox3.Controls.Add(label9);[m
+[32m+[m[32m            groupBox3.Controls.Add(textBox3);[m
+[32m+[m[32m            groupBox3.Controls.Add(label4);[m
+             groupBox3.Controls.Add(textBox7);[m
+             groupBox3.Controls.Add(textBox12);[m
+             groupBox3.Controls.Add(label13);[m
+[36m@@ -283,38 +179,43 @@[m
+             groupBox3.Controls.Add(label16);[m
+             groupBox3.Controls.Add(label15);[m
+             groupBox3.Controls.Add(textBox10);[m
+[31m-            groupBox3.Location = new Point(21, 28);[m
+[32m+[m[32m            groupBox3.Location = new Point(24, 37);[m
+[32m+[m[32m            groupBox3.Margin = new Padding(3, 4, 3, 4);[m
+             groupBox3.Name = "groupBox3";[m
+[31m-            groupBox3.Size = new Size(367, 283);[m
+[32m+[m[32m            groupBox3.Padding = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            groupBox3.Size = new Size(419, 468);[m
+             groupBox3.TabIndex = 36;[m
+             groupBox3.TabStop = false;[m
+             groupBox3.Text = "Customer Details";[m
+[32m+[m[32m            groupBox3.Enter += groupBox3_Enter;[m
+             // [m
+             // textBox7[m
+             // [m
+             textBox7.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox7.Location = new Point(138, 238);[m
+[32m+[m[32m            textBox7.Location = new Point(158, 402);[m
+[32m+[m[32m            textBox7.Margin = new Padding(3, 4, 3, 4);[m
+             textBox7.Name = "textBox7";[m
+             textBox7.ReadOnly = true;[m
+[31m-            textBox7.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox7.Size = new Size(243, 29);[m
+             textBox7.TabIndex = 29;[m
+             // [m
+             // textBox12[m
+             // [m
+             textBox12.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox12.Location = new Point(138, 29);[m
+[32m+[m[32m            textBox12.Location = new Point(158, 39);[m
+[32m+[m[32m            textBox12.Margin = new Padding(3, 4, 3, 4);[m
+             textBox12.Name = "textBox12";[m
+             textBox12.ReadOnly = true;[m
+[31m-            textBox12.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox12.Size = new Size(243, 29);[m
+             textBox12.TabIndex = 19;[m
+             // [m
+             // label13[m
+             // [m
+             label13.AutoSize = true;[m
+             label13.Font = new Font("Arial", 11.25F);[m
+[31m-            label13.Location = new Point(15, 232);[m
+[32m+[m[32m            label13.Location = new Point(17, 394);[m
+             label13.Name = "label13";[m
+[31m-            label13.Size = new Size(113, 34);[m
+[32m+[m[32m            label13.Size = new Size(146, 44);[m
+             label13.TabIndex = 28;[m
+             label13.Text = "Driver's License\r\nNo.\r\n";[m
+             // [m
+[36m@@ -322,66 +223,71 @@[m
+             // [m
+             label18.AutoSize = true;[m
+             label18.Font = new Font("Arial", 11.25F);[m
+[31m-            label18.Location = new Point(15, 32);[m
+[32m+[m[32m            label18.Location = new Point(17, 43);[m
+             label18.Name = "label18";[m
+[31m-            label18.Size = new Size(91, 17);[m
+[32m+[m[32m            label18.Size = new Size(118, 22);[m
+             label18.TabIndex = 18;[m
+             label18.Text = "Customer ID";[m
+             // [m
+             // textBox8[m
+             // [m
+             textBox8.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox8.Location = new Point(138, 197);[m
+[32m+[m[32m            textBox8.Location = new Point(158, 209);[m
+[32m+[m[32m            textBox8.Margin = new Padding(3, 4, 3, 4);[m
+             textBox8.Name = "textBox8";[m
+             textBox8.ReadOnly = true;[m
+[31m-            textBox8.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox8.Size = new Size(243, 29);[m
+             textBox8.TabIndex = 27;[m
+             // [m
+             // label17[m
+             // [m
+             label17.AutoSize = true;[m
+             label17.Font = new Font("Arial", 11.25F);[m
+[31m-            label17.Location = new Point(15, 75);[m
+[32m+[m[32m            label17.Location = new Point(17, 91);[m
+             label17.Name = "label17";[m
+[31m-            label17.Size = new Size(116, 17);[m
+[32m+[m[32m            label17.Size = new Size(148, 22);[m
+             label17.TabIndex = 20;[m
+             label17.Text = "Customer Name";[m
+[32m+[m[32m            label17.Click += this.label17_Click;[m
+             // [m
+             // label14[m
+             // [m
+             label14.AutoSize = true;[m
+             label14.Font = new Font("Arial", 11.25F);[m
+[31m-            label14.Location = new Point(15, 200);[m
+[32m+[m[32m            label14.Location = new Point(17, 213);[m
+             label14.Name = "label14";[m
+[31m-            label14.Size = new Size(102, 17);[m
+[32m+[m[32m            label14.Size = new Size(133, 22);[m
+             label14.TabIndex = 26;[m
+             label14.Text = "Email Address";[m
+             // [m
+             // textBox11[m
+             // [m
+             textBox11.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox11.Location = new Point(138, 72);[m
+[32m+[m[32m            textBox11.Location = new Point(158, 87);[m
+[32m+[m[32m            textBox11.Margin = new Padding(3, 4, 3, 4);[m
+             textBox11.Name = "textBox11";[m
+             textBox11.ReadOnly = true;[m
+[31m-            textBox11.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox11.Size = new Size(243, 29);[m
+             textBox11.TabIndex = 21;[m
+[32m+[m[32m            textBox11.TextChanged += this.textBox11_TextChanged;[m
+             // [m
+             // textBox9[m
+             // [m
+             textBox9.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox9.Location = new Point(138, 154);[m
+[32m+[m[32m            textBox9.Location = new Point(158, 165);[m
+[32m+[m[32m            textBox9.Margin = new Padding(3, 4, 3, 4);[m
+             textBox9.Name = "textBox9";[m
+             textBox9.ReadOnly = true;[m
+[31m-            textBox9.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox9.Size = new Size(243, 29);[m
+             textBox9.TabIndex = 25;[m
+             // [m
+             // label16[m
+             // [m
+             label16.AutoSize = true;[m
+             label16.Font = new Font("Arial", 11.25F);[m
+[31m-            label16.Location = new Point(15, 116);[m
+[32m+[m[32m            label16.Location = new Point(17, 128);[m
+             label16.Name = "label16";[m
+[31m-            label16.Size = new Size(33, 17);[m
+[32m+[m[32m            label16.Size = new Size(45, 22);[m
+             label16.TabIndex = 22;[m
+             label16.Text = "Age";[m
+             // [m
+[36m@@ -389,35 +295,228 @@[m
+             // [m
+             label15.AutoSize = true;[m
+             label15.Font = new Font("Arial", 11.25F);[m
+[31m-            label15.Location = new Point(15, 157);[m
+[32m+[m[32m            label15.Location = new Point(17, 169);[m
+             label15.Name = "label15";[m
+[31m-            label15.Size = new Size(85, 17);[m
+[32m+[m[32m            label15.Size = new Size(109, 22);[m
+             label15.TabIndex = 24;[m
+             label15.Text = "Contact No.";[m
+             // [m
+             // textBox10[m
+             // [m
+             textBox10.Font = new Font("Arial", 11.25F);[m
+[31m-            textBox10.Location = new Point(138, 113);[m
+[32m+[m[32m            textBox10.Location = new Point(158, 124);[m
+[32m+[m[32m            textBox10.Margin = new Padding(3, 4, 3, 4);[m
+             textBox10.Name = "textBox10";[m
+             textBox10.ReadOnly = true;[m
+[31m-            textBox10.Size = new Size(213, 25);[m
+[32m+[m[32m            textBox10.Size = new Size(243, 29);[m
+             textBox10.TabIndex = 23;[m
+             // [m
+[31m-            // button5[m
+[32m+[m[32m            // groupBox1[m
+             // [m
+[31m-            button5.Location = new Point(542, 390);[m
+[31m-            button5.Name = "button5";[m
+[31m-            button5.Size = new Size(114, 25);[m
+[31m-            button5.TabIndex = 42;[m
+[31m-            button5.Text = "Back";[m
+[31m-            button5.UseVisualStyleBackColor = true;[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox5);[m
+[32m+[m[32m            groupBox1.Controls.Add(label6);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox6);[m
+[32m+[m[32m            groupBox1.Controls.Add(label7);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox4);[m
+[32m+[m[32m            groupBox1.Controls.Add(label5);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox2);[m
+[32m+[m[32m            groupBox1.Controls.Add(label2);[m
+[32m+[m[32m            groupBox1.Controls.Add(textBox1);[m
+[32m+[m[32m            groupBox1.Controls.Add(label8);[m
+[32m+[m[32m            groupBox1.Location = new Point(465, 37);[m
+[32m+[m[32m            groupBox1.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            groupBox1.Name = "groupBox1";[m
+[32m+[m[32m            groupBox1.Padding = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            groupBox1.Size = new Size(418, 323);[m
+[32m+[m[32m            groupBox1.TabIndex = 37;[m
+[32m+[m[32m            groupBox1.TabStop = false;[m
+[32m+[m[32m            groupBox1.Text = "Car Details";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox5[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox5.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox5.Location = new Point(162, 253);[m
+[32m+[m[32m            textBox5.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox5.Name = "textBox5";[m
+[32m+[m[32m            textBox5.ReadOnly = true;[m
+[32m+[m[32m            textBox5.Size = new Size(242, 29);[m
+[32m+[m[32m            textBox5.TabIndex = 15;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label6[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label6.AutoSize = true;[m
+[32m+[m[32m            label6.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label6.Location = new Point(18, 267);[m
+[32m+[m[32m            label6.Name = "label6";[m
+[32m+[m[32m            label6.Size = new Size(56, 22);[m
+[32m+[m[32m            label6.TabIndex = 14;[m
+[32m+[m[32m            label6.Text = "Color";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox6[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox6.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox6.Location = new Point(162, 196);[m
+[32m+[m[32m            textBox6.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox6.Name = "textBox6";[m
+[32m+[m[32m            textBox6.ReadOnly = true;[m
+[32m+[m[32m            textBox6.Size = new Size(242, 29);[m
+[32m+[m[32m            textBox6.TabIndex = 13;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label7[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label7.AutoSize = true;[m
+[32m+[m[32m            label7.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label7.Location = new Point(17, 209);[m
+[32m+[m[32m            label7.Name = "label7";[m
+[32m+[m[32m            label7.Size = new Size(87, 22);[m
+[32m+[m[32m            label7.TabIndex = 12;[m
+[32m+[m[32m            label7.Text = "Plate No.";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox4[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox4.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox4.Location = new Point(162, 141);[m
+[32m+[m[32m            textBox4.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox4.Name = "textBox4";[m
+[32m+[m[32m            textBox4.ReadOnly = true;[m
+[32m+[m[32m            textBox4.Size = new Size(242, 29);[m
+[32m+[m[32m            textBox4.TabIndex = 11;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label5[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label5.AutoSize = true;[m
+[32m+[m[32m            label5.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label5.Location = new Point(18, 155);[m
+[32m+[m[32m            label5.Name = "label5";[m
+[32m+[m[32m            label5.Size = new Size(55, 22);[m
+[32m+[m[32m            label5.TabIndex = 10;[m
+[32m+[m[32m            label5.Text = "Make";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox2.Location = new Point(162, 87);[m
+[32m+[m[32m            textBox2.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox2.Name = "textBox2";[m
+[32m+[m[32m            textBox2.ReadOnly = true;[m
+[32m+[m[32m            textBox2.Size = new Size(242, 29);[m
+[32m+[m[32m            textBox2.TabIndex = 9;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label2[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label2.AutoSize = true;[m
+[32m+[m[32m            label2.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label2.Location = new Point(18, 100);[m
+[32m+[m[32m            label2.Name = "label2";[m
+[32m+[m[32m            label2.Size = new Size(62, 22);[m
+[32m+[m[32m            label2.TabIndex = 8;[m
+[32m+[m[32m            label2.Text = "Model";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox1[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox1.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox1.Location = new Point(162, 29);[m
+[32m+[m[32m            textBox1.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox1.Name = "textBox1";[m
+[32m+[m[32m            textBox1.ReadOnly = true;[m
+[32m+[m[32m            textBox1.Size = new Size(242, 29);[m
+[32m+[m[32m            textBox1.TabIndex = 7;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label8[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label8.AutoSize = true;[m
+[32m+[m[32m            label8.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label8.Location = new Point(17, 43);[m
+[32m+[m[32m            label8.Name = "label8";[m
+[32m+[m[32m            label8.Size = new Size(65, 22);[m
+[32m+[m[32m            label8.TabIndex = 6;[m
+[32m+[m[32m            label8.Text = "Car ID";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label3.AutoSize = true;[m
+[32m+[m[32m            label3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label3.Location = new Point(19, 527);[m
+[32m+[m[32m            label3.Name = "label3";[m
+[32m+[m[32m            label3.Size = new Size(104, 22);[m
+[32m+[m[32m            label3.TabIndex = 41;[m
+[32m+[m[32m            label3.Text = "Step 2 of 3";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // button6[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            button6.Location = new Point(762, 520);[m
+[32m+[m[32m            button6.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            button6.Name = "button6";[m
+[32m+[m[32m            button6.Size = new Size(130, 33);[m
+[32m+[m[32m            button6.TabIndex = 29;[m
+[32m+[m[32m            button6.Text = "Proceed";[m
+[32m+[m[32m            button6.UseVisualStyleBackColor = true;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox3[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox3.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox3.Location = new Point(158, 253);[m
+[32m+[m[32m            textBox3.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox3.Name = "textBox3";[m
+[32m+[m[32m            textBox3.ReadOnly = true;[m
+[32m+[m[32m            textBox3.Size = new Size(243, 29);[m
+[32m+[m[32m            textBox3.TabIndex = 31;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label4[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label4.AutoSize = true;[m
+[32m+[m[32m            label4.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label4.Location = new Point(17, 257);[m
+[32m+[m[32m            label4.Name = "label4";[m
+[32m+[m[32m            label4.Size = new Size(91, 22);[m
+[32m+[m[32m            label4.TabIndex = 30;[m
+[32m+[m[32m            label4.Text = "City/State";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox13[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox13.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox13.Location = new Point(158, 294);[m
+[32m+[m[32m            textBox13.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox13.Name = "textBox13";[m
+[32m+[m[32m            textBox13.ReadOnly = true;[m
+[32m+[m[32m            textBox13.Size = new Size(243, 29);[m
+[32m+[m[32m            textBox13.TabIndex = 33;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label9[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label9.AutoSize = true;[m
+[32m+[m[32m            label9.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label9.Location = new Point(17, 298);[m
+[32m+[m[32m            label9.Name = "label9";[m
+[32m+[m[32m            label9.Size = new Size(89, 22);[m
+[32m+[m[32m            label9.TabIndex = 32;[m
+[32m+[m[32m            label9.Text = "Barangay";[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // textBox14[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            textBox14.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            textBox14.Location = new Point(158, 343);[m
+[32m+[m[32m            textBox14.Margin = new Padding(3, 4, 3, 4);[m
+[32m+[m[32m            textBox14.Name = "textBox14";[m
+[32m+[m[32m            textBox14.ReadOnly = true;[m
+[32m+[m[32m            textBox14.Size = new Size(243, 29);[m
+[32m+[m[32m            textBox14.TabIndex = 35;[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            // label10[m
+[32m+[m[32m            //[m[41m [m
+[32m+[m[32m            label10.AutoSize = true;[m
+[32m+[m[32m            label10.Font = new Font("Arial", 11.25F);[m
+[32m+[m[32m            label10.Location = new Point(17, 347);[m
+[32m+[m[32m            label10.Name = "label10";[m
+[32m+[m[32m            label10.Size = new Size(80, 22);[m
+[32m+[m[32m            label10.TabIndex = 34;[m
+[32m+[m[32m            label10.Text = "Zipcode";[m
+             // [m
+             // userRentStep2[m
+             // [m
+[31m-            AutoScaleDimensions = new SizeF(7F, 15F);[m
+[32m+[m[32m            AutoScaleDimensions = new SizeF(8F, 20F);[m
+             AutoScaleMode = AutoScaleMode.Font;[m
+[31m-            ClientSize = new Size(1080, 549);[m
+[32m+[m[32m            ClientSize = new Size(1234, 732);[m
+             Controls.Add(button3);[m
+             Controls.Add(button4);[m
+             Controls.Add(button2);[m
+[36m@@ -425,14 +524,15 @@[m
+             Controls.Add(label1);[m
+             Controls.Add(button7);[m
+             Controls.Add(groupBox2);[m
+[32m+[m[32m            Margin = new Padding(3, 4, 3, 4);[m
+             Name = "userRentStep2";[m
+             Text = "Form1";[m
+             groupBox2.ResumeLayout(false);[m
+             groupBox2.PerformLayout();[m
+[31m-            groupBox1.ResumeLayout(false);[m
+[31m-            groupBox1.PerformLayout();[m
+             groupBox3.ResumeLayout(false);[m
+             groupBox3.PerformLayout();[m
+[32m+[m[32m            groupBox1.ResumeLayout(false);[m
+[32m+[m[32m            groupBox1.PerformLayout();[m
+             ResumeLayout(false);[m
+             PerformLayout();[m
+         }[m
+[36m@@ -473,5 +573,11 @@[m
+         private Label label2;[m
+         private TextBox textBox1;[m
+         private Label label8;[m
+[32m+[m[32m        private TextBox textBox14;[m
+[32m+[m[32m        private Label label10;[m
+[32m+[m[32m        private TextBox textBox13;[m
+[32m+[m[32m        private Label label9;[m
+[32m+[m[32m        private TextBox textBox3;[m
+[32m+[m[32m        private Label label4;[m
+     }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep2.cs b/Car-Rental-System/Forms/userRentStep2.cs[m
+[1mindex eadfb57..0bfd689 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep2.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep2.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userRentStep2 : Form[m
+     {[m
+[36m@@ -16,5 +16,10 @@[m [mnamespace gumana_ka_be_pls[m
+         {[m
+             InitializeComponent();[m
+         }[m
+[32m+[m
+[32m+[m[32m        private void groupBox3_Enter(object sender, EventArgs e)[m
+[32m+[m[32m        {[m
+[32m+[m
+[32m+[m[32m        }[m
+     }[m
+ }[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep2.resx b/Car-Rental-System/Forms/userRentStep2.resx[m
+[1mindex af32865..8b2ff64 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep2.resx[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep2.resx[m
+[36m@@ -1,7 +1,7 @@[m
+ ﻿<?xml version="1.0" encoding="utf-8"?>[m
+ <root>[m
+   <!--[m
+[31m-    Microsoft ResX Schema [m
+[32m+[m[32m    Microsoft ResX Schema[m
+ [m
+     Version 2.0[m
+ [m
+[36m@@ -48,7 +48,7 @@[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter[m
+             : and then encoded with base64 encoding.[m
+[31m-    [m
+[32m+[m
+     mimetype: application/x-microsoft.net.object.soap.base64[m
+     value   : The object must be serialized with[m
+             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep3.Designer.cs b/Car-Rental-System/Forms/userRentStep3.Designer.cs[m
+[1mindex a8ee4fa..cca6f11 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep3.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep3.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userRentStep3[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userRentStep3.cs b/Car-Rental-System/Forms/userRentStep3.cs[m
+[1mindex f2872af..d3dd3ec 100644[m
+[1m--- a/Car-Rental-System/Forms/userRentStep3.cs[m
+[1m+++ b/Car-Rental-System/Forms/userRentStep3.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userRentStep3 : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReport.Designer.cs b/Car-Rental-System/Forms/userReport.Designer.cs[m
+[1mindex 8bba2c5..d1c3c50 100644[m
+[1m--- a/Car-Rental-System/Forms/userReport.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReport.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userReport[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReport.cs b/Car-Rental-System/Forms/userReport.cs[m
+[1mindex 4f36c4a..b28d922 100644[m
+[1m--- a/Car-Rental-System/Forms/userReport.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReport.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userReport : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReturn.Designer.cs b/Car-Rental-System/Forms/userReturn.Designer.cs[m
+[1mindex 9c3cbd3..e4d9980 100644[m
+[1m--- a/Car-Rental-System/Forms/userReturn.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReturn.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userReturn[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReturn.cs b/Car-Rental-System/Forms/userReturn.cs[m
+[1mindex 31b1a56..9c55ea0 100644[m
+[1m--- a/Car-Rental-System/Forms/userReturn.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReturn.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userReturn : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReturnEmpty.Designer.cs b/Car-Rental-System/Forms/userReturnEmpty.Designer.cs[m
+[1mindex 213f37f..157a610 100644[m
+[1m--- a/Car-Rental-System/Forms/userReturnEmpty.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReturnEmpty.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userReturnEmpty[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userReturnEmpty.cs b/Car-Rental-System/Forms/userReturnEmpty.cs[m
+[1mindex 2c092ab..50b7830 100644[m
+[1m--- a/Car-Rental-System/Forms/userReturnEmpty.cs[m
+[1m+++ b/Car-Rental-System/Forms/userReturnEmpty.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userReturnEmpty : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userSignUp.Designer.cs b/Car-Rental-System/Forms/userSignUp.Designer.cs[m
+[1mindex 324cacc..e14adfc 100644[m
+[1m--- a/Car-Rental-System/Forms/userSignUp.Designer.cs[m
+[1m+++ b/Car-Rental-System/Forms/userSignUp.Designer.cs[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-﻿namespace gumana_ka_be_pls[m
+[32m+[m[32m﻿namespace Car_Rental_System[m
+ {[m
+     partial class userSignUp[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Forms/userSignUp.cs b/Car-Rental-System/Forms/userSignUp.cs[m
+[1mindex 633bd79..9047ed2 100644[m
+[1m--- a/Car-Rental-System/Forms/userSignUp.cs[m
+[1m+++ b/Car-Rental-System/Forms/userSignUp.cs[m
+[36m@@ -8,7 +8,7 @@[m [musing System.Text;[m
+ using System.Threading.Tasks;[m
+ using System.Windows.Forms;[m
+ [m
+[31m-namespace gumana_ka_be_pls[m
+[32m+[m[32mnamespace Car_Rental_System[m
+ {[m
+     public partial class userSignUp : Form[m
+     {[m
+[1mdiff --git a/Car-Rental-System/Program.cs b/Car-Rental-System/Program.cs[m
+[1mindex 87640b6..6ba45b8 100644[m
+[1m--- a/Car-Rental-System/Program.cs[m
+[1m+++ b/Car-Rental-System/Program.cs[m
+[36m@@ -13,7 +13,7 @@[m [mnamespace Car_Rental_System[m
+             // To customize application configuration such as set high DPI settings or default font,[m
+             // see https://aka.ms/applicationconfiguration.[m
+             ApplicationConfiguration.Initialize();[m
+[31m-            Application.Run(new addCars());[m
+[32m+[m[32m            Application.Run(new ManageCars());[m
+         }[m
+     }[m
+ }[m
+\ No newline at end of file[m

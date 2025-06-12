@@ -19,7 +19,15 @@ namespace Car_Rental_System
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
-
         }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+        }
+
     }
 }

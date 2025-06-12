@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Car_Rental_System.Forms
 {
@@ -18,6 +19,9 @@ namespace Car_Rental_System.Forms
             SetupFilterEvents();
             PopulateFilters();
             UpdateCarListBasedOnFilters();
+
+            AddEditDeleteButtons();
+
         }
 
         private void SetupFilterEvents()
@@ -28,6 +32,33 @@ namespace Car_Rental_System.Forms
             radioButton1.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
             radioButton2.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
             radioButton3.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
+        }
+
+        private void AddEditDeleteButtons()
+        {
+            if (!dataGridView1.Columns.Contains("Edit"))
+            {
+                var editButton = new DataGridViewButtonColumn
+                {
+                    Name = "Edit",
+                    HeaderText = "Edit",
+                    Text = "Edit",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(editButton);
+            }
+
+            if (!dataGridView1.Columns.Contains("Delete"))
+            {
+                var deleteButton = new DataGridViewButtonColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "Delete",
+                    Text = "Delete",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(deleteButton);
+            }
         }
 
 

@@ -74,7 +74,7 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(421, 686);
+            groupBox1.Size = new Size(421, 654);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "Edit Car Details";
@@ -245,23 +245,25 @@
             // 
             // button2
             // 
-            button2.Location = new Point(318, 816);
+            button2.Location = new Point(318, 768);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(130, 34);
             button2.TabIndex = 27;
             button2.Text = "Save";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(168, 816);
+            button3.Location = new Point(168, 768);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(130, 34);
             button3.TabIndex = 28;
             button3.Text = "Cancel";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += this.button3_Click;
             // 
             // addCars
             // 

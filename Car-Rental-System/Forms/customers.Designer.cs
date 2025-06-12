@@ -38,6 +38,7 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
+            button5 = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -53,6 +54,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(comboBox1);
@@ -140,6 +142,15 @@
             label1.TabIndex = 15;
             label1.Text = "Car Rental";
             // 
+            // button5
+            // 
+            button5.Location = new Point(735, 435);
+            button5.Name = "button5";
+            button5.Size = new Size(158, 40);
+            button5.TabIndex = 26;
+            button5.Text = "Add Customer";
+            button5.UseVisualStyleBackColor = true;
+            // 
             // customers
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
@@ -174,5 +185,6 @@
         private Button button2;
         private Button button1;
         private Label label1;
+        private Button button5;
     }
 }

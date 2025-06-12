@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class userSignUp : Form
+    public partial class AddCustomer : Form
     {
-        public userSignUp()
+        public AddCustomer()
         {
             InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
