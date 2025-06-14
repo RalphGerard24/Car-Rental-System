@@ -30,6 +30,7 @@
         {
             button7 = new Button();
             groupBox2 = new GroupBox();
+            button5 = new Button();
             dataGridView1 = new DataGridView();
             label2 = new Label();
             comboBox1 = new ComboBox();
@@ -38,7 +39,6 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
-            button5 = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -66,6 +66,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Customers";
             // 
+            // button5
+            // 
+            button5.Location = new Point(735, 435);
+            button5.Name = "button5";
+            button5.Size = new Size(158, 40);
+            button5.TabIndex = 26;
+            button5.Text = "Add Customer";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -74,6 +84,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(870, 396);
             dataGridView1.TabIndex = 25;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label2
             // 
@@ -141,15 +152,6 @@
             label1.Size = new Size(328, 68);
             label1.TabIndex = 15;
             label1.Text = "Car Rental";
-            // 
-            // button5
-            // 
-            button5.Location = new Point(735, 435);
-            button5.Name = "button5";
-            button5.Size = new Size(158, 40);
-            button5.TabIndex = 26;
-            button5.Text = "Add Customer";
-            button5.UseVisualStyleBackColor = true;
             // 
             // customers
             // 

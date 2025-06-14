@@ -263,7 +263,7 @@
             button3.TabIndex = 28;
             button3.Text = "Cancel";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += this.button3_Click;
+            button3.Click += button3_Click;
             // 
             // addCars
             // 
