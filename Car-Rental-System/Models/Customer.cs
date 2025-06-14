@@ -13,12 +13,15 @@ namespace Car_Rental_System.Models
         public string LicenseNumber { get; set; }
         public string Email { get; set; }
 
+        public string Age { get; set;  }
+
         public string ZipCode { get; set; }
-        public string Region { get; set; }
         public string City { get; set; }
         public string Barangay { get; set; }
 
-        public Customer(int customerId, string firstName, string lastName, string middleInnitial, string contactNumber, string licenseNumber, string email, string zipCode, string region, string city, string barangay)
+        public Customer() { }
+
+        public Customer(int customerId, string firstName, string lastName, string middleInnitial, string contactNumber, string licenseNumber, string email, string age, string zipCode, string city, string barangay)
         {
             CustomerId = customerId;
             FirstName = firstName;
@@ -27,9 +30,9 @@ namespace Car_Rental_System.Models
             ContactNumber = contactNumber;
             LicenseNumber = licenseNumber;
             Email = email;
+            Age = age;
 
             ZipCode = zipCode;
-            Region = region;
             City = city;
             Barangay = barangay;
 

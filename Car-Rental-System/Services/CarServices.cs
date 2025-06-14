@@ -13,4 +13,14 @@ namespace Car_Rental_System.Services
             db.SaveChanges();
         }
     }
+
+    public static class CustomerService
+    {
+        public static void AddCustomer(Customer customer)
+        {
+            using var db = new CarRentalDbContext();
+            db.Customers.Add(customer);
+            db.SaveChanges();
+        }
+    }
 }
