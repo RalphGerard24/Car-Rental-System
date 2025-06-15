@@ -34,7 +34,6 @@
             dataGridView1 = new DataGridView();
             label2 = new Label();
             comboBox1 = new ComboBox();
-            button3 = new Button();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -103,16 +102,6 @@
             comboBox1.Size = new Size(121, 30);
             comboBox1.TabIndex = 23;
             // 
-            // button3
-            // 
-            button3.Font = new Font("Arial", 11.25F);
-            button3.Location = new Point(40, 495);
-            button3.Name = "button3";
-            button3.Size = new Size(245, 99);
-            button3.TabIndex = 19;
-            button3.Text = "Reports";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             button4.Font = new Font("Arial", 11.25F);
@@ -160,7 +149,6 @@
             ClientSize = new Size(1239, 614);
             Controls.Add(button7);
             Controls.Add(groupBox2);
-            Controls.Add(button3);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -182,7 +170,6 @@
         private DataGridView dataGridView1;
         private Label label2;
         private ComboBox comboBox1;
-        private Button button3;
         private Button button4;
         private Button button2;
         private Button button1;

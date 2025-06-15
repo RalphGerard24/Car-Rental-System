@@ -1,4 +1,5 @@
 ﻿using Car_Rental_System.Models;
+using Car_Rental_System.Services;
 using System;
 using System.Data;
 using System.Drawing;
@@ -61,80 +62,36 @@ namespace Car_Rental_System.Forms
             }
         }
 
-
-        //EDIT CARS
-        private void LoadCars()
-        {
-            using (var db = new CarRentalDbContext())
-            {
-                dataGridView1.Columns.Clear();
-                dataGridView1.AutoGenerateColumns = true;
-                dataGridView1.DataSource = db.Cars.ToList();
-            }
-
-            if (!dataGridView1.Columns.Contains("Edit"))
-            {
-                var editButton = new DataGridViewButtonColumn
-                {
-                    Name = "Edit",
-                    HeaderText = "Edit",
-                    Text = "Edit",
-                    UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(editButton);
-            }
-
-            if (!dataGridView1.Columns.Contains("Delete"))
-            {
-                var deleteButton = new DataGridViewButtonColumn
-                {
-                    Name = "Delete",
-                    HeaderText = "Delete",
-                    Text = "Delete",
-                    UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(deleteButton);
-            }
-        }
-
-
         //DELETE CARS
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
+            int carId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CarId"].Value);
+
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
-                int carId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CarId"].Value);
-
                 var confirm = MessageBox.Show("Are you sure you want to delete this car?", "Confirm", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
-                    using var db = new CarRentalDbContext();
-                    var carToDelete = db.Cars.Find(carId);
-                    if (carToDelete != null)
-                    {
-                        db.Cars.Remove(carToDelete);
-                        db.SaveChanges();
-                        LoadCars();
-                    }
+                    CarService.DeleteCar(carId);
+                    UpdateCarListBasedOnFilters();
                 }
             }
-
+        //EDIT CARS 
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
-                int carId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CarId"].Value);
-                using var db = new CarRentalDbContext();
-                var car = db.Cars.Find(carId);
+                var car = CarService.GetCarById(carId);
                 if (car != null)
                 {
                     var editForm = new addCars(car);
-                    editForm.FormClosed += (s, args) => { this.Show(); LoadCars(); };
+                    editForm.FormClosed += (s, args) => { this.Show(); UpdateCarListBasedOnFilters(); };
                     this.Hide();
                     editForm.Show();
                 }
             }
         }
+
 
         private void AddNewCarButton_Click(object sender, EventArgs e)
         {
@@ -143,60 +100,39 @@ namespace Car_Rental_System.Forms
             addCarForm.FormClosed += (s, args) =>
             {
                 this.Show();
-                LoadCars();
+                UpdateCarListBasedOnFilters();
             };
             addCarForm.Show();
         }
+
         private void UpdateCarListBasedOnFilters()
         {
-            using var db = new CarRentalDbContext();
-            var query = db.Cars.AsQueryable();
+            string selectedBrand = comboBox1.SelectedItem?.ToString();
+            string selectedYear = comboBox2.SelectedItem?.ToString();
+            bool? isAvailable = null;
 
-            // Brand filter
-            if (comboBox1.SelectedItem != null && comboBox1.SelectedItem.ToString() != "All")
-            {
-                query = query.Where(c => c.Brand == comboBox1.SelectedItem.ToString());
-            }
+            if (radioButton2.Checked) isAvailable = true;
+            else if (radioButton3.Checked) isAvailable = false;
 
-            // Year filter
-            if (comboBox2.SelectedItem != null && comboBox2.SelectedItem.ToString() != "All")
-            {
-                query = query.Where(c => c.Year == comboBox2.SelectedItem.ToString());
-            }
-
-            // Availability filter
-            if (radioButton2.Checked) // Available
-            {
-                query = query.Where(c => c.IsAvailable);
-            }
-            else if (radioButton3.Checked) // Rented
-            {
-                query = query.Where(c => !c.IsAvailable);
-            }
-
-            dataGridView1.DataSource = query.ToList();
+            dataGridView1.DataSource = CarService.GetFilteredCars(selectedBrand, selectedYear, isAvailable);
         }
+
 
         private void PopulateFilters()
         {
-            using var db = new CarRentalDbContext();
-
-            // Brand
-            var brands = db.Cars.Select(c => c.Brand).Distinct().ToList();
             comboBox1.Items.Clear();
             comboBox1.Items.Add("All");
-            comboBox1.Items.AddRange(brands.ToArray());
+            comboBox1.Items.AddRange(CarService.GetDistinctBrands().ToArray());
             comboBox1.SelectedIndex = 0;
 
-            // Year
-            var years = db.Cars.Select(c => c.Year).Distinct().ToList();
             comboBox2.Items.Clear();
             comboBox2.Items.Add("All");
-            comboBox2.Items.AddRange(years.ToArray());
+            comboBox2.Items.AddRange(CarService.GetDistinctYears().ToArray());
             comboBox2.SelectedIndex = 0;
 
             radioButton1.Checked = true;
         }
+
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

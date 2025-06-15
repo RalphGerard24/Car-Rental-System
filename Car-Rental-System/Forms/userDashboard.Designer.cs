@@ -63,7 +63,6 @@
             label11 = new Label();
             label12 = new Label();
             textBox11 = new TextBox();
-            button3 = new Button();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -431,15 +430,6 @@
             textBox11.Size = new Size(195, 29);
             textBox11.TabIndex = 22;
             // 
-            // button3
-            // 
-            button3.Location = new Point(41, 436);
-            button3.Name = "button3";
-            button3.Size = new Size(214, 87);
-            button3.TabIndex = 12;
-            button3.Text = "Send Report";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             button4.Location = new Point(41, 325);
@@ -483,7 +473,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 668);
             Controls.Add(groupBox2);
-            Controls.Add(button3);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -518,7 +507,6 @@
         private Label label11;
         private Label label12;
         private TextBox textBox11;
-        private Button button3;
         private Button button4;
         private Button button2;
         private Button button1;

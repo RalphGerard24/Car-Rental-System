@@ -26,30 +26,6 @@ namespace Car_Rental_System
 
         }
 
-        private void addCars_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
         //Editing constructor to handle editing an existing car
         private Car EditingCar;
         public addCars(Car carToEdit) : this()
@@ -77,83 +53,83 @@ namespace Car_Rental_System
 
         private void saveCarButton_Click(object sender, EventArgs e)
         {
-            // Validate Input fields
-            if (string.IsNullOrWhiteSpace(textBox2.Text) ||
-                string.IsNullOrWhiteSpace(textBox4.Text) ||
-                string.IsNullOrWhiteSpace(textBox6.Text) ||
-                string.IsNullOrWhiteSpace(textBox3.Text) ||
-                string.IsNullOrWhiteSpace(textBox5.Text) ||
-                string.IsNullOrWhiteSpace(textBox7.Text) ||
-                !double.TryParse(textBox7.Text, out double price))
+            // --- Field Presence Check ---
+            if (string.IsNullOrWhiteSpace(textBox2.Text) ||  // Model
+                string.IsNullOrWhiteSpace(textBox4.Text) ||  // Brand
+                string.IsNullOrWhiteSpace(textBox6.Text) ||  // Plate Number
+                string.IsNullOrWhiteSpace(textBox3.Text) ||  // Year
+                string.IsNullOrWhiteSpace(textBox5.Text) ||  // Color
+                string.IsNullOrWhiteSpace(textBox7.Text))    // Price
             {
-                MessageBox.Show("Please fill all required fields correctly.");
+                MessageBox.Show("Please fill all required fields.");
                 return;
             }
 
+            // --- Integer Validations ---
+            if (!int.TryParse(textBox3.Text, out int year))
+            {
+                MessageBox.Show("Year must be a valid number.");
+                return;
+            }
+
+            if (!int.TryParse(textBox7.Text, out int priceRate) || priceRate <= 0)
+            {
+                MessageBox.Show("Price Rate must be a positive number.");
+                return;
+            }
+
+            // --- Color Validation ---
+            if (!textBox5.Text.All(char.IsLetter))
+            {
+                MessageBox.Show("Color must only contain letters.");
+                return;
+            }
+
+            // --- Image validation ---
             if (string.IsNullOrWhiteSpace(selectedImagePath) || !File.Exists(selectedImagePath))
             {
                 MessageBox.Show("Please attach a valid car image.");
                 return;
             }
 
-            // Save image to local folder + validations
-            string imagesFolder = Path.Combine(Application.StartupPath, "Images");
-            Directory.CreateDirectory(imagesFolder);
-
-            string imageFileName = Guid.NewGuid().ToString() + Path.GetExtension(selectedImagePath);
-            savedImagePath = Path.Combine(imagesFolder, imageFileName);
-            File.Copy(selectedImagePath, savedImagePath, true);
-
-            string imagePathForDatabase = Path.Combine("Images", imageFileName);
-
-            //Update or Add Car to Database
             try
             {
-                using var db = new CarRentalDbContext();
+                // Save image to Images folder
+                string imagesFolder = Path.Combine(Application.StartupPath, "Images");
+                Directory.CreateDirectory(imagesFolder);
+
+                string imageFileName = Guid.NewGuid().ToString() + Path.GetExtension(selectedImagePath);
+                savedImagePath = Path.Combine(imagesFolder, imageFileName);
+                File.Copy(selectedImagePath, savedImagePath, true);
+
+                string imagePathForDatabase = Path.Combine("Images", imageFileName);
+
+                // Create Car 
+                var car = new Car
+                {
+                    Model = textBox2.Text,
+                    Brand = textBox4.Text,
+                    PlateNumber = textBox6.Text,
+                    Year = year.ToString(),
+                    Color = textBox5.Text,
+                    PriceRate = priceRate,
+                    DateRegistered = dateTimePicker1.Value,
+                    ImagePath = imagePathForDatabase,
+                    IsAvailable = true
+                };
 
                 if (EditingCar != null)
                 {
-                    var car = db.Cars.FirstOrDefault(c => c.CarId == EditingCar.CarId);
-                    if (car != null)
-                    {
-                        car.Model = textBox2.Text;
-                        car.Brand = textBox4.Text;
-                        car.PlateNumber = textBox6.Text;
-                        car.Year = textBox3.Text;
-                        car.Color = textBox5.Text;
-                        car.PriceRate = price;
-                        car.DateRegistered = dateTimePicker1.Value;
-                        car.ImagePath = imagePathForDatabase;
-                        car.IsAvailable = true;
-
-                        db.SaveChanges();
-                        MessageBox.Show(" Car updated in database.");
-                    }
-                    else
-                    {
-                        MessageBox.Show(" Could not find car with CarId: " + EditingCar.CarId);
-                    }
+                    car.CarId = EditingCar.CarId; 
+                    CarService.UpdateCar(car);
+                    MessageBox.Show("Car updated in database.");
                 }
                 else
                 {
-                    var newCar = new Car
-                    {
-                        Model = textBox2.Text,
-                        Brand = textBox4.Text,
-                        PlateNumber = textBox6.Text,
-                        Year = textBox3.Text,
-                        Color = textBox5.Text,
-                        PriceRate = price,
-                        DateRegistered = dateTimePicker1.Value,
-                        ImagePath = imagePathForDatabase,
-                        IsAvailable = true
-                    };
-
-                    CarService.AddCar(newCar);
+                    CarService.AddCar(car);
                     MessageBox.Show("Car added successfully!");
                 }
 
-                //Proceed to manage cars form after adding or editing
                 var manageForm = new ManageCars();
                 manageForm.Show();
                 this.Hide();
@@ -163,6 +139,7 @@ namespace Car_Rental_System
                 MessageBox.Show("Error saving car:\n" + ex.Message);
             }
         }
+
 
         //upload image button click event
         private void uploadImageButton_Click(object sender, EventArgs e)
@@ -187,6 +164,16 @@ namespace Car_Rental_System
         {
             this.Close();
         }
+        private void addCars_Load(object sender, EventArgs e)
+        { }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        { }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        { }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        { }
+        private void label6_Click(object sender, EventArgs e)
+        { }
 
     }
 }
