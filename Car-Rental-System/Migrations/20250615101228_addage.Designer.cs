@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_Rental_System.Migrations
 {
     [DbContext(typeof(CarRentalDbContext))]
-    [Migration("20250614134044_AddAgeToCustomer")]
-    partial class AddAgeToCustomer
+    [Migration("20250615101228_addage")]
+    partial class addage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
