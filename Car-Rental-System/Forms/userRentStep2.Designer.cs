@@ -56,11 +56,12 @@
             label15 = new Label();
             textBox10 = new TextBox();
             groupBox1 = new GroupBox();
+            label11 = new Label();
+            textBox15 = new TextBox();
             textBox5 = new TextBox();
             label6 = new Label();
             textBox6 = new TextBox();
             label7 = new Label();
-            textBox4 = new TextBox();
             label5 = new Label();
             textBox2 = new TextBox();
             label2 = new Label();
@@ -68,9 +69,19 @@
             label8 = new Label();
             label3 = new Label();
             button6 = new Button();
+            textBox16 = new TextBox();
+            label12 = new Label();
+            groupBox4 = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
+            label19 = new Label();
+            label20 = new Label();
+            label21 = new Label();
+            textBox4 = new TextBox();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // button3
@@ -135,6 +146,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(groupBox4);
             groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(groupBox3);
             groupBox2.Controls.Add(groupBox1);
@@ -158,6 +170,7 @@
             button5.TabIndex = 42;
             button5.Text = "Back";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // groupBox3
             // 
@@ -268,6 +281,7 @@
             textBox12.ReadOnly = true;
             textBox12.Size = new Size(243, 29);
             textBox12.TabIndex = 19;
+            textBox12.TextChanged += textBox12_TextChanged;
             // 
             // label13
             // 
@@ -373,11 +387,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(textBox16);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(textBox15);
             groupBox1.Controls.Add(textBox5);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(textBox6);
             groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(label2);
@@ -387,15 +404,35 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(418, 323);
+            groupBox1.Size = new Size(418, 308);
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             groupBox1.Text = "Car Details";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Arial", 11.25F);
+            label11.Location = new Point(19, 119);
+            label11.Name = "label11";
+            label11.Size = new Size(55, 22);
+            label11.TabIndex = 17;
+            label11.Text = "Make";
+            label11.Click += label11_Click;
+            // 
+            // textBox15
+            // 
+            textBox15.BackColor = SystemColors.Control;
+            textBox15.Font = new Font("Arial", 11.25F);
+            textBox15.Location = new Point(162, 206);
+            textBox15.Name = "textBox15";
+            textBox15.Size = new Size(244, 29);
+            textBox15.TabIndex = 16;
+            // 
             // textBox5
             // 
             textBox5.Font = new Font("Arial", 11.25F);
-            textBox5.Location = new Point(162, 253);
+            textBox5.Location = new Point(162, 158);
             textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
@@ -406,7 +443,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial", 11.25F);
-            label6.Location = new Point(18, 267);
+            label6.Location = new Point(20, 216);
             label6.Name = "label6";
             label6.Size = new Size(56, 22);
             label6.TabIndex = 14;
@@ -415,7 +452,7 @@
             // textBox6
             // 
             textBox6.Font = new Font("Arial", 11.25F);
-            textBox6.Location = new Point(162, 196);
+            textBox6.Location = new Point(162, 112);
             textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
@@ -426,36 +463,25 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Arial", 11.25F);
-            label7.Location = new Point(17, 209);
+            label7.Location = new Point(18, 169);
             label7.Name = "label7";
             label7.Size = new Size(87, 22);
             label7.TabIndex = 12;
             label7.Text = "Plate No.";
             // 
-            // textBox4
-            // 
-            textBox4.Font = new Font("Arial", 11.25F);
-            textBox4.Location = new Point(162, 141);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(242, 29);
-            textBox4.TabIndex = 11;
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial", 11.25F);
-            label5.Location = new Point(18, 155);
+            label5.Location = new Point(6, 165);
             label5.Name = "label5";
-            label5.Size = new Size(55, 22);
+            label5.Size = new Size(0, 22);
             label5.TabIndex = 10;
-            label5.Text = "Make";
             // 
             // textBox2
             // 
             textBox2.Font = new Font("Arial", 11.25F);
-            textBox2.Location = new Point(162, 87);
+            textBox2.Location = new Point(162, 66);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -466,7 +492,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 11.25F);
-            label2.Location = new Point(18, 100);
+            label2.Location = new Point(20, 73);
             label2.Name = "label2";
             label2.Size = new Size(62, 22);
             label2.TabIndex = 8;
@@ -486,7 +512,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 11.25F);
-            label8.Location = new Point(17, 43);
+            label8.Location = new Point(19, 32);
             label8.Name = "label8";
             label8.Size = new Size(65, 22);
             label8.TabIndex = 6;
@@ -511,6 +537,98 @@
             button6.TabIndex = 29;
             button6.Text = "Proceed";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // textBox16
+            // 
+            textBox16.BackColor = SystemColors.Control;
+            textBox16.Font = new Font("Arial", 11.25F);
+            textBox16.Location = new Point(162, 252);
+            textBox16.Name = "textBox16";
+            textBox16.Size = new Size(246, 29);
+            textBox16.TabIndex = 18;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Arial", 11.25F);
+            label12.Location = new Point(16, 257);
+            label12.Name = "label12";
+            label12.Size = new Size(54, 22);
+            label12.TabIndex = 19;
+            label12.Text = "Price";
+            label12.Click += label12_Click;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(textBox4);
+            groupBox4.Controls.Add(label21);
+            groupBox4.Controls.Add(label20);
+            groupBox4.Controls.Add(label19);
+            groupBox4.Controls.Add(dateTimePicker2);
+            groupBox4.Controls.Add(dateTimePicker1);
+            groupBox4.Location = new Point(467, 365);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(420, 137);
+            groupBox4.TabIndex = 43;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Rent Details";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(267, 26);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(135, 27);
+            dateTimePicker1.TabIndex = 0;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(267, 73);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(138, 27);
+            dateTimePicker2.TabIndex = 1;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Arial", 10.25F);
+            label19.Location = new Point(160, 32);
+            label19.Name = "label19";
+            label19.Size = new Size(91, 21);
+            label19.TabIndex = 2;
+            label19.Text = "Rent Date";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Arial", 10.25F);
+            label20.Location = new Point(154, 74);
+            label20.Name = "label20";
+            label20.Size = new Size(107, 21);
+            label20.TabIndex = 3;
+            label20.Text = "Return Date";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Arial", 10.25F);
+            label21.Location = new Point(28, 38);
+            label21.Name = "label21";
+            label21.Size = new Size(94, 21);
+            label21.TabIndex = 4;
+            label21.Text = "Rent Price";
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Control;
+            textBox4.Font = new Font("Arial", 10.25F);
+            textBox4.ForeColor = Color.Black;
+            textBox4.Location = new Point(18, 70);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(121, 27);
+            textBox4.TabIndex = 5;
+            textBox4.TextAlign = HorizontalAlignment.Right;
             // 
             // userRentStep2
             // 
@@ -533,6 +651,8 @@
             groupBox3.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -579,5 +699,15 @@
         private Label label9;
         private TextBox textBox3;
         private Label label4;
+        private Label label11;
+        private TextBox textBox15;
+        private Label label12;
+        private TextBox textBox16;
+        private GroupBox groupBox4;
+        private Label label21;
+        private Label label20;
+        private Label label19;
+        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePicker1;
     }
 }

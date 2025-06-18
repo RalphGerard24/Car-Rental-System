@@ -16,6 +16,7 @@ namespace Car_Rental_System.Models
         public double PriceRate { get; set; }
         public DateTime DateRegistered { get; set; }
         public bool IsAvailable { get; set; }
+        //public string Make { get; internal set; }
 
         public Car() { }
 

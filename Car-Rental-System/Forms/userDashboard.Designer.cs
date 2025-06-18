@@ -447,6 +447,7 @@
             button2.TabIndex = 10;
             button2.Text = "Rent";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 

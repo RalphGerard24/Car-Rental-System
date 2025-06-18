@@ -15,6 +15,7 @@ namespace Car_Rental_System
     public partial class userDashboard : Form
     {
         private Customer _currentCustomer;
+
         public userDashboard(Customer customer)
         {
             InitializeComponent();
@@ -22,7 +23,6 @@ namespace Car_Rental_System
 
             LoadCustomerData();
         }
-
         private void LoadCustomerData()
         {
             textBox1.Text = _currentCustomer.CustomerId.ToString();
@@ -37,10 +37,17 @@ namespace Car_Rental_System
         }
 
         private void button5_Click(object sender, EventArgs e)
-        {}
+        { }
         private void label10_Click(object sender, EventArgs e)
-        {}
+        { }
         private void groupBox1_Enter(object sender, EventArgs e)
-        {}
+        { }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            userRentStep1 rentForm = new userRentStep1(_currentCustomer); // Pass the existing customer
+            rentForm.Show();
+            this.Hide();
+        }
     }
 }
