@@ -17,21 +17,29 @@ namespace Car_Rental_System
             InitializeComponent();
             customerSelected = customer;
             LoadAvailableCars();
+            LoadBrandFilter(); 
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+
         }
         //list ng car na available
         private List<Car> LoadAvailableCarsFromDb()
         {
-            using (var context = new CarRentalDbContext())
+            using (var list= new CarRentalDbContext())
             {
-                return context.Cars.Where(c => c.IsAvailable).ToList();
+                return list.Cars.Where(c => c.IsAvailable).ToList();
             }
         }
         //dynamic for box
-        private void LoadAvailableCars()
+        private void LoadAvailableCars(string selectedBrand = "All")
         {
             var cars = LoadAvailableCarsFromDb();
-            flowLayoutPanel1.Controls.Clear();
 
+            if (selectedBrand != "All")
+            {
+                cars = cars.Where(c => c.Brand == selectedBrand).ToList();
+            }
+
+            flowLayoutPanel1.Controls.Clear();
             foreach (var car in cars)
             {
                 Panel carPanel = new Panel
@@ -64,7 +72,7 @@ namespace Car_Rental_System
                     Width = 180,
                     Height = 30,
                     Location = new Point(10, 140),
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                    Font = new Font("Arial", 10, FontStyle.Bold)
                 };
 
                 Button viewBtn = new Button
@@ -132,6 +140,31 @@ namespace Car_Rental_System
             }
 
         }
+        //filter by brand
+        private void LoadBrandFilter()
+        {
+            using (var brandcar = new CarRentalDbContext())
+            {
+                var brands = brandcar.Cars
+                    .Where(c => c.IsAvailable)
+                    .Select(c => c.Brand)
+                    .Distinct()
+                    .OrderBy(b => b)
+                    .ToList();
+
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("All"); 
+                comboBox1.Items.AddRange(brands.ToArray());
+                comboBox1.SelectedIndex = 0;
+            }
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedBrand = comboBox1.SelectedItem.ToString();
+            LoadAvailableCars(selectedBrand);
+        }
+
+
         private void button5_Click(object sender, EventArgs e){}
 
         private void pictureBox2_Click(object sender, EventArgs e){ }

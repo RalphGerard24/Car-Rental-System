@@ -2,6 +2,7 @@
 using Car_Rental_System.Services;
 using System;
 using System.Linq;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace Car_Rental_System
@@ -12,7 +13,7 @@ namespace Car_Rental_System
         private Car _selectedCar;
         private DateTime _rentDateTime;
         private DateTime _returnDateTime;
-        private double _totalCost;
+        private double InitialCost;
 
         public userRentStep3(Customer customer, Car car, DateTime rentDate, DateTime returnDate)
         {
@@ -28,18 +29,24 @@ namespace Car_Rental_System
         {
             textBox1.Text = _currentCustomer.CustomerId.ToString();
             textBox2.Text = _selectedCar.CarId.ToString();
-            //calculation
+
+            // calculation
             int rentDays = (_returnDateTime.Date - _rentDateTime.Date).Days + 1;
             rentDays = Math.Max(rentDays, 1);
 
-            _totalCost = rentDays * _selectedCar.PriceRate;
-            textBox4.Text = _totalCost.ToString("F2");
+            double costBase = rentDays * _selectedCar.PriceRate;
+            double taxRate = 0.12; 
+            double taxAmount = costBase * taxRate;
+            InitialCost = costBase + taxAmount;
 
-   
+           
+            textBox6.Text = costBase.ToString("F2");  // Base price without tax
+            textBox7.Text = taxAmount.ToString("F2"); // Tax amount
+            textBox4.Text = InitialCost.ToString("F2"); // Initial cost (base + tax)
+
             textBox3.Text = _rentDateTime.ToString("yyyy-MM-dd");
             textBox5.Text = _returnDateTime.ToString("yyyy-MM-dd");
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             var rent2 = new userRentStep2(_currentCustomer, _selectedCar);
@@ -54,55 +61,61 @@ namespace Car_Rental_System
 
             if (confirm == DialogResult.Yes)
             {
-                string transactionId = TransactionId();
+                string transactionCode = TransactionCode();
 
                 var rental = new Rental
                 {
                     CarId = _selectedCar.CarId,
                     CustomerId = _currentCustomer.CustomerId,
-                    TransactionId = transactionId,
+                    TransactionCode = transactionCode,
                     RentDatee = _rentDateTime,         
                     ReturnDate = _returnDateTime,       
-                    TotalCost = _totalCost
+                    InitialCost = InitialCost
                 };
 
-                using var context = new CarRentalDbContext();
-                var rentService = new RentServices(context);
+                using var available = new CarRentalDbContext();
+                var rentService = new RentServices(available);
                 rentService.SaveRental(rental);
 
                 // unavailable yung car after marent
-                var carToUpdate = context.Cars.Find(rental.CarId);
+                var carToUpdate = available.Cars.Find(rental.CarId);
                 if (carToUpdate != null)
                 {
                     carToUpdate.IsAvailable = false;
-                    context.SaveChanges();
+                    available.SaveChanges();
                 }
 
-                var confirmationForm = new userRentConfirmed(rental.CustomerId, rental.CarId, rental.TransactionId);
+                var confirmationForm = new userRentConfirmed(rental.CustomerId, rental.CarId, rental.TransactionCode);
                 confirmationForm.Show();
                 this.Hide();
             }
         }
-        //auto generate ng transaction id
-        private string TransactionId()
+        //auto generate ng transaction code
+        private string TransactionCode()
         {
             using var context = new CarRentalDbContext();
+            var random = new Random();
 
-            var lastTransaction = context.Rentals
-                .OrderByDescending(r => r.TransactionId)
-                .Select(r => r.TransactionId)
-                .FirstOrDefault();
+            string newCode;
+            bool isUnique = false;
 
-            int lastNumber = 0;
-            char prefix = 'a';
-
-            if (!string.IsNullOrEmpty(lastTransaction) && lastTransaction.Length > 1)
+            do
             {
-                var numberPart = lastTransaction.Substring(1);
-                int.TryParse(numberPart, out lastNumber);
-            }
+                newCode = random.Next(0, 10000).ToString("D4");
+                
+                bool exists = context.Rentals.Any(r => r.TransactionCode == newCode);
 
-            return $"{prefix}{++lastNumber}";
+                if (!exists)
+                {
+                    isUnique = true;
+                }
+
+            } while (!isUnique);
+
+            return newCode;
         }
+
+
     }
 }
+

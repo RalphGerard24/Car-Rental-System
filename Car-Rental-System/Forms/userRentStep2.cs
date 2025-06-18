@@ -95,9 +95,22 @@ namespace Car_Rental_System
             _rentDate = dateTimePicker1.Value.Date;
             _returnDate = dateTimePicker2.Value.Date;
 
-            var rentForm3 = new userRentStep3(_currentCustomer, _selectedCar, _rentDate, _returnDate);
-            rentForm3.Show();
-            this.Hide();
+            string message =
+             "The car must be returned on or before the selected return date ends.\n\n" +
+             "Late returns beyond the selected return date may incur an additional charge " +
+             "equivalent to one full day's rental fee.\n\n" +
+             "Additional charges for damages, cleaning, or late returns may be assessed upon inspection. " +
+             "These are handled separately by our staff.\n\n" +
+             "Do you want to proceed?";
+
+            var result = MessageBox.Show(message, "Important Rental Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                var rentForm3 = new userRentStep3(_currentCustomer, _selectedCar, _rentDate, _returnDate);
+                rentForm3.Show();
+                this.Hide();
+            }
         }
 
         private void groupBox3_Enter(object sender, EventArgs e) { }
