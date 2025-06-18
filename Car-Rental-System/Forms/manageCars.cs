@@ -78,7 +78,7 @@ namespace Car_Rental_System.Forms
                     UpdateCarListBasedOnFilters();
                 }
             }
-        //EDIT CARS 
+            //EDIT CARS 
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                 var car = CarService.GetCarById(carId);
@@ -158,6 +158,13 @@ namespace Car_Rental_System.Forms
         private void ManageCar_Loads(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var customers = new customers();
+            customers.Show();
+            this.Hide();
         }
     }
 }

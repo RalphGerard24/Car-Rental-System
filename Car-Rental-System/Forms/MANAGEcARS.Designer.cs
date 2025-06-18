@@ -179,6 +179,7 @@
             button4.TabIndex = 11;
             button4.Text = "Customers";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button2
             // 
