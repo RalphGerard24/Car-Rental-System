@@ -66,9 +66,9 @@
             label5.Font = new Font("Arial", 11.25F);
             label5.Location = new Point(43, 195);
             label5.Name = "label5";
-            label5.Size = new Size(132, 22);
+            label5.Size = new Size(159, 22);
             label5.TabIndex = 55;
-            label5.Text = "Transaction ID";
+            label5.Text = "Transaction Code";
             // 
             // textBox2
             // 

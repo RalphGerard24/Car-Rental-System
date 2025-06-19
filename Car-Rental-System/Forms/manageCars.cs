@@ -121,7 +121,7 @@ namespace Car_Rental_System.Forms
                     var rental = db.Rentals
                         .Where(r => r.CarId == carId)
                         .OrderByDescending(r => r.RentDatee)
-                        .FirstOrDefault(); // gets latest rental, rented or returned
+                        .FirstOrDefault(); 
 
                     if (rental != null)
                     {
@@ -130,7 +130,7 @@ namespace Car_Rental_System.Forms
                     }
                     else
                     {
-                        var viewForm = new carDetails(carId, true); // fallback if never rented
+                        var viewForm = new carDetails(carId, true); 
                         viewForm.Show();
                     }
                 }

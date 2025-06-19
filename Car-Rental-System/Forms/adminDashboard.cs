@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Car_Rental_System.Models;
+using System;
 using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
 {
     public partial class adminDashboard : Form
     {
-        public adminDashboard()
+        private Admin _currentAdmin;
+
+        public adminDashboard(Admin admin)
         {
             InitializeComponent();
+            _currentAdmin = admin;
+
         }
     }
 }

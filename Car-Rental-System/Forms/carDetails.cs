@@ -41,7 +41,7 @@ namespace Car_Rental_System.Forms
             }
             else if (_carId.HasValue)
             {
-                rental = db.Rentals.FirstOrDefault(r => r.CarId == _carId.Value && r.ReturnDate == null); // try to get latest
+                rental = db.Rentals.FirstOrDefault(r => r.CarId == _carId.Value && r.ReturnDate == null); 
             }
 
             Car car = null;
@@ -63,7 +63,7 @@ namespace Car_Rental_System.Forms
                 return;
             }
 
-            // Fill in car data
+           
             textBox1.Text = car.CarId.ToString();
             textBox2.Text = car.Model;
             textBox4.Text = car.Brand;
@@ -73,27 +73,26 @@ namespace Car_Rental_System.Forms
             if (!string.IsNullOrEmpty(car.ImagePath) && File.Exists(car.ImagePath))
                 pictureBox1.Image = Image.FromFile(car.ImagePath);
 
-            // Optional: Fill rental and customer if exists
             if (rental != null && customer != null)
             {
                 // --- Customer Info ---
                 textBox12.Text = customer.CustomerId.ToString();
                 textBox11.Text = $"{customer.FirstName} {customer.LastName}";
-                textBox10.Text = customer.Age;                          // <-- NEW: separate age textbox
+                textBox10.Text = customer.Age;                         
                 textBox9.Text = customer.ContactNumber;
                 textBox7.Text = customer.LicenseNumber;
                 textBox8.Text = customer.Email;
 
                 // --- Rental Info ---
-                textBox13.Text = rental.RentDatee.ToString("yyyy-MM-dd");   // Rent Date
-                textBox16.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? ""; // Due Date
+                textBox13.Text = rental.RentDatee.ToString("yyyy-MM-dd");   
+                textBox16.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? ""; 
 
                 int daysOnRent = rental.ReturnDate.HasValue
                     ? (rental.ReturnDate.Value - rental.RentDatee).Days + 1
                     : (DateTime.Today - rental.RentDatee).Days + 1;
 
-                textBox14.Text = daysOnRent.ToString();             // Days on Rent
-                textBox15.Text = rental.TotalCost?.ToString("F2");        // Total  Payment
+                textBox14.Text = daysOnRent.ToString();             
+                textBox15.Text = rental.TotalCost?.ToString("F2");        
 
                 radioButton1.Checked = rental.ActualReturnDate == null;
                 radioButton2.Checked = rental.ActualReturnDate != null;
@@ -114,7 +113,7 @@ namespace Car_Rental_System.Forms
                 }
                 else
                 {
-                    pictureBox1.Image = null; // Optional: set a placeholder image instead
+                    pictureBox1.Image = null; 
                 }
 
 

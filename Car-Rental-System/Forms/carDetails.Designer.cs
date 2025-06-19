@@ -50,9 +50,7 @@
             label12 = new Label();
             groupBox2 = new GroupBox();
             textBox7 = new TextBox();
-            textBox12 = new TextBox();
             label13 = new Label();
-            label18 = new Label();
             textBox8 = new TextBox();
             label17 = new Label();
             label14 = new Label();
@@ -67,9 +65,9 @@
             textBox16 = new TextBox();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
-            button1 = new Button();
             button3 = new Button();
-            button2 = new Button();
+            textBox12 = new TextBox();
+            label18 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -254,9 +252,9 @@
             label9.Font = new Font("Arial", 11.25F);
             label9.Location = new Point(485, 277);
             label9.Name = "label9";
-            label9.Size = new Size(90, 22);
+            label9.Size = new Size(111, 22);
             label9.TabIndex = 18;
-            label9.Text = "Due Date";
+            label9.Text = "Return Date";
             // 
             // label10
             // 
@@ -322,16 +320,6 @@
             textBox7.Size = new Size(229, 29);
             textBox7.TabIndex = 29;
             // 
-            // textBox12
-            // 
-            textBox12.Font = new Font("Arial", 11.25F);
-            textBox12.Location = new Point(158, 39);
-            textBox12.Margin = new Padding(3, 4, 3, 4);
-            textBox12.Name = "textBox12";
-            textBox12.ReadOnly = true;
-            textBox12.Size = new Size(229, 29);
-            textBox12.TabIndex = 19;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -341,16 +329,6 @@
             label13.Size = new Size(146, 44);
             label13.TabIndex = 28;
             label13.Text = "Driver's License\r\nNo.\r\n";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Arial", 11.25F);
-            label18.Location = new Point(17, 43);
-            label18.Name = "label18";
-            label18.Size = new Size(118, 22);
-            label18.TabIndex = 18;
-            label18.Text = "Customer ID";
             // 
             // textBox8
             // 
@@ -501,22 +479,10 @@
             radioButton2.Text = "No";
             radioButton2.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            button1.Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(545, 783);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(157, 40);
-            button1.TabIndex = 36;
-            button1.Text = "Remove and Exit";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // button3
             // 
             button3.Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(369, 783);
+            button3.Location = new Point(720, 781);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(157, 40);
@@ -524,25 +490,32 @@
             button3.Text = "Back";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // textBox12
             // 
-            button2.Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(720, 783);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(157, 40);
-            button2.TabIndex = 39;
-            button2.Text = "Edit";
-            button2.UseVisualStyleBackColor = true;
+            textBox12.Font = new Font("Arial", 11.25F);
+            textBox12.Location = new Point(158, 39);
+            textBox12.Margin = new Padding(3, 4, 3, 4);
+            textBox12.Name = "textBox12";
+            textBox12.ReadOnly = true;
+            textBox12.Size = new Size(229, 29);
+            textBox12.TabIndex = 19;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Arial", 11.25F);
+            label18.Location = new Point(17, 43);
+            label18.Name = "label18";
+            label18.Size = new Size(118, 22);
+            label18.TabIndex = 18;
+            label18.Text = "Customer ID";
             // 
             // carDetails
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 847);
-            Controls.Add(button2);
             Controls.Add(button3);
-            Controls.Add(button1);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
             Controls.Add(textBox13);
@@ -594,9 +567,7 @@
         private Label label12;
         private GroupBox groupBox2;
         private TextBox textBox7;
-        private TextBox textBox12;
         private Label label13;
-        private Label label18;
         private TextBox textBox8;
         private Label label17;
         private Label label14;
@@ -611,8 +582,8 @@
         private TextBox textBox16;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
-        private Button button1;
         private Button button3;
-        private Button button2;
+        private TextBox textBox12;
+        private Label label18;
     }
 }

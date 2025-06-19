@@ -33,8 +33,14 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
-            button7 = new Button();
             groupBox2 = new GroupBox();
+            groupBox4 = new GroupBox();
+            textBox4 = new TextBox();
+            label21 = new Label();
+            label20 = new Label();
+            label19 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             button5 = new Button();
             groupBox3 = new GroupBox();
             textBox14 = new TextBox();
@@ -44,9 +50,7 @@
             textBox3 = new TextBox();
             label4 = new Label();
             textBox7 = new TextBox();
-            textBox12 = new TextBox();
             label13 = new Label();
-            label18 = new Label();
             textBox8 = new TextBox();
             label17 = new Label();
             label14 = new Label();
@@ -56,6 +60,8 @@
             label15 = new Label();
             textBox10 = new TextBox();
             groupBox1 = new GroupBox();
+            label12 = new Label();
+            textBox16 = new TextBox();
             label11 = new Label();
             textBox15 = new TextBox();
             textBox5 = new TextBox();
@@ -65,23 +71,13 @@
             label5 = new Label();
             textBox2 = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
-            label8 = new Label();
             label3 = new Label();
             button6 = new Button();
-            textBox16 = new TextBox();
-            label12 = new Label();
-            groupBox4 = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            textBox4 = new TextBox();
+            button7 = new Button();
             groupBox2.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
-            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // button3
@@ -134,16 +130,6 @@
             label1.TabIndex = 29;
             label1.Text = "Car Rental";
             // 
-            // button7
-            // 
-            button7.Location = new Point(1121, 32);
-            button7.Margin = new Padding(3, 4, 3, 4);
-            button7.Name = "button7";
-            button7.Size = new Size(86, 73);
-            button7.TabIndex = 35;
-            button7.Text = "Log Out";
-            button7.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(groupBox4);
@@ -160,6 +146,77 @@
             groupBox2.TabIndex = 34;
             groupBox2.TabStop = false;
             groupBox2.Text = "Rent";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(textBox4);
+            groupBox4.Controls.Add(label21);
+            groupBox4.Controls.Add(label20);
+            groupBox4.Controls.Add(label19);
+            groupBox4.Controls.Add(dateTimePicker2);
+            groupBox4.Controls.Add(dateTimePicker1);
+            groupBox4.Location = new Point(467, 365);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(420, 137);
+            groupBox4.TabIndex = 43;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Rent Details";
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Control;
+            textBox4.Font = new Font("Arial", 10.25F);
+            textBox4.ForeColor = Color.Black;
+            textBox4.Location = new Point(18, 70);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(121, 27);
+            textBox4.TabIndex = 5;
+            textBox4.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Arial", 10.25F);
+            label21.Location = new Point(28, 38);
+            label21.Name = "label21";
+            label21.Size = new Size(94, 21);
+            label21.TabIndex = 4;
+            label21.Text = "Rent Price";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Arial", 10.25F);
+            label20.Location = new Point(154, 74);
+            label20.Name = "label20";
+            label20.Size = new Size(107, 21);
+            label20.TabIndex = 3;
+            label20.Text = "Return Date";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Arial", 10.25F);
+            label19.Location = new Point(160, 32);
+            label19.Name = "label19";
+            label19.Size = new Size(91, 21);
+            label19.TabIndex = 2;
+            label19.Text = "Rent Date";
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(267, 73);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(138, 27);
+            dateTimePicker2.TabIndex = 1;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(267, 26);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(135, 27);
+            dateTimePicker1.TabIndex = 0;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // button5
             // 
@@ -181,9 +238,7 @@
             groupBox3.Controls.Add(textBox3);
             groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(textBox7);
-            groupBox3.Controls.Add(textBox12);
             groupBox3.Controls.Add(label13);
-            groupBox3.Controls.Add(label18);
             groupBox3.Controls.Add(textBox8);
             groupBox3.Controls.Add(label17);
             groupBox3.Controls.Add(label14);
@@ -272,17 +327,6 @@
             textBox7.Size = new Size(243, 29);
             textBox7.TabIndex = 29;
             // 
-            // textBox12
-            // 
-            textBox12.Font = new Font("Arial", 11.25F);
-            textBox12.Location = new Point(158, 39);
-            textBox12.Margin = new Padding(3, 4, 3, 4);
-            textBox12.Name = "textBox12";
-            textBox12.ReadOnly = true;
-            textBox12.Size = new Size(243, 29);
-            textBox12.TabIndex = 19;
-            textBox12.TextChanged += textBox12_TextChanged;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -292,16 +336,6 @@
             label13.Size = new Size(146, 44);
             label13.TabIndex = 28;
             label13.Text = "Driver's License\r\nNo.\r\n";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Arial", 11.25F);
-            label18.Location = new Point(17, 43);
-            label18.Name = "label18";
-            label18.Size = new Size(118, 22);
-            label18.TabIndex = 18;
-            label18.Text = "Customer ID";
             // 
             // textBox8
             // 
@@ -398,8 +432,6 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label8);
             groupBox1.Location = new Point(465, 37);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
@@ -408,6 +440,26 @@
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             groupBox1.Text = "Car Details";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Arial", 11.25F);
+            label12.Location = new Point(16, 257);
+            label12.Name = "label12";
+            label12.Size = new Size(54, 22);
+            label12.TabIndex = 19;
+            label12.Text = "Price";
+            label12.Click += label12_Click;
+            // 
+            // textBox16
+            // 
+            textBox16.BackColor = SystemColors.Control;
+            textBox16.Font = new Font("Arial", 11.25F);
+            textBox16.Location = new Point(162, 252);
+            textBox16.Name = "textBox16";
+            textBox16.Size = new Size(246, 29);
+            textBox16.TabIndex = 18;
             // 
             // label11
             // 
@@ -498,26 +550,6 @@
             label2.TabIndex = 8;
             label2.Text = "Model";
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Arial", 11.25F);
-            textBox1.Location = new Point(162, 29);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(242, 29);
-            textBox1.TabIndex = 7;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Arial", 11.25F);
-            label8.Location = new Point(19, 32);
-            label8.Name = "label8";
-            label8.Size = new Size(65, 22);
-            label8.TabIndex = 6;
-            label8.Text = "Car ID";
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -539,96 +571,15 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
-            // textBox16
+            // button7
             // 
-            textBox16.BackColor = SystemColors.Control;
-            textBox16.Font = new Font("Arial", 11.25F);
-            textBox16.Location = new Point(162, 252);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(246, 29);
-            textBox16.TabIndex = 18;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Arial", 11.25F);
-            label12.Location = new Point(16, 257);
-            label12.Name = "label12";
-            label12.Size = new Size(54, 22);
-            label12.TabIndex = 19;
-            label12.Text = "Price";
-            label12.Click += label12_Click;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(textBox4);
-            groupBox4.Controls.Add(label21);
-            groupBox4.Controls.Add(label20);
-            groupBox4.Controls.Add(label19);
-            groupBox4.Controls.Add(dateTimePicker2);
-            groupBox4.Controls.Add(dateTimePicker1);
-            groupBox4.Location = new Point(467, 365);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(420, 137);
-            groupBox4.TabIndex = 43;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Rent Details";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(267, 26);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(135, 27);
-            dateTimePicker1.TabIndex = 0;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(267, 73);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(138, 27);
-            dateTimePicker2.TabIndex = 1;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Arial", 10.25F);
-            label19.Location = new Point(160, 32);
-            label19.Name = "label19";
-            label19.Size = new Size(91, 21);
-            label19.TabIndex = 2;
-            label19.Text = "Rent Date";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Arial", 10.25F);
-            label20.Location = new Point(154, 74);
-            label20.Name = "label20";
-            label20.Size = new Size(107, 21);
-            label20.TabIndex = 3;
-            label20.Text = "Return Date";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Arial", 10.25F);
-            label21.Location = new Point(28, 38);
-            label21.Name = "label21";
-            label21.Size = new Size(94, 21);
-            label21.TabIndex = 4;
-            label21.Text = "Rent Price";
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = SystemColors.Control;
-            textBox4.Font = new Font("Arial", 10.25F);
-            textBox4.ForeColor = Color.Black;
-            textBox4.Location = new Point(18, 70);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(121, 27);
-            textBox4.TabIndex = 5;
-            textBox4.TextAlign = HorizontalAlignment.Right;
+            button7.Location = new Point(1121, 32);
+            button7.Margin = new Padding(3, 4, 3, 4);
+            button7.Name = "button7";
+            button7.Size = new Size(86, 73);
+            button7.TabIndex = 35;
+            button7.Text = "Log Out";
+            button7.UseVisualStyleBackColor = true;
             // 
             // userRentStep2
             // 
@@ -647,12 +598,12 @@
             Text = "Form1";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -664,16 +615,13 @@
         private Button button2;
         private Button button1;
         private Label label1;
-        private Button button7;
         private GroupBox groupBox2;
         private Label label3;
         private Button button6;
         private Button button5;
         private GroupBox groupBox3;
         private TextBox textBox7;
-        private TextBox textBox12;
         private Label label13;
-        private Label label18;
         private TextBox textBox8;
         private Label label17;
         private Label label14;
@@ -691,8 +639,6 @@
         private Label label5;
         private TextBox textBox2;
         private Label label2;
-        private TextBox textBox1;
-        private Label label8;
         private TextBox textBox14;
         private Label label10;
         private TextBox textBox13;
@@ -709,5 +655,6 @@
         private Label label19;
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
+        private Button button7;
     }
 }

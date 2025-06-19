@@ -12,7 +12,7 @@ public class CarRentalDbContext : DbContext
     public DbSet<Car> Cars { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Rental> Rentals { get; set; }
-
+    public DbSet<Admin> Admins { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
       options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CarRentalDB;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;");

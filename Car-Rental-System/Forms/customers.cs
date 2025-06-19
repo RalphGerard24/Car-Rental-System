@@ -76,11 +76,10 @@ namespace Car_Rental_System.Forms
                 if (confirm == DialogResult.Yes)
                 {
                     CustomerService.DeleteCustomer(customerId);
-                    LoadCustomers(); // Refresh grid
+                    LoadCustomers();
                 }
             }
 
-            // Handle View Dashboard
             if (dataGridView1.Columns[e.ColumnIndex].Name == "ViewDashboard")
             {
                 var customer = CustomerService.GetCustomerById(customerId);
