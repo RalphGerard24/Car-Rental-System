@@ -16,5 +16,10 @@ namespace Car_Rental_System
         {
             InitializeComponent();
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

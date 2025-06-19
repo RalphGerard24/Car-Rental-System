@@ -40,7 +40,6 @@ namespace Car_Rental_System
             double taxAmount = InitialCost * taxRate;
             TotalCost = InitialCost + taxAmount;
 
-           
             textBox6.Text = InitialCost .ToString("F2");  // Base price without tax
             textBox7.Text = taxAmount.ToString("F2"); // Tax amount
             textBox4.Text = TotalCost.ToString("F2"); // Initial cost (base + tax)
@@ -54,6 +53,8 @@ namespace Car_Rental_System
             rent2.Show();
             this.Hide();
         }
+
+        private double lateFee = 0;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -72,7 +73,8 @@ namespace Car_Rental_System
                     RentDatee = _rentDateTime,         
                     ReturnDate = _returnDateTime,       
                     InitialCost = InitialCost,
-                    TotalCost = TotalCost
+                    TotalCost = TotalCost,
+                    LateFee = lateFee
                 };
 
                 using var available = new CarRentalDbContext();

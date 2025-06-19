@@ -153,7 +153,7 @@
             // textBox7
             // 
             textBox7.Font = new Font("Arial", 11.25F);
-            textBox7.Location = new Point(618, 207);
+            textBox7.Location = new Point(618, 149);
             textBox7.Margin = new Padding(3, 4, 3, 4);
             textBox7.Name = "textBox7";
             textBox7.ReadOnly = true;
@@ -164,7 +164,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 11.25F);
-            label8.Location = new Point(467, 211);
+            label8.Location = new Point(467, 153);
             label8.Name = "label8";
             label8.Size = new Size(119, 22);
             label8.TabIndex = 38;
@@ -173,7 +173,7 @@
             // textBox8
             // 
             textBox8.Font = new Font("Arial", 11.25F);
-            textBox8.Location = new Point(618, 152);
+            textBox8.Location = new Point(618, 323);
             textBox8.Margin = new Padding(3, 4, 3, 4);
             textBox8.Name = "textBox8";
             textBox8.ReadOnly = true;
@@ -184,11 +184,12 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial", 11.25F);
-            label9.Location = new Point(469, 156);
+            label9.Location = new Point(469, 327);
             label9.Name = "label9";
             label9.Size = new Size(111, 22);
             label9.TabIndex = 36;
             label9.Text = "Penalty Fee";
+            label9.Click += label9_Click;
             // 
             // textBox9
             // 

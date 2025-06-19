@@ -12,6 +12,7 @@ namespace Car_Rental_System.Models
         public DateTime? ActualReturnDate { get; set; }
         public double? TotalCost { get; set; }
         public double? InitialCost { get; set; }
+        public double LateFee { get; set; }
 
         public string Status {
             get
@@ -30,7 +31,7 @@ namespace Car_Rental_System.Models
         public string TransactionCode { get; set;  }
         public Rental() { }
 
-        public Rental(int rentalId, int carId, int customerId, DateTime rentDate, DateTime returnDate, double totalCost, string status, string transactionId)
+        public Rental(int rentalId, int carId, int customerId, DateTime rentDate, DateTime returnDate, double totalCost, string status, string transactionId, double lateFee = 0)
         {
             RentalId = rentalId;
             CarId = carId;
@@ -38,7 +39,8 @@ namespace Car_Rental_System.Models
             RentDatee = rentDate;
             ReturnDate = returnDate;
             TotalCost = totalCost;
-            TransactionCode = TransactionCode;
+            TransactionCode = transactionId;
+            LateFee = lateFee;
         }
 
         public static void RentalTest()
