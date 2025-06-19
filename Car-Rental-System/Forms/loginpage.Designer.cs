@@ -1,4 +1,6 @@
-﻿namespace Car_Rental_System.Forms
+﻿
+
+namespace Car_Rental_System.Forms
 {
     partial class loginpage
     {

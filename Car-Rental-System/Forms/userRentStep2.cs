@@ -38,7 +38,7 @@ namespace Car_Rental_System
 
         private void LoadCustomerData()
         {
-            textBox12.Text = _currentCustomer.CustomerId.ToString();
+            //textBox12.Text = _currentCustomer.CustomerId.ToString();
             textBox11.Text = $"{_currentCustomer.FirstName} {_currentCustomer.LastName}";
             textBox10.Text = _currentCustomer.Age;
             textBox9.Text = _currentCustomer.ContactNumber;
@@ -51,7 +51,7 @@ namespace Car_Rental_System
 
         private void LoadCarData()
         {
-            textBox1.Text = _selectedCar.CarId.ToString();
+            //textBox1.Text = _selectedCar.CarId.ToString();
             textBox2.Text = _selectedCar.Model;
             textBox5.Text = _selectedCar.PlateNumber;
             textBox15.Text = _selectedCar.Color;

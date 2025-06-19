@@ -85,9 +85,9 @@
             label5.Font = new Font("Arial", 11.25F);
             label5.Location = new Point(39, 386);
             label5.Name = "label5";
-            label5.Size = new Size(132, 22);
+            label5.Size = new Size(129, 22);
             label5.TabIndex = 46;
-            label5.Text = "Initial Payment";
+            label5.Text = "Total Payment";
             // 
             // textBox2
             // 

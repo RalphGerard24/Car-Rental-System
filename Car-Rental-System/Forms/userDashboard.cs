@@ -25,7 +25,7 @@ namespace Car_Rental_System
         }
         private void LoadCustomerData()
         {
-            textBox1.Text = _currentCustomer.CustomerId.ToString();
+            //textBox1.Text = _currentCustomer.CustomerId.ToString();
             textBox3.Text = $"{_currentCustomer.FirstName} {_currentCustomer.LastName}";
             textBox5.Text = _currentCustomer.Age;
             textBox4.Text = _currentCustomer.ContactNumber;
@@ -48,7 +48,7 @@ namespace Car_Rental_System
 
                     if (rentedCar != null)
                     {
-                        textBox14.Text = rentedCar.CarId.ToString();       // Car ID
+                        //textBox14.Text = rentedCar.CarId.ToString();       // Car ID
                         textBox13.Text = rentedCar.Model;                  // Model
                         textBox12.Text = rentedCar.Brand;                  // Make
                         textBox11.Text = rentedCar.Color;                  // Color
@@ -58,7 +58,7 @@ namespace Car_Rental_System
                 }
                 else
                 {
-                    textBox14.Text = textBox13.Text = textBox12.Text =
+                    //textBox14.Text = textBox13.Text = textBox12.Text =
                     textBox11.Text = textBox10.Text = textBox9.Text = "N/A";
                 }
             }

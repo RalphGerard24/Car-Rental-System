@@ -42,8 +42,6 @@ namespace Car_Rental_System
             textBox4 = new TextBox();
             textBox2 = new TextBox();
             label3 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             button3 = new Button();
@@ -65,8 +63,6 @@ namespace Car_Rental_System
             groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Location = new Point(29, 96);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
@@ -198,27 +194,6 @@ namespace Car_Rental_System
             label3.TabIndex = 8;
             label3.Text = "Model";
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Arial", 11.25F);
-            textBox1.Location = new Point(165, 315);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(229, 29);
-            textBox1.TabIndex = 7;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 11.25F);
-            label2.Location = new Point(24, 319);
-            label2.Name = "label2";
-            label2.Size = new Size(65, 22);
-            label2.TabIndex = 6;
-            label2.Text = "Car ID";
-            // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(24, 36);
@@ -289,8 +264,6 @@ namespace Car_Rental_System
         private Label label5;
         private TextBox textBox2;
         private Label label3;
-        private TextBox textBox1;
-        private Label label2;
         private PictureBox pictureBox1;
         private Label label1;
         private Button button3;

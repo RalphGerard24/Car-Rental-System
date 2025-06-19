@@ -34,7 +34,7 @@ namespace Car_Rental_System
 
         private void LoadCarData()
         {
-            textBox1.Text = selectedCar.CarId.ToString();
+            //textBox1.Text = selectedCar.CarId.ToString();
             textBox2.Text = selectedCar.Model;
             textBox5.Text = selectedCar.PriceRate.ToString();
             textBox6.Text = selectedCar.Color;

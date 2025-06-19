@@ -38,9 +38,7 @@
             label5 = new Label();
             button5 = new Button();
             textBox7 = new TextBox();
-            textBox1 = new TextBox();
             label2 = new Label();
-            label18 = new Label();
             textBox2 = new TextBox();
             label17 = new Label();
             label3 = new Label();
@@ -51,8 +49,6 @@
             textBox5 = new TextBox();
             groupBox3 = new GroupBox();
             button6 = new Button();
-            label15 = new Label();
-            textBox14 = new TextBox();
             label14 = new Label();
             textBox9 = new TextBox();
             textBox13 = new TextBox();
@@ -93,9 +89,7 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(textBox7);
-            groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label18);
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(label17);
             groupBox1.Controls.Add(label3);
@@ -191,15 +185,6 @@
             textBox7.Size = new Size(195, 29);
             textBox7.TabIndex = 29;
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Arial", 11.25F);
-            textBox1.Location = new Point(144, 29);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(195, 29);
-            textBox1.TabIndex = 19;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -209,16 +194,6 @@
             label2.Size = new Size(146, 44);
             label2.TabIndex = 28;
             label2.Text = "Driver's License\r\nNo.\r\n";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Arial", 11.25F);
-            label18.Location = new Point(15, 32);
-            label18.Name = "label18";
-            label18.Size = new Size(118, 22);
-            label18.TabIndex = 18;
-            label18.Text = "Customer ID";
             // 
             // textBox2
             // 
@@ -299,8 +274,6 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(button6);
-            groupBox3.Controls.Add(label15);
-            groupBox3.Controls.Add(textBox14);
             groupBox3.Controls.Add(label14);
             groupBox3.Controls.Add(textBox9);
             groupBox3.Controls.Add(textBox13);
@@ -326,23 +299,6 @@
             button6.TabIndex = 21;
             button6.Text = "View Status";
             button6.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(26, 32);
-            label15.Name = "label15";
-            label15.Size = new Size(65, 22);
-            label15.TabIndex = 14;
-            label15.Text = "Car ID";
-            // 
-            // textBox14
-            // 
-            textBox14.Location = new Point(155, 29);
-            textBox14.Name = "textBox14";
-            textBox14.ReadOnly = true;
-            textBox14.Size = new Size(195, 29);
-            textBox14.TabIndex = 15;
             // 
             // label14
             // 
@@ -455,7 +411,7 @@
             button1.Name = "button1";
             button1.Size = new Size(214, 87);
             button1.TabIndex = 9;
-            button1.Text = "Dashboard";
+            button1.Text = "Profile";
             button1.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -496,8 +452,6 @@
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private Button button6;
-        private Label label15;
-        private TextBox textBox14;
         private Label label14;
         private TextBox textBox9;
         private TextBox textBox13;
@@ -515,9 +469,7 @@
         private GroupBox groupBox1;
         private Button button5;
         private TextBox textBox7;
-        private TextBox textBox1;
         private Label label2;
-        private Label label18;
         private TextBox textBox2;
         private Label label17;
         private Label label3;

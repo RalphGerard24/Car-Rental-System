@@ -34,7 +34,6 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
-            button7 = new Button();
             groupBox2 = new GroupBox();
             textBox1 = new TextBox();
             label4 = new Label();
@@ -92,7 +91,7 @@
             button1.Name = "button1";
             button1.Size = new Size(245, 116);
             button1.TabIndex = 23;
-            button1.Text = "Dashboard";
+            button1.Text = "Profile";
             button1.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -104,16 +103,6 @@
             label1.Size = new Size(328, 68);
             label1.TabIndex = 22;
             label1.Text = "Car Rental";
-            // 
-            // button7
-            // 
-            button7.Location = new Point(1119, 35);
-            button7.Margin = new Padding(3, 4, 3, 4);
-            button7.Name = "button7";
-            button7.Size = new Size(86, 73);
-            button7.TabIndex = 28;
-            button7.Text = "Log Out";
-            button7.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -282,7 +271,6 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Controls.Add(button7);
             Controls.Add(groupBox2);
             Margin = new Padding(3, 4, 3, 4);
             Name = "userRentStep1";
@@ -304,7 +292,6 @@
         private Button button2;
         private Button button1;
         private Label label1;
-        private Button button7;
         private GroupBox groupBox2;
         private Label label9;
         private Label label2;
