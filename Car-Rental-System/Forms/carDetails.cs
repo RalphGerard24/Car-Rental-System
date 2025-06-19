@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Car_Rental_System.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,22 +14,146 @@ namespace Car_Rental_System.Forms
 {
     public partial class carDetails : Form
     {
-        public carDetails()
+        private int? _rentalId;
+        private int? _carId;
+
+        public carDetails(int rentalId)
         {
             InitializeComponent();
+            _rentalId = rentalId;
         }
+
+        public carDetails(int carId, bool directCarView)
+        {
+            InitializeComponent();
+            _carId = carId;
+        }
+
+
+        private void carDetails_Load(object sender, EventArgs e)
+        {
+            using var db = new CarRentalDbContext();
+            Rental rental = null;
+
+            if (_rentalId.HasValue)
+            {
+                rental = db.Rentals.FirstOrDefault(r => r.RentalId == _rentalId.Value);
+            }
+            else if (_carId.HasValue)
+            {
+                rental = db.Rentals.FirstOrDefault(r => r.CarId == _carId.Value && r.ReturnDate == null); // try to get latest
+            }
+
+            Car car = null;
+            Customer customer = null;
+
+            if (rental != null)
+            {
+                car = db.Cars.FirstOrDefault(c => c.CarId == rental.CarId);
+                customer = db.Customers.FirstOrDefault(c => c.CustomerId == rental.CustomerId);
+            }
+            else if (_carId.HasValue)
+            {
+                car = db.Cars.FirstOrDefault(c => c.CarId == _carId.Value);
+            }
+
+            if (car == null)
+            {
+                MessageBox.Show("Car not found.");
+                return;
+            }
+
+            // Fill in car data
+            textBox1.Text = car.CarId.ToString();
+            textBox2.Text = car.Model;
+            textBox4.Text = car.Brand;
+            textBox5.Text = car.Color;
+            textBox6.Text = car.PlateNumber;
+            textBox3.Text = car.DateRegistered.ToString("yyyy-MM-dd");
+            if (!string.IsNullOrEmpty(car.ImagePath) && File.Exists(car.ImagePath))
+                pictureBox1.Image = Image.FromFile(car.ImagePath);
+
+            // Optional: Fill rental and customer if exists
+            if (rental != null && customer != null)
+            {
+                // --- Customer Info ---
+                textBox12.Text = customer.CustomerId.ToString();
+                textBox11.Text = $"{customer.FirstName} {customer.LastName}";
+                textBox10.Text = customer.Age;                          // <-- NEW: separate age textbox
+                textBox9.Text = customer.ContactNumber;
+                textBox7.Text = customer.LicenseNumber;
+                textBox8.Text = customer.Email;
+
+                // --- Rental Info ---
+                textBox13.Text = rental.RentDatee.ToString("yyyy-MM-dd");   // Rent Date
+                textBox16.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? ""; // Due Date
+
+                int daysOnRent = rental.ReturnDate.HasValue
+                    ? (rental.ReturnDate.Value - rental.RentDatee).Days + 1
+                    : (DateTime.Today - rental.RentDatee).Days + 1;
+
+                textBox14.Text = daysOnRent.ToString();             // Days on Rent
+                textBox15.Text = rental.TotalCost?.ToString("F2");        // Total  Payment
+
+                radioButton1.Checked = rental.ActualReturnDate == null;
+                radioButton2.Checked = rental.ActualReturnDate != null;
+
+
+
+                if (!string.IsNullOrWhiteSpace(car.ImagePath) && File.Exists(car.ImagePath))
+                {
+                    try
+                    {
+                        pictureBox1.Image = Image.FromFile(car.ImagePath);
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unable to load car image.\n" + ex.Message);
+                    }
+                }
+                else
+                {
+                    pictureBox1.Image = null; // Optional: set a placeholder image instead
+                }
+
+
+            }
+        }
+
+
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void carDetails_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
         {
 
         }

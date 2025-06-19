@@ -128,11 +128,17 @@ namespace Car_Rental_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalId"));
 
+                    b.Property<DateTime?>("ActualReturnDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<double?>("InitialCost")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("RentDatee")
                         .HasColumnType("datetime2");
@@ -143,7 +149,7 @@ namespace Car_Rental_System.Migrations
                     b.Property<double?>("TotalCost")
                         .HasColumnType("float");
 
-                    b.Property<string>("TransactionId")
+                    b.Property<string>("TransactionCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

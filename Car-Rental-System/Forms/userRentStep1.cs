@@ -130,6 +130,19 @@ namespace Car_Rental_System
         {
             if (_selectedCar != null)
             {
+                using (var db = new CarRentalDbContext())
+                {
+                    bool hasActiveRental = db.Rentals.Any(r =>
+                        r.CustomerId == customerSelected.CustomerId &&
+                        r.ActualReturnDate == null);
+
+                    if (hasActiveRental)
+                    {
+                        MessageBox.Show("You already have an active rental. Please return your current car before renting another.",
+                            "Rental Blocked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
                 var rentForm2 = new userRentStep2(customerSelected, _selectedCar);
                 rentForm2.Show();
                 this.Hide();

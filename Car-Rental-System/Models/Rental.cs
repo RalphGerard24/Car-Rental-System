@@ -9,6 +9,7 @@ namespace Car_Rental_System.Models
         public int CustomerId { get; set; }
         public DateTime RentDatee { get; set; }
         public DateTime? ReturnDate { get; set; }
+        public DateTime? ActualReturnDate { get; set; }
         public double? TotalCost { get; set; }
         public double? InitialCost { get; set; }
 

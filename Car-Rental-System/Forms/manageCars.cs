@@ -37,6 +37,7 @@ namespace Car_Rental_System.Forms
 
         private void AddEditDeleteButtons()
         {
+
             if (!dataGridView1.Columns.Contains("Edit"))
             {
                 var editButton = new DataGridViewButtonColumn
@@ -60,16 +61,39 @@ namespace Car_Rental_System.Forms
                 };
                 dataGridView1.Columns.Add(deleteButton);
             }
+
+            if (!dataGridView1.Columns.Contains("View"))
+            {
+                var viewButton = new DataGridViewButtonColumn
+                {
+                    Name = "View",
+                    HeaderText = "View",
+                    Text = "View",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(viewButton);
+            }
         }
 
         //DELETE CARS
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            int carId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CarId"].Value);
+            var row = dataGridView1.Rows[e.RowIndex];
+            var carIdObj = row.Cells["CarId"].Value;
 
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            if (carIdObj == null)
+            {
+                MessageBox.Show("Car ID not found.");
+                return;
+            }
+
+            int carId = Convert.ToInt32(carIdObj);
+
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+
+            if (colName == "Delete")
             {
                 var confirm = MessageBox.Show("Are you sure you want to delete this car?", "Confirm", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
@@ -78,8 +102,7 @@ namespace Car_Rental_System.Forms
                     UpdateCarListBasedOnFilters();
                 }
             }
-            //EDIT CARS 
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+            else if (colName == "Edit")
             {
                 var car = CarService.GetCarById(carId);
                 if (car != null)
@@ -90,8 +113,31 @@ namespace Car_Rental_System.Forms
                     editForm.Show();
                 }
             }
-        }
 
+            else if (colName == "View")
+            {
+                using (var db = new CarRentalDbContext())
+                {
+                    var rental = db.Rentals
+                        .Where(r => r.CarId == carId)
+                        .OrderByDescending(r => r.RentDatee)
+                        .FirstOrDefault(); // gets latest rental, rented or returned
+
+                    if (rental != null)
+                    {
+                        var viewForm = new carDetails(rental.RentalId);
+                        viewForm.Show();
+                    }
+                    else
+                    {
+                        var viewForm = new carDetails(carId, true); // fallback if never rented
+                        viewForm.Show();
+                    }
+                }
+            }
+
+
+        }
 
         private void AddNewCarButton_Click(object sender, EventArgs e)
         {

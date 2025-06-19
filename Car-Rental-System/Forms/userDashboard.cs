@@ -34,6 +34,35 @@ namespace Car_Rental_System
             textBox15.Text = _currentCustomer.ZipCode;
             textBox2.Text = _currentCustomer.Email;
             textBox7.Text = _currentCustomer.LicenseNumber;
+
+            using (var db = new CarRentalDbContext())
+            {
+                var recentRental = db.Rentals
+                    .Where(r => r.CustomerId == _currentCustomer.CustomerId)
+                    .OrderByDescending(r => r.RentDatee)
+                    .FirstOrDefault();
+
+                if (recentRental != null)
+                {
+                    var rentedCar = db.Cars.FirstOrDefault(c => c.CarId == recentRental.CarId);
+
+                    if (rentedCar != null)
+                    {
+                        textBox14.Text = rentedCar.CarId.ToString();       // Car ID
+                        textBox13.Text = rentedCar.Model;                  // Model
+                        textBox12.Text = rentedCar.Brand;                  // Make
+                        textBox11.Text = rentedCar.Color;                  // Color
+                        textBox10.Text = recentRental.ReturnDate?.ToString("yyyy-MM-dd") ?? "N/A"; // Due Date
+                        textBox9.Text = recentRental.ActualReturnDate == null ? "Ongoing" : "Completed";
+                    }
+                }
+                else
+                {
+                    textBox14.Text = textBox13.Text = textBox12.Text =
+                    textBox11.Text = textBox10.Text = textBox9.Text = "N/A";
+                }
+            }
+
         }
 
         private void button5_Click(object sender, EventArgs e)

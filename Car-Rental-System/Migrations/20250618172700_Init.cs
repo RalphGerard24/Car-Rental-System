@@ -44,8 +44,8 @@ namespace Car_Rental_System.Migrations
                     ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Barangay = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -64,8 +64,10 @@ namespace Car_Rental_System.Migrations
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     RentDatee = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ActualReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TotalCost = table.Column<double>(type: "float", nullable: true),
-                    TransactionId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    InitialCost = table.Column<double>(type: "float", nullable: true),
+                    TransactionCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

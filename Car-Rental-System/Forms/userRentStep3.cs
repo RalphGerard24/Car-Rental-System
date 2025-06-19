@@ -14,13 +14,14 @@ namespace Car_Rental_System
         private DateTime _rentDateTime;
         private DateTime _returnDateTime;
         private double InitialCost;
+        private double TotalCost;
 
         public userRentStep3(Customer customer, Car car, DateTime rentDate, DateTime returnDate)
         {
             InitializeComponent();
             _currentCustomer = customer;
             _selectedCar = car;
-            _rentDateTime = DateTime.Now;     
+            _rentDateTime = rentDate;     
             _returnDateTime = returnDate;     
             LoadRentDetails();
         }
@@ -34,15 +35,15 @@ namespace Car_Rental_System
             int rentDays = (_returnDateTime.Date - _rentDateTime.Date).Days + 1;
             rentDays = Math.Max(rentDays, 1);
 
-            double costBase = rentDays * _selectedCar.PriceRate;
+            InitialCost = rentDays * _selectedCar.PriceRate;
             double taxRate = 0.12; 
-            double taxAmount = costBase * taxRate;
-            InitialCost = costBase + taxAmount;
+            double taxAmount = InitialCost * taxRate;
+            TotalCost = InitialCost + taxAmount;
 
            
-            textBox6.Text = costBase.ToString("F2");  // Base price without tax
+            textBox6.Text = InitialCost .ToString("F2");  // Base price without tax
             textBox7.Text = taxAmount.ToString("F2"); // Tax amount
-            textBox4.Text = InitialCost.ToString("F2"); // Initial cost (base + tax)
+            textBox4.Text = TotalCost.ToString("F2"); // Initial cost (base + tax)
 
             textBox3.Text = _rentDateTime.ToString("yyyy-MM-dd");
             textBox5.Text = _returnDateTime.ToString("yyyy-MM-dd");
@@ -70,7 +71,8 @@ namespace Car_Rental_System
                     TransactionCode = transactionCode,
                     RentDatee = _rentDateTime,         
                     ReturnDate = _returnDateTime,       
-                    InitialCost = InitialCost
+                    InitialCost = InitialCost,
+                    TotalCost = TotalCost
                 };
 
                 using var available = new CarRentalDbContext();

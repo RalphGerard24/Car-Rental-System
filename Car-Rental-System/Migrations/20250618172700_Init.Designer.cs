@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_Rental_System.Migrations
 {
     [DbContext(typeof(CarRentalDbContext))]
-    [Migration("20250615101228_addage")]
-    partial class addage
+    [Migration("20250618172700_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,11 +131,17 @@ namespace Car_Rental_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalId"));
 
+                    b.Property<DateTime?>("ActualReturnDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<double?>("InitialCost")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("RentDatee")
                         .HasColumnType("datetime2");
@@ -146,7 +152,7 @@ namespace Car_Rental_System.Migrations
                     b.Property<double?>("TotalCost")
                         .HasColumnType("float");
 
-                    b.Property<string>("TransactionId")
+                    b.Property<string>("TransactionCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

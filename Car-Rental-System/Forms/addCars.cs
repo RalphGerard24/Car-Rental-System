@@ -79,11 +79,25 @@ namespace Car_Rental_System
             }
 
             // --- Color Validation ---
-            if (!textBox5.Text.All(char.IsLetter))
+            if (!textBox5.Text.All(c => char.IsLetter(c) || c == ' '))
             {
-                MessageBox.Show("Color must only contain letters.");
+                MessageBox.Show("Color must only contain letters and spaces.");
                 return;
             }
+
+            using (var db = new CarRentalDbContext())
+            {
+                bool plateExists = db.Cars.Any(c =>
+                    c.PlateNumber == textBox6.Text &&
+                    (EditingCar == null || c.CarId != EditingCar.CarId)); // Exclude current car when editing
+
+                if (plateExists)
+                {
+                    MessageBox.Show("A car with this Plate Number already exists.");
+                    return;
+                }
+            }
+
 
             // --- Image validation ---
             if (string.IsNullOrWhiteSpace(selectedImagePath) || !File.Exists(selectedImagePath))
@@ -138,8 +152,8 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Error saving car:\n" + ex.Message);
             }
-        }
 
+        }
 
         //upload image button click event
         private void uploadImageButton_Click(object sender, EventArgs e)
