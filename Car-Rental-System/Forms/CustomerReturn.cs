@@ -38,7 +38,7 @@ namespace Car_Rental_System
         private void LoadReturnInfo()
         {
             CustomerIDTextBox.Text = _customerId.ToString();
-            CarIDTextBox.Text = _carId.ToString();
+
 
             using (var db = new CarRentalDbContext())
             {
@@ -52,17 +52,26 @@ namespace Car_Rental_System
 
                 if (rental != null && car != null)
                 {
+                    CarNameTextBox.Text = $"{car.Brand} {car.Model}";
+
                     textBox2.Text = $"{customer?.FirstName} {customer?.LastName}";
                     textBox6.Text = car.PlateNumber;
                     textBox5.Text = rental.RentDatee.ToString("yyyy-MM-dd");
-                    textBox3.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                    textBox3.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? "N/A";
 
                     textBox10.Text = rental.InitialCost?.ToString("F2");
                     textBox9.Text = ((rental.InitialCost ?? 0) * 0.12).ToString("F2");
                     textBox7.Text = rental.TotalCost?.ToString("F2");
 
-                    int lateDays = (DateTime.Today - (rental.ReturnDate ?? DateTime.Today)).Days;
-                    double penalty = lateDays > 0 ? lateDays * car.PriceRate : 0;
+                    int lateDays = 0;
+                    double penalty = 0;
+
+                    if (rental.ReturnDate.HasValue)
+                    {
+                        lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
+                        penalty = lateDays > 0 ? lateDays * car.PriceRate : 0;
+                    }
+
                     textBox8.Text = penalty.ToString("F2");
                 }
                 else
@@ -87,8 +96,17 @@ namespace Car_Rental_System
                 {
                     rental.ActualReturnDate = DateTime.Today;
 
-                    int lateDays = (DateTime.Today - (rental.ReturnDate ?? DateTime.Today)).Days;
-                    rental.LateFee = lateDays > 0 ? lateDays * car.PriceRate : 0;
+                    int lateDays = 0;
+
+                    if (rental.ReturnDate.HasValue)
+                    {
+                        lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
+                        rental.LateFee = lateDays > 0 ? lateDays * car.PriceRate : 0;
+                    }
+                    else
+                    {
+                        rental.LateFee = 0;
+                    }
 
                     car.IsAvailable = true;
 
@@ -105,6 +123,7 @@ namespace Car_Rental_System
                 }
             }
         }
+
 
         // Navigation
         private void buttonProfile_Click(object sender, EventArgs e)
@@ -131,8 +150,8 @@ namespace Car_Rental_System
         private void button3_Click(object sender, EventArgs e)
         {
             var manageCustomerForm = new ManageCustomer(_admin);
-            manageCustomerForm.Show();
             this.Hide();
+            manageCustomerForm.Show();
         }
     }
 }

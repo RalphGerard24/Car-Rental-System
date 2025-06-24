@@ -211,8 +211,9 @@ namespace Car_Rental_System
             }
 
             var manageCustomerForm = new ManageCustomer(_admin);
-            manageCustomerForm.Show();
             this.Hide();
+            manageCustomerForm.Show();
+            
         }
 
 

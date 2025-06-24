@@ -23,7 +23,7 @@ namespace Car_Rental_System
             _selectedCar = selectedCar;
             _admin = admin;
             this.FormClosing += CustomerRentStep2_FormClosing;
-            button1.Click += button1_Click;
+            
 
             LoadCustomerData();
             LoadCarData();
@@ -76,8 +76,8 @@ namespace Car_Rental_System
             int rentDays = (_returnDate - _rentDate).Days + 1;
             _totalCost = rentDays * _selectedCar.PriceRate;
 
-            textBox3.Text = _rentDate.ToString("yyyy-MM-dd");
-            textBox5.Text = _returnDate.ToString("yyyy-MM-dd");
+            //textBox3.Text = _rentDate.ToString("yyyy-MM-dd");
+           // textBox5.Text = _returnDate.ToString("yyyy-MM-dd");
             textBox4.Text = _totalCost.ToString("F2");
         }
 
@@ -116,21 +116,7 @@ namespace Car_Rental_System
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show(
-                "This will cancel the Rental Process. Do you want to return to Profile?",
-                "Confirm Action",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result != DialogResult.Yes)
-                return;
-
-            var profileForm = new CustomerProfile(_currentCustomer, _admin);
-            profileForm.Show();
-            this.Hide();
-        }
+        
 
         private void CustomerRentStep2_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -17,7 +17,7 @@ namespace Car_Rental_System.Models
         public string Status {
             get
             {
-                if (ReturnDate == null)
+                if (ActualReturnDate == null)
                 {
                     return "Rented";
                 }

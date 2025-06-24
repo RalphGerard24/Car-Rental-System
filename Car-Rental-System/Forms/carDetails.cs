@@ -113,7 +113,7 @@ namespace Car_Rental_System.Forms
                     try
                     {
                         pictureBox1.Image = Image.FromFile(car.ImagePath);
-                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                     catch (Exception ex)
                     {
@@ -124,44 +124,19 @@ namespace Car_Rental_System.Forms
                 else
                 {
                     pictureBox1.Image = null;
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                 }
             }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox16_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox15_TextChanged(object sender, EventArgs e)
-        {
+        private void groupBox2_Enter(object sender, EventArgs e) { }
+        private void button1_Click(object sender, EventArgs e) { }
+        private void textBox10_TextChanged(object sender, EventArgs e) { }
+        private void textBox14_TextChanged(object sender, EventArgs e) { }
+        private void textBox13_TextChanged(object sender, EventArgs e) { }
+        private void textBox16_TextChanged(object sender, EventArgs e) { }
+        private void textBox15_TextChanged(object sender, EventArgs e) { }
+        
 
         }
     }
-}

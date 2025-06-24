@@ -43,6 +43,7 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
+            button3 = new Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -200,6 +201,7 @@
             button1.TabIndex = 9;
             button1.Text = "Dashboard";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // label1
             // 
@@ -211,11 +213,22 @@
             label1.TabIndex = 8;
             label1.Text = "Car Rental";
             // 
+            // button3
+            // 
+            button3.Location = new Point(41, 490);
+            button3.Name = "button3";
+            button3.Size = new Size(245, 87);
+            button3.TabIndex = 15;
+            button3.Text = "Rental Records";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // ManageCars
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1239, 622);
+            Controls.Add(button3);
             Controls.Add(button7);
             Controls.Add(groupBox2);
             Controls.Add(button4);
@@ -252,6 +265,7 @@
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private RadioButton radioButton3;
+        private Button button3;
     }
 
     }

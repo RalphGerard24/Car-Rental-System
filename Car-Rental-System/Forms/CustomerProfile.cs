@@ -151,7 +151,7 @@ namespace Car_Rental_System
                 }
             }
 
-            this.Hide();
+            //this.Hide();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -206,8 +206,8 @@ namespace Car_Rental_System
         private void button3_Click(object sender, EventArgs e)
         {
             var manageCustomerForm = new ManageCustomer(_admin);
-            manageCustomerForm.Show();
             this.Hide();
+            manageCustomerForm.Show();
 
         }
     }

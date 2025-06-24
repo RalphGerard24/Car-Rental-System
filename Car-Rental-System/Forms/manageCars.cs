@@ -29,6 +29,7 @@ namespace Car_Rental_System.Forms
             PopulateFilters();
             UpdateCarListBasedOnFilters();
             AddEditDeleteButtons();
+            button3.Click += button3_Click;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -46,6 +47,8 @@ namespace Car_Rental_System.Forms
             this.Hide();
             customers.Show();
         }
+
+
 
 
         private void SetupFilterEvents()
@@ -141,8 +144,6 @@ namespace Car_Rental_System.Forms
                 }
             }
 
-
-
         }
 
         private void AddNewCarButton_Click(object sender, EventArgs e)
@@ -186,5 +187,18 @@ namespace Car_Rental_System.Forms
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void FilterAvailability_CheckedChanged(object sender, EventArgs e) { }
         private void ManageCar_Loads(object sender, EventArgs e) { }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RentalRecords rentalRecordsForm = new RentalRecords(_currentAdmin);
+            rentalRecordsForm.FormClosed += (s, args) => this.Close();
+            this.Hide();
+            rentalRecordsForm.Show();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+        }
     }
 }

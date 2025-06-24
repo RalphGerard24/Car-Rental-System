@@ -8,9 +8,9 @@ namespace Car_Rental_System.Forms
 {
     public partial class ManageCustomer : Form
     {
-        private Admin _currentAdmin;  
+        private Admin _currentAdmin;
 
-        public ManageCustomer(Admin admin) : this()    
+        public ManageCustomer(Admin admin) : this()
         {
             _currentAdmin = admin;
 
@@ -21,10 +21,10 @@ namespace Car_Rental_System.Forms
                 dash.FormClosed += (_, __) =>
                 {
                     Console.WriteLine("Closing ManageCustomer...");
-                    this.Close();                     
+                    this.Close();
                 };
-                this.Hide();                           
-                dash.Show();                           
+                this.Hide();
+                dash.Show();
             };
 
             button2.Click += (s, e) =>
@@ -39,6 +39,7 @@ namespace Car_Rental_System.Forms
                 cars.Show();
             };
 
+            button3.Click += button3_Click;
         }
 
         public ManageCustomer()
@@ -46,21 +47,15 @@ namespace Car_Rental_System.Forms
             InitializeComponent();
 
             dataGridView1.CellClick += dataGridView1_CellClick;
-            LoadCustomers();                
+            LoadCustomers();
         }
-
-
         private void button5_Click(object sender, EventArgs e)
         {
             var add = new AddCustomers();
-            add.FormClosed += (_, __) =>
-            {
-                this.Show();
-                LoadCustomers();
-            };
-            this.Hide();
-            add.Show();
+            add.FormClosed += (_, __) => LoadCustomers(); 
+            add.Show(); 
         }
+
 
 
         private void LoadCustomers()
@@ -126,5 +121,20 @@ namespace Car_Rental_System.Forms
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RentalRecords rentalRecordsForm = new RentalRecords(_currentAdmin);
+            rentalRecordsForm.FormClosed += (s, args) => this.Close();
+            this.Hide(); 
+            rentalRecordsForm.Show();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }
