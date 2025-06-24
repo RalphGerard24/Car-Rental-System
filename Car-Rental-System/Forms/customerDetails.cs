@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
 {
-    public partial class customerDetails : Form
+    public partial class CustomerDetails : Form
     {
-        public customerDetails()
+        private readonly string _CustomerId;
+
+        public CustomerDetails(string CustomerId)
         {
             InitializeComponent();
+            _CustomerId = CustomerId;
+
+            // For now, just show the customer ID to verify it's working
+            MessageBox.Show($"Customer ID loaded: {_CustomerId}");
+
+            // TODO: Load and populate customer data here
         }
     }
+
 }

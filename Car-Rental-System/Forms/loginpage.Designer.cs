@@ -2,7 +2,7 @@
 
 namespace Car_Rental_System.Forms
 {
-    partial class loginpage
+    partial class LoginPage
     {
         /// <summary>
         /// Required designer variable.

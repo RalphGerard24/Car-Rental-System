@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System
 {
-    partial class userDashboard
+    partial class CustomerProfile
     {
         /// <summary>
         /// Required designer variable.

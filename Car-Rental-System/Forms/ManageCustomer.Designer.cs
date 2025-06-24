@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System.Forms
 {
-    partial class customers
+    partial class ManageCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -154,7 +154,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Name = "customers";
+            Name = "ManageCustomer";
             Text = "Form1";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

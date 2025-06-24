@@ -6,21 +6,48 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class userRentStep1 : Form
+    public partial class CustomerRentStep1 : Form
     {
         private Customer customerSelected;
         private Car _selectedCar;
-      
+        private Admin _admin;
 
-        public userRentStep1(Customer customer)
+        public CustomerRentStep1(Customer customer, Admin admin)
         {
             InitializeComponent();
             customerSelected = customer;
+            _admin = admin;
+            this.FormClosing += CustomerRentStep1_FormClosing;
             LoadAvailableCars();
             LoadBrandFilter(); 
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            button1.Click += button1_Click;
 
         }
+        private void CustomerRentStep1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox1.Text) && e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                var result = MessageBox.Show(
+                    "You have selected a car. Are you sure you want to go back to your Profile without proceeding?",
+                    "Confirm Navigation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                var profileForm = new CustomerProfile(customerSelected, _admin);
+                profileForm.Show();
+            }
+        }
+
         //list ng car na available
         private List<Car> LoadAvailableCarsFromDb()
         {
@@ -109,6 +136,26 @@ namespace Car_Rental_System
                 flowLayoutPanel1.Controls.Add(carPanel);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                var result = MessageBox.Show(
+                    "You have selected a car. Are you sure you want to go back to the Profile without proceeding?",
+                    "Confirm Navigation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                    return;
+            }
+
+            var profileForm = new CustomerProfile(customerSelected, _admin);
+            profileForm.Show();
+            this.Hide();
+        }
+
         //view car details button
         private void button8_Click_1(object sender, EventArgs e)
         {
@@ -118,7 +165,7 @@ namespace Car_Rental_System
                 Car selectedCar = clickedBtn.Tag as Car;
                 if (selectedCar != null)
                 {
-                    userCarDetails detailsForm = new userCarDetails(selectedCar, customerSelected);
+                    CustomerCarDetails detailsForm = new CustomerCarDetails(selectedCar, customerSelected,_admin);
                     detailsForm.Show();
                     this.Hide();
                 }
@@ -143,7 +190,7 @@ namespace Car_Rental_System
                         return;
                     }
                 }
-                var rentForm2 = new userRentStep2(customerSelected, _selectedCar);
+                var rentForm2 = new CustomerRentStep2(customerSelected, _selectedCar, _admin);
                 rentForm2.Show();
                 this.Hide();
             }

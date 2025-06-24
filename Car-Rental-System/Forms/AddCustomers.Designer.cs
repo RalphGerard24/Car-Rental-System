@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System
 {
-    partial class AddCustomer
+    partial class AddCustomers
     {
         /// <summary>
         /// Required designer variable.

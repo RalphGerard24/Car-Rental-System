@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class userCarDetails : Form
+    public partial class CustomerCarDetails : Form
     {
         private Customer _currentCustomer;
         private Car selectedCar;
-        
+        private Admin _admin;
 
-        public userCarDetails(Car car, Customer customer)
+        public CustomerCarDetails(Car car, Customer customer, Admin admin)
         {
             InitializeComponent();
             selectedCar = car;
@@ -27,7 +27,7 @@ namespace Car_Rental_System
         }
         private void button3_Click_1(object sender, EventArgs e)
         {
-            userRentStep1 rentForm = new userRentStep1(_currentCustomer);
+            CustomerRentStep1 rentForm = new CustomerRentStep1(_currentCustomer, _admin);
             rentForm.Show();
             this.Hide();
         }

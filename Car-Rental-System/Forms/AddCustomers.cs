@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class AddCustomer : Form
+    public partial class AddCustomers : Form
     {
-        public AddCustomer()
+        public AddCustomers()
         {
             InitializeComponent();
         }

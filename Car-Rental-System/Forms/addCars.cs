@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class addCars : Form
+    public partial class AddCars : Form
     {
         private string selectedImagePath = string.Empty; // To store the path of the selected image
         private string savedImagePath = string.Empty;
-        public addCars()
+        public AddCars()
         {
             InitializeComponent();
             this.button2.Click += new System.EventHandler(this.saveCarButton_Click);
@@ -28,7 +28,7 @@ namespace Car_Rental_System
 
         //Editing constructor to handle editing an existing car
         private Car EditingCar;
-        public addCars(Car carToEdit) : this()
+        public AddCars(Car carToEdit) : this()
         {
             EditingCar = carToEdit;
             this.Text = "Edit Car";

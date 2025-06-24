@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System.Forms
 {
-    partial class adminDashboard
+    partial class AdminDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -98,6 +98,7 @@
             button2.TabIndex = 2;
             button2.Text = "Manage Cars";
             button2.UseVisualStyleBackColor = true;
+
             // 
             // button4
             // 

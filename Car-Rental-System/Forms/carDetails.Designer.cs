@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System.Forms
 {
-    partial class carDetails
+    partial class CarDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -489,6 +489,7 @@
             button3.TabIndex = 38;
             button3.Text = "Back";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // textBox12
             // 
@@ -531,9 +532,9 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "carDetails";
+            Name = "CarDetails";
             Text = "Car Details - Car Rental System";
-            Load += carDetails_Load;
+            Load += CarDetails_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

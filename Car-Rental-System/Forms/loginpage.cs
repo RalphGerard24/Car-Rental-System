@@ -12,9 +12,9 @@ using System.Security.Cryptography;
 
 namespace Car_Rental_System.Forms
 {
-    public partial class loginpage : Form
+    public partial class LoginPage : Form
     {
-        public loginpage()
+        public LoginPage()
         {
             InitializeComponent();
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -43,7 +43,7 @@ namespace Car_Rental_System.Forms
                 {
                     MessageBox.Show("Login successful!");
 
-                    adminDashboard dashboard = new adminDashboard(admin);
+                    AdminDashboard dashboard = new AdminDashboard(admin);
                     dashboard.Show();
                     this.Hide();
                 }

@@ -1,35 +1,57 @@
 ﻿using Car_Rental_System.Models;
 using Car_Rental_System.Services;
 using System;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Car_Rental_System.Forms
 {
     public partial class ManageCars : Form
     {
+        private Admin _currentAdmin;
+
+
+        public ManageCars(Admin admin) : this()
+        {
+            _currentAdmin = admin;
+
+
+            button1.Click += Button1_Click;
+        }
+
+
         public ManageCars()
         {
             InitializeComponent();
 
             dataGridView1.CellClick += dataGridView1_CellClick;
-
             SetupFilterEvents();
             PopulateFilters();
             UpdateCarListBasedOnFilters();
-
             AddEditDeleteButtons();
-
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var dashboard = new AdminDashboard(_currentAdmin);
+            dashboard.FormClosed += (_, __) => this.Close();
+            this.Hide();
+            dashboard.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var customers = new ManageCustomer(_currentAdmin);
+            customers.FormClosed += (_, __) => this.Close();
+            this.Hide();
+            customers.Show();
+        }
+
 
         private void SetupFilterEvents()
         {
             comboBox1.SelectedIndexChanged += (s, e) => UpdateCarListBasedOnFilters();
             comboBox2.SelectedIndexChanged += (s, e) => UpdateCarListBasedOnFilters();
-
             radioButton1.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
             radioButton2.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
             radioButton3.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
@@ -37,132 +59,112 @@ namespace Car_Rental_System.Forms
 
         private void AddEditDeleteButtons()
         {
-
             if (!dataGridView1.Columns.Contains("Edit"))
             {
-                var editButton = new DataGridViewButtonColumn
+                dataGridView1.Columns.Add(new DataGridViewButtonColumn
                 {
                     Name = "Edit",
                     HeaderText = "Edit",
                     Text = "Edit",
                     UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(editButton);
+                });
             }
 
             if (!dataGridView1.Columns.Contains("Delete"))
             {
-                var deleteButton = new DataGridViewButtonColumn
+                dataGridView1.Columns.Add(new DataGridViewButtonColumn
                 {
                     Name = "Delete",
                     HeaderText = "Delete",
                     Text = "Delete",
                     UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(deleteButton);
+                });
             }
 
             if (!dataGridView1.Columns.Contains("View"))
             {
-                var viewButton = new DataGridViewButtonColumn
+                dataGridView1.Columns.Add(new DataGridViewButtonColumn
                 {
                     Name = "View",
                     HeaderText = "View",
                     Text = "View",
                     UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(viewButton);
+                });
             }
         }
 
-        //DELETE CARS
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             var row = dataGridView1.Rows[e.RowIndex];
-            var carIdObj = row.Cells["CarId"].Value;
+            var carId = Convert.ToInt32(row.Cells["CarId"].Value);
+            var column = dataGridView1.Columns[e.ColumnIndex].Name;
 
-            if (carIdObj == null)
+            if (column == "Delete")
             {
-                MessageBox.Show("Car ID not found.");
-                return;
-            }
-
-            int carId = Convert.ToInt32(carIdObj);
-
-            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
-
-            if (colName == "Delete")
-            {
-                var confirm = MessageBox.Show("Are you sure you want to delete this car?", "Confirm", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this car?",
+                                    "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     CarService.DeleteCar(carId);
                     UpdateCarListBasedOnFilters();
                 }
             }
-            else if (colName == "Edit")
+            else if (column == "Edit")
             {
                 var car = CarService.GetCarById(carId);
                 if (car != null)
                 {
-                    var editForm = new addCars(car);
-                    editForm.FormClosed += (s, args) => { this.Show(); UpdateCarListBasedOnFilters(); };
+                    var editForm = new AddCars(car);
+                    editForm.FormClosed += (_, __) => { this.Show(); UpdateCarListBasedOnFilters(); };
                     this.Hide();
                     editForm.Show();
                 }
             }
 
-            else if (colName == "View")
+            else if (column == "View")
             {
                 using (var db = new CarRentalDbContext())
                 {
                     var rental = db.Rentals
-                        .Where(r => r.CarId == carId)
-                        .OrderByDescending(r => r.RentDatee)
-                        .FirstOrDefault(); 
+                                   .Where(r => r.CarId == carId)
+                                   .OrderByDescending(r => r.RentDatee)
+                                   .FirstOrDefault();
 
-                    if (rental != null)
-                    {
-                        var viewForm = new carDetails(rental.RentalId);
-                        viewForm.Show();
-                    }
-                    else
-                    {
-                        var viewForm = new carDetails(carId, true); 
-                        viewForm.Show();
-                    }
+                    Form viewForm = rental != null
+                        ? new CarDetails(rental.RentalId)
+                        : new CarDetails(carId, true);
+
+                    viewForm.FormClosed += (_, __) => this.Close();
+                    this.Hide();
+                    viewForm.Show();
                 }
             }
+
 
 
         }
 
         private void AddNewCarButton_Click(object sender, EventArgs e)
         {
-            var addCarForm = new addCars();
+            var AddCarForm = new AddCars();
+            AddCarForm.FormClosed += (_, __) => { this.Show(); UpdateCarListBasedOnFilters(); };
             this.Hide();
-            addCarForm.FormClosed += (s, args) =>
-            {
-                this.Show();
-                UpdateCarListBasedOnFilters();
-            };
-            addCarForm.Show();
+            AddCarForm.Show();
         }
+
+
 
         private void UpdateCarListBasedOnFilters()
         {
             string selectedBrand = comboBox1.SelectedItem?.ToString();
             string selectedYear = comboBox2.SelectedItem?.ToString();
-            bool? isAvailable = null;
-
-            if (radioButton2.Checked) isAvailable = true;
-            else if (radioButton3.Checked) isAvailable = false;
+            bool? isAvailable = radioButton2.Checked ? true
+                               : radioButton3.Checked ? false
+                               : (bool?)null;
 
             dataGridView1.DataSource = CarService.GetFilteredCars(selectedBrand, selectedYear, isAvailable);
         }
-
 
         private void PopulateFilters()
         {
@@ -179,38 +181,10 @@ namespace Car_Rental_System.Forms
             radioButton1.Checked = true;
         }
 
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FilterAvailability_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ManageCar_Loads(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var customers = new customers();
-            customers.Show();
-            this.Hide();
-        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void FilterAvailability_CheckedChanged(object sender, EventArgs e) { }
+        private void ManageCar_Loads(object sender, EventArgs e) { }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class userRentStep3 : Form
+    public partial class CustomerRentStep3 : Form
     {
         private Customer _currentCustomer;
         private Car _selectedCar;
@@ -15,8 +15,10 @@ namespace Car_Rental_System
         private DateTime _returnDateTime;
         private double InitialCost;
         private double TotalCost;
+        private Admin _admin;
 
-        public userRentStep3(Customer customer, Car car, DateTime rentDate, DateTime returnDate)
+
+        public CustomerRentStep3(Customer customer, Car car, DateTime rentDate, DateTime returnDate, Admin admin)
         {
             InitializeComponent();
             _currentCustomer = customer;
@@ -49,7 +51,7 @@ namespace Car_Rental_System
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            var rent2 = new userRentStep2(_currentCustomer, _selectedCar);
+            var rent2 = new CustomerRentStep2(_currentCustomer, _selectedCar, _admin);
             rent2.Show();
             this.Hide();
         }
@@ -89,7 +91,7 @@ namespace Car_Rental_System
                     available.SaveChanges();
                 }
 
-                var confirmationForm = new userRentConfirmed(rental.CustomerId, rental.CarId, rental.TransactionCode);
+                var confirmationForm = new CustomerRentConfirmed(rental.CustomerId, rental.CarId, rental.TransactionCode, _admin);
                 confirmationForm.Show();
                 this.Hide();
             }

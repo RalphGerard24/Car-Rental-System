@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System.Forms
 {
-    partial class customerDetails
+    partial class CustomerDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -629,7 +629,7 @@
             Controls.Add(label1);
             Controls.Add(groupBox2);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "customerDetails";
+            Name = "CustomerDetails";
             Text = " Customer Details - Car Rental System";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using Car_Rental_System.Models;
+﻿using Car_Rental_System.Forms;
+using Car_Rental_System.Models;
 using Car_Rental_System.Services;
 using System;
 using System.Linq;
@@ -8,19 +9,20 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class userRentConfirmed : Form
+    public partial class CustomerRentConfirmed : Form
     {
         private int _customerId;
         private int _carId;
         private string _transactionId;
+        private Admin _admin;
 
-
-        public userRentConfirmed(int customerId, int carId, string transactionId)
+        public CustomerRentConfirmed(int customerId, int carId, string transactionId, Admin admin)
         {
             InitializeComponent();
             _customerId = customerId;
             _carId = carId;
             _transactionId = transactionId;
+            _admin = admin;
             LoadRentData();
         }
 
@@ -33,6 +35,8 @@ namespace Car_Rental_System
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("You successfully rented the car.");
+            var dashboard = new AdminDashboard(_admin);
+            dashboard.Show();
             this.Close();
         }
 

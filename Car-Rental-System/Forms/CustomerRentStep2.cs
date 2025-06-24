@@ -8,28 +8,31 @@ using System.Collections.Generic;
 
 namespace Car_Rental_System
 {
-    public partial class userRentStep2 : Form
+    public partial class CustomerRentStep2 : Form
     {
         private Customer _currentCustomer;
         private Car _selectedCar;
         private DateTime _rentDate;
         private DateTime _returnDate;
         private double _totalCost;
-
-        public userRentStep2(Customer customer, Car selectedCar)
+        private Admin _admin;
+        public CustomerRentStep2(Customer customer, Car selectedCar, Admin admin)
         {
             InitializeComponent();
             _currentCustomer = customer;
             _selectedCar = selectedCar;
+            _admin = admin;
+            this.FormClosing += CustomerRentStep2_FormClosing;
+            button1.Click += button1_Click;
 
             LoadCustomerData();
             LoadCarData();
 
-            
+
             _rentDate = dateTimePicker1.Value.Date;
             _returnDate = dateTimePicker2.Value.Date;
 
-            
+
             dateTimePicker1.ValueChanged += DatePickers_ValueChanged;
             dateTimePicker2.ValueChanged += DatePickers_ValueChanged;
 
@@ -85,7 +88,7 @@ namespace Car_Rental_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            var rentForm1 = new userRentStep1(_currentCustomer);
+            var rentForm1 = new CustomerRentStep1(_currentCustomer, _admin);
             rentForm1.Show();
             this.Hide();
         }
@@ -107,9 +110,46 @@ namespace Car_Rental_System
 
             if (result == DialogResult.Yes)
             {
-                var rentForm3 = new userRentStep3(_currentCustomer, _selectedCar, _rentDate, _returnDate);
+                var rentForm3 = new CustomerRentStep3(_currentCustomer, _selectedCar, _rentDate, _returnDate, _admin);
                 rentForm3.Show();
                 this.Hide();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "This will cancel the Rental Process. Do you want to return to Profile?",
+                "Confirm Action",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            var profileForm = new CustomerProfile(_currentCustomer, _admin);
+            profileForm.Show();
+            this.Hide();
+        }
+
+        private void CustomerRentStep2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                var result = MessageBox.Show(
+                    "This will cancel the Rental Process. Do you want to return to Profile?",
+                    "Confirm Action",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                var profileForm = new CustomerProfile(_currentCustomer, _admin);
+                profileForm.Show();
             }
         }
 
@@ -120,6 +160,11 @@ namespace Car_Rental_System
         private void label12_Click(object sender, EventArgs e) { }
         private void textBox12_TextChanged(object sender, EventArgs e) { }
         private void label11_Click(object sender, EventArgs e) { }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

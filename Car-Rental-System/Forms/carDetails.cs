@@ -4,33 +4,45 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
-
 {
-    public partial class carDetails : Form
+    public partial class CarDetails : Form
     {
         private int? _rentalId;
         private int? _carId;
 
-        public carDetails(int rentalId)
+        public CarDetails(int rentalId)
         {
             InitializeComponent();
             _rentalId = rentalId;
+            this.FormClosing += CarDetails_FormClosing; 
         }
-
-        public carDetails(int carId, bool directCarView)
+        public CarDetails(int carId, bool directCarView)
         {
             InitializeComponent();
             _carId = carId;
+            this.FormClosing += CarDetails_FormClosing;
+        }
+        private void CarDetails_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var manageCarsForm = new ManageCars();
+            //manageCarsForm.Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var ManageCars = new ManageCars(); 
+            ManageCars.Show();
+            this.Close();
+        }
 
-        private void carDetails_Load(object sender, EventArgs e)
+        private void CarDetails_Load(object sender, EventArgs e)
         {
             using var db = new CarRentalDbContext();
             Rental rental = null;
@@ -41,7 +53,7 @@ namespace Car_Rental_System.Forms
             }
             else if (_carId.HasValue)
             {
-                rental = db.Rentals.FirstOrDefault(r => r.CarId == _carId.Value && r.ReturnDate == null); 
+                rental = db.Rentals.FirstOrDefault(r => r.CarId == _carId.Value && r.ReturnDate == null);
             }
 
             Car car = null;
@@ -63,7 +75,6 @@ namespace Car_Rental_System.Forms
                 return;
             }
 
-           
             textBox1.Text = car.CarId.ToString();
             textBox2.Text = car.Model;
             textBox4.Text = car.Brand;
@@ -78,26 +89,24 @@ namespace Car_Rental_System.Forms
                 // --- Customer Info ---
                 textBox12.Text = customer.CustomerId.ToString();
                 textBox11.Text = $"{customer.FirstName} {customer.LastName}";
-                textBox10.Text = customer.Age;                         
+                textBox10.Text = customer.Age;
                 textBox9.Text = customer.ContactNumber;
                 textBox7.Text = customer.LicenseNumber;
                 textBox8.Text = customer.Email;
 
                 // --- Rental Info ---
-                textBox13.Text = rental.RentDatee.ToString("yyyy-MM-dd");   
-                textBox16.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? ""; 
+                textBox13.Text = rental.RentDatee.ToString("yyyy-MM-dd");
+                textBox16.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? "";
 
                 int daysOnRent = rental.ReturnDate.HasValue
                     ? (rental.ReturnDate.Value - rental.RentDatee).Days + 1
                     : (DateTime.Today - rental.RentDatee).Days + 1;
 
-                textBox14.Text = daysOnRent.ToString();             
-                textBox15.Text = rental.TotalCost?.ToString("F2");        
+                textBox14.Text = daysOnRent.ToString();
+                textBox15.Text = rental.TotalCost?.ToString("F2");
 
                 radioButton1.Checked = rental.ActualReturnDate == null;
                 radioButton2.Checked = rental.ActualReturnDate != null;
-
-
 
                 if (!string.IsNullOrWhiteSpace(car.ImagePath) && File.Exists(car.ImagePath))
                 {
@@ -113,14 +122,10 @@ namespace Car_Rental_System.Forms
                 }
                 else
                 {
-                    pictureBox1.Image = null; 
+                    pictureBox1.Image = null;
                 }
-
-
             }
         }
-
-
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
