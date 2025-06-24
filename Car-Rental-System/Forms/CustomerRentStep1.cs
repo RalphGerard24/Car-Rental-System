@@ -1,4 +1,5 @@
-﻿using Car_Rental_System.Models;
+﻿using Car_Rental_System.Forms;
+using Car_Rental_System.Models;
 using Car_Rental_System.Services;
 using System;
 using System.Linq;
@@ -19,9 +20,12 @@ namespace Car_Rental_System
             _admin = admin;
             this.FormClosing += CustomerRentStep1_FormClosing;
             LoadAvailableCars();
-            LoadBrandFilter(); 
+            LoadBrandFilter();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             button1.Click += button1_Click;
+            button3.Click += button3_Click;
+            button4.Click += button4_Click;
+
 
         }
         private void CustomerRentStep1_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,7 +55,7 @@ namespace Car_Rental_System
         //list ng car na available
         private List<Car> LoadAvailableCarsFromDb()
         {
-            using (var list= new CarRentalDbContext())
+            using (var list = new CarRentalDbContext())
             {
                 return list.Cars.Where(c => c.IsAvailable).ToList();
             }
@@ -126,13 +130,13 @@ namespace Car_Rental_System
                     textBox1.Text = $"{_selectedCar.Brand} {_selectedCar.Model}";
                 };
 
-               
+
                 carPanel.Controls.Add(carPictureBox);
                 carPanel.Controls.Add(carLabel);
                 carPanel.Controls.Add(viewBtn);
                 carPanel.Controls.Add(selectBtn);
 
-                
+
                 flowLayoutPanel1.Controls.Add(carPanel);
             }
         }
@@ -156,6 +160,27 @@ namespace Car_Rental_System
             this.Hide();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (var db = new CarRentalDbContext())
+            {
+                var ongoingRental = db.Rentals
+                    .FirstOrDefault(r => r.CustomerId == customerSelected.CustomerId &&
+                                         r.ActualReturnDate == null);
+
+                if (ongoingRental != null)
+                {
+                    var returnForm = new CustomerReturn(customerSelected.CustomerId, ongoingRental.CarId, _admin);
+                    returnForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("No active rental found to return.", "Return Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
         //view car details button
         private void button8_Click_1(object sender, EventArgs e)
         {
@@ -165,12 +190,31 @@ namespace Car_Rental_System
                 Car selectedCar = clickedBtn.Tag as Car;
                 if (selectedCar != null)
                 {
-                    CustomerCarDetails detailsForm = new CustomerCarDetails(selectedCar, customerSelected,_admin);
+                    CustomerCarDetails detailsForm = new CustomerCarDetails(selectedCar, customerSelected, _admin);
                     detailsForm.Show();
                     this.Hide();
                 }
             }
         }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                var result = MessageBox.Show(
+                    "You have selected a car. Are you sure you want to go back to the Admin view (Manage Customers)?",
+                    "Confirm Navigation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                    return;
+            }
+
+            var manageCustomerForm = new ManageCustomer(_admin);
+            manageCustomerForm.Show();
+            this.Hide();
+        }
+
 
         //proceed button
         private void button6_Click(object sender, EventArgs e)
@@ -213,7 +257,7 @@ namespace Car_Rental_System
                     .ToList();
 
                 comboBox1.Items.Clear();
-                comboBox1.Items.Add("All"); 
+                comboBox1.Items.Add("All");
                 comboBox1.Items.AddRange(brands.ToArray());
                 comboBox1.SelectedIndex = 0;
             }
@@ -225,12 +269,10 @@ namespace Car_Rental_System
         }
 
 
-        private void button5_Click(object sender, EventArgs e){}
+        private void button5_Click(object sender, EventArgs e) { }
 
-        private void pictureBox2_Click(object sender, EventArgs e){ }
+        private void pictureBox2_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {}
-
-
+        { }
     }
 }

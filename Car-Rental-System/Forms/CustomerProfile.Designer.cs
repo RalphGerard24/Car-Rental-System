@@ -63,6 +63,7 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
+            button3 = new Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -424,18 +425,29 @@
             label1.TabIndex = 8;
             label1.Text = "Car Rental";
             // 
-            // userDashboard
+            // button3
+            // 
+            button3.Location = new Point(1088, 41);
+            button3.Name = "button3";
+            button3.Size = new Size(159, 29);
+            button3.TabIndex = 29;
+            button3.Text = "Back to Admin";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // CustomerProfile
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1325, 668);
+            Controls.Add(button3);
             Controls.Add(groupBox2);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
             Font = new Font("Arial", 11.25F);
-            Name = "userDashboard";
+            Name = "CustomerProfile";
             Text = "Dashboard - Car Rental System";
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -484,5 +496,6 @@
         private Label label7;
         private TextBox textBox8;
         private Label label6;
+        private Button button3;
     }
 }

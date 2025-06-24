@@ -95,9 +95,9 @@
             label9.Font = new Font("Arial", 11.25F);
             label9.Location = new Point(26, 603);
             label9.Name = "label9";
-            label9.Size = new Size(54, 22);
+            label9.Size = new Size(134, 22);
             label9.TabIndex = 33;
-            label9.Text = "Price";
+            label9.Text = "Price (per day)";
             // 
             // textBox3
             // 
@@ -265,7 +265,7 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // addCars
+            // AddCars
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -275,7 +275,7 @@
             Controls.Add(label1);
             Controls.Add(groupBox1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "addCars";
+            Name = "AddCars";
             Text = " ";
             Load += addCars_Load;
             groupBox1.ResumeLayout(false);

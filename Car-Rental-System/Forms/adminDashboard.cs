@@ -32,23 +32,7 @@ namespace Car_Rental_System.Forms
                 ManageCustomerForm.Show();
             };
 
-            button5.Click += (s, e) =>
-            {
-                string customerID = textBox1.Text;
-                var detailsForm = new CustomerDetails(customerID);
-                detailsForm.FormClosed += (_, __) => this.Show();
-                detailsForm.Show();
-                //this.Hide();
-            };
-
-            button6.Click += (s, e) =>
-            {
-                string customerID = textBox14.Text;
-                var detailsForm = new CustomerDetails(customerID);
-                detailsForm.FormClosed += (_, __) => this.Show();
-                detailsForm.Show();
-                //this.Hide();
-            };
+    
+            }
         }
     }
-}

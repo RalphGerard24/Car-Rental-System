@@ -42,10 +42,5 @@ namespace Car_Rental_System.Models
             TransactionCode = transactionId;
             LateFee = lateFee;
         }
-
-        public static void RentalTest()
-        {
-            Console.WriteLine("Rental.cs is used successfully!!!");
-        }
     }
 }

@@ -27,6 +27,8 @@ namespace Car_Rental_System
             button4.Click += button4_Click;     // Return button
             button6.Click += button6_Click;     // View status
             button5.Click += button5_Click;     // Edit/Save button
+            button3.Click += button3_Click;    // Back to Admin
+
         }
 
         private void LoadCustomerData()
@@ -200,5 +202,13 @@ namespace Car_Rental_System
 
         private void label10_Click(object sender, EventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var manageCustomerForm = new ManageCustomer(_admin);
+            manageCustomerForm.Show();
+            this.Hide();
+
+        }
     }
 }

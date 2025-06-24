@@ -118,11 +118,13 @@ namespace Car_Rental_System.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show("Unable to load car image.\n" + ex.Message);
+                        pictureBox1.Image = null;
                     }
                 }
                 else
                 {
                     pictureBox1.Image = null;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
         }

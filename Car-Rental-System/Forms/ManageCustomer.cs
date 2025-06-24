@@ -85,8 +85,8 @@ namespace Car_Rental_System.Forms
                 dataGridView1.Columns.Add(new DataGridViewButtonColumn
                 {
                     Name = "ViewDashboard",
-                    HeaderText = "Dashboard",
-                    Text = "View Dashboard",
+                    HeaderText = "Customer Info",
+                    Text = "View Customer",
                     UseColumnTextForButtonValue = true
                 });
             }
