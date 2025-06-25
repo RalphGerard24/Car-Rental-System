@@ -360,7 +360,7 @@
             button3.TabIndex = 32;
             button3.Text = "Back to Admin";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+           // button3.Click += button3_Click;
             // 
             // CustomerReturn
             // 

@@ -1,12 +1,6 @@
 ﻿using Car_Rental_System.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
@@ -14,50 +8,62 @@ namespace Car_Rental_System.Forms
     public partial class RentalRecords : Form
     {
         private CarRentalDbContext _context;
-
         private readonly Admin _currentAdmin;
+
+        // Constructor - Initializes the rental records form with admin context and loads data
         public RentalRecords(Admin admin)
         {
             InitializeComponent();
-            _context = new CarRentalDbContext();
-            LoadRentalRecords();
+
             _currentAdmin = admin;
+            _context = new CarRentalDbContext();
 
-            button1.Click += (s, e) =>
-            {
-                var dashboardForm = new AdminDashboard(_currentAdmin);
-                dashboardForm.FormClosed += (_, __) => this.Close();
-                this.Hide();
-                dashboardForm.Show();
-            };
+            LoadRentalRecords();
+            InitializeEventHandlers();
+        }
 
-            // Navigation to Manage Cars
-            button2.Click += (s, e) =>
-            {
-                var manageCarsForm = new ManageCars(_currentAdmin);
-                manageCarsForm.FormClosed += (_, __) => this.Close();
-                this.Hide();
-                manageCarsForm.Show();
-            };
+        // Button Click Events
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            var dashboardForm = new AdminDashboard(_currentAdmin);
+            dashboardForm.FormClosed += (_, __) => this.Close();
+            dashboardForm.Show();
+            this.Hide();
+        }
 
-            // Navigation to Manage Customers
-            button4.Click += (s, e) =>
-            {
-                var manageCustomerForm = new ManageCustomer(_currentAdmin);
-                manageCustomerForm.FormClosed += (_, __) => this.Close();
-                this.Hide();
-                manageCustomerForm.Show();
-            };
+        private void buttonManageCars_Click(object sender, EventArgs e)
+        {
+            var manageCarsForm = new ManageCars(_currentAdmin);
+            manageCarsForm.FormClosed += (_, __) => this.Close();
+            manageCarsForm.Show();
+            this.Hide();
+        }
 
-            // Log Out (optional if you have button7)
-            button7.Click += (s, e) =>
-            {
-                this.Close(); // or show LoginForm if applicable
-            };
+        private void buttonManageCustomers_Click(object sender, EventArgs e)
+        {
+            var manageCustomerForm = new ManageCustomer(_currentAdmin);
+            manageCustomerForm.FormClosed += (_, __) => this.Close();
+            manageCustomerForm.Show();
+            this.Hide();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Private Helper Methods
+        private void InitializeEventHandlers()
+        {
+            button1.Click += buttonDashboard_Click;
+            button2.Click += buttonManageCars_Click;
+            button4.Click += buttonManageCustomers_Click;
+            button7.Click += buttonLogOut_Click;
         }
 
         private void LoadRentalRecords()
         {
+            // Load rental records with customer and car information using LINQ joins
             var rentalData = _context.Rentals
                 .Join(_context.Customers,
                       rental => rental.CustomerId,
@@ -84,11 +90,6 @@ namespace Car_Rental_System.Forms
                 .ToList();
 
             dataGridView1.DataSource = rentalData;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

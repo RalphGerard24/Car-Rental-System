@@ -1,39 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Car_Rental_System.Models;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Car_Rental_System.Models;
 using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
 {
     public partial class LoginPage : Form
     {
+        // Constructor - Initializes the login form and sets up password masking
         public LoginPage()
         {
             InitializeComponent();
-            textBox2.UseSystemPasswordChar = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
 
+            textBox2.UseSystemPasswordChar = true;
+            InitializeEventHandlers();
         }
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(password);
-                byte[] hash = sha256.ComputeHash(bytes);
-                return BitConverter.ToString(hash).Replace("-", "").ToLower();
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
+
+        // Button Click Events
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text.Trim();
             string password = textBox2.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
+
             string hashedPassword = HashPassword(password);
 
             using (var db = new CarRentalDbContext())
@@ -44,7 +40,7 @@ namespace Car_Rental_System.Forms
                 {
                     MessageBox.Show("Login successful!");
 
-                    AdminDashboard dashboard = new AdminDashboard(admin);
+                    var dashboard = new AdminDashboard(admin);
                     dashboard.Show();
                     this.Hide();
                 }
@@ -55,6 +51,20 @@ namespace Car_Rental_System.Forms
             }
         }
 
+        // Private Helper Methods
+        private void InitializeEventHandlers()
+        {
+            button1.Click += buttonLogin_Click;
+        }
 
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+        }
     }
 }

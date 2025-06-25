@@ -30,16 +30,16 @@
         {
             button7 = new Button();
             groupBox2 = new GroupBox();
+            comboBoxCity = new ComboBox();
             button5 = new Button();
             dataGridView1 = new DataGridView();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxAge = new ComboBox();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
             button3 = new Button();
-            comboBox2 = new ComboBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -55,11 +55,11 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(comboBox2);
+            groupBox2.Controls.Add(comboBoxCity);
             groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(comboBoxAge);
             groupBox2.Font = new Font("Arial", 11.25F);
             groupBox2.Location = new Point(304, 108);
             groupBox2.Name = "groupBox2";
@@ -67,6 +67,14 @@
             groupBox2.TabIndex = 20;
             groupBox2.TabStop = false;
             groupBox2.Text = "Customers";
+            // 
+            // comboBoxCity
+            // 
+            comboBoxCity.FormattingEnabled = true;
+            comboBoxCity.Location = new Point(266, 445);
+            comboBoxCity.Name = "comboBoxCity";
+            comboBoxCity.Size = new Size(121, 30);
+            comboBoxCity.TabIndex = 27;
             // 
             // button5
             // 
@@ -97,13 +105,13 @@
             label2.TabIndex = 24;
             label2.Text = "Filter by";
             // 
-            // comboBox1
+            // comboBoxAge
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(117, 445);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 30);
-            comboBox1.TabIndex = 23;
+            comboBoxAge.FormattingEnabled = true;
+            comboBoxAge.Location = new Point(117, 445);
+            comboBoxAge.Name = "comboBoxAge";
+            comboBoxAge.Size = new Size(121, 30);
+            comboBoxAge.TabIndex = 23;
             // 
             // button4
             // 
@@ -156,14 +164,6 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(266, 445);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 30);
-            comboBox2.TabIndex = 27;
-            // 
             // ManageCustomer
             // 
             AutoScaleDimensions = new SizeF(11F, 22F);
@@ -192,13 +192,13 @@
         private GroupBox groupBox2;
         private DataGridView dataGridView1;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxAge;
         private Button button4;
         private Button button2;
         private Button button1;
         private Label label1;
         private Button button5;
         private Button button3;
-        private ComboBox comboBox2;
+        private ComboBox comboBoxCity;
     }
 }

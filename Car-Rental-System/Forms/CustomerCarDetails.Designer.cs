@@ -82,7 +82,7 @@ namespace Car_Rental_System
             label5.Size = new Size(55, 22);
             label5.TabIndex = 20;
             label5.Text = "Make";
-            label5.Click += label5_Click;
+            //label5.Click += label5_Click;
             // 
             // textBox7
             // 
@@ -132,7 +132,7 @@ namespace Car_Rental_System
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(229, 29);
             textBox5.TabIndex = 15;
-            textBox5.TextChanged += textBox5_TextChanged;
+           // textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
             // 
@@ -202,7 +202,7 @@ namespace Car_Rental_System
             pictureBox1.Size = new Size(370, 251);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+           // pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 

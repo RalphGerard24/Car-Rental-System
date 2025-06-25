@@ -57,7 +57,7 @@
             button3.TabIndex = 40;
             button3.Text = "Back";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+           // button3.Click += button3_Click;
             // 
             // label2
             // 
@@ -139,7 +139,7 @@
             button1.TabIndex = 48;
             button1.Text = "Confirm";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            //button1.Click += button1_Click;
             // 
             // textBox3
             // 

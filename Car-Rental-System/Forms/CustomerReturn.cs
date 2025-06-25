@@ -13,74 +13,26 @@ namespace Car_Rental_System
         private Admin _admin;
         private Customer _currentCustomer;
 
+        // Constructor - Initializes the return form with customer, car, and admin data
         public CustomerReturn(int customerId, int carId, Admin admin)
         {
             InitializeComponent();
+
             _customerId = customerId;
             _carId = carId;
             _admin = admin;
 
+            // Load customer data from database
             using (var db = new CarRentalDbContext())
             {
                 _currentCustomer = db.Customers.Find(_customerId);
             }
 
             LoadReturnInfo();
-
-            // Event Handlers
-            buttonConfirmReturn.Click += buttonConfirmReturn_Click;
-            button1.Click += buttonProfile_Click;
-            button2.Click += buttonRent_Click;
-            button4.Click += buttonReturn_Click;
-            button3.Click += button3_Click;
+            InitializeEventHandlers();
         }
 
-        private void LoadReturnInfo()
-        {
-            CustomerIDTextBox.Text = _customerId.ToString();
-
-
-            using (var db = new CarRentalDbContext())
-            {
-                var rental = db.Rentals
-                    .FirstOrDefault(r => r.CustomerId == _customerId &&
-                                         r.CarId == _carId &&
-                                         r.ActualReturnDate == null);
-
-                var customer = db.Customers.Find(_customerId);
-                var car = db.Cars.Find(_carId);
-
-                if (rental != null && car != null)
-                {
-                    CarNameTextBox.Text = $"{car.Brand} {car.Model}";
-
-                    textBox2.Text = $"{customer?.FirstName} {customer?.LastName}";
-                    textBox6.Text = car.PlateNumber;
-                    textBox5.Text = rental.RentDatee.ToString("yyyy-MM-dd");
-                    textBox3.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? "N/A";
-
-                    textBox10.Text = rental.InitialCost?.ToString("F2");
-                    textBox9.Text = ((rental.InitialCost ?? 0) * 0.12).ToString("F2");
-                    textBox7.Text = rental.TotalCost?.ToString("F2");
-
-                    int lateDays = 0;
-                    double penalty = 0;
-
-                    if (rental.ReturnDate.HasValue)
-                    {
-                        lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
-                        penalty = lateDays > 0 ? lateDays * car.PriceRate : 0;
-                    }
-
-                    textBox8.Text = penalty.ToString("F2");
-                }
-                else
-                {
-                    MessageBox.Show("No active rental found.");
-                }
-            }
-        }
-
+        // Button Click Events
         private void buttonConfirmReturn_Click(object sender, EventArgs e)
         {
             using (var db = new CarRentalDbContext())
@@ -96,11 +48,10 @@ namespace Car_Rental_System
                 {
                     rental.ActualReturnDate = DateTime.Today;
 
-                    int lateDays = 0;
-
+                    // Calculate late fees if return is overdue
                     if (rental.ReturnDate.HasValue)
                     {
-                        lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
+                        int lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
                         rental.LateFee = lateDays > 0 ? lateDays * car.PriceRate : 0;
                     }
                     else
@@ -109,8 +60,8 @@ namespace Car_Rental_System
                     }
 
                     car.IsAvailable = true;
-
                     db.SaveChanges();
+
                     MessageBox.Show("Car return confirmed and processed successfully.");
 
                     var dashboard = new AdminDashboard(_admin);
@@ -124,8 +75,6 @@ namespace Car_Rental_System
             }
         }
 
-
-        // Navigation
         private void buttonProfile_Click(object sender, EventArgs e)
         {
             var profileForm = new CustomerProfile(_currentCustomer, _admin);
@@ -140,18 +89,64 @@ namespace Car_Rental_System
             this.Hide();
         }
 
-        private void buttonReturn_Click(object sender, EventArgs e)
+        private void buttonManageCustomer_Click(object sender, EventArgs e)
         {
-            var returnForm = new CustomerReturn(_customerId, _carId, _admin);
-            returnForm.Show();
+            var manageCustomerForm = new ManageCustomer(_admin);
+            manageCustomerForm.Show();
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        // Private Helper Methods
+        private void InitializeEventHandlers()
         {
-            var manageCustomerForm = new ManageCustomer(_admin);
-            this.Hide();
-            manageCustomerForm.Show();
+            buttonConfirmReturn.Click += buttonConfirmReturn_Click;
+            button1.Click += buttonProfile_Click;
+            button2.Click += buttonRent_Click;
+            button3.Click += buttonManageCustomer_Click;
+        }
+
+        private void LoadReturnInfo()
+        {
+            CustomerIDTextBox.Text = _customerId.ToString();
+
+            using (var db = new CarRentalDbContext())
+            {
+                var rental = db.Rentals
+                    .FirstOrDefault(r => r.CustomerId == _customerId &&
+                                         r.CarId == _carId &&
+                                         r.ActualReturnDate == null);
+
+                var customer = db.Customers.Find(_customerId);
+                var car = db.Cars.Find(_carId);
+
+                if (rental != null && car != null)
+                {
+                    // Populate car and customer information
+                    CarNameTextBox.Text = $"{car.Brand} {car.Model}";
+                    textBox2.Text = $"{customer?.FirstName} {customer?.LastName}";
+                    textBox6.Text = car.PlateNumber;
+                    textBox5.Text = rental.RentDatee.ToString("yyyy-MM-dd");
+                    textBox3.Text = rental.ReturnDate?.ToString("yyyy-MM-dd") ?? "N/A";
+
+                    // Populate cost information
+                    textBox10.Text = rental.InitialCost?.ToString("F2");
+                    textBox9.Text = ((rental.InitialCost ?? 0) * 0.12).ToString("F2"); // 12% tax
+                    textBox7.Text = rental.TotalCost?.ToString("F2");
+
+                    // Calculate and display penalty for late return
+                    double penalty = 0;
+                    if (rental.ReturnDate.HasValue)
+                    {
+                        int lateDays = (DateTime.Today - rental.ReturnDate.Value).Days;
+                        penalty = lateDays > 0 ? lateDays * car.PriceRate : 0;
+                    }
+                    textBox8.Text = penalty.ToString("F2");
+                }
+                else
+                {
+                    MessageBox.Show("No active rental found.");
+                }
+            }
         }
     }
 }

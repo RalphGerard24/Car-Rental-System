@@ -6,117 +6,244 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
+    /// <summary>
+    /// Form for adding new customers to the car rental system
+    /// Includes comprehensive validation for all customer fields
+    /// </summary>
     public partial class AddCustomers : Form
     {
+        #region Constructor
         public AddCustomers()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Button Click Events
+        /// <summary>
+        /// Save button click handler - validates and saves new customer
+        /// </summary>
         private void button6_Click(object sender, EventArgs e)
         {
-            bool IsOnlyLetters(string input) => input.All(c => char.IsLetter(c) || c == ' ');
-            bool IsDigits(string input) => input.All(char.IsDigit);
-
-            // --- Validation ---
-            if (string.IsNullOrWhiteSpace(textBox4.Text) ||  // FirstName
-                string.IsNullOrWhiteSpace(textBox11.Text) || // LastName
-                string.IsNullOrWhiteSpace(textBox10.Text) || // Age
-                string.IsNullOrWhiteSpace(textBox9.Text) ||  // Contact
-                string.IsNullOrWhiteSpace(textBox8.Text) ||  // Email
-                string.IsNullOrWhiteSpace(textBox7.Text) ||  // License #
-                string.IsNullOrWhiteSpace(textBox3.Text) ||  // City
-                string.IsNullOrWhiteSpace(textBox1.Text) ||  // Barangay
-                string.IsNullOrWhiteSpace(textBox2.Text))    // Zipcode
-            {
-                MessageBox.Show("All fields except middle initial are required.");
+            // Perform comprehensive validation before saving
+            if (!ValidateAllFields())
                 return;
-            }
 
-            if (!IsOnlyLetters(textBox4.Text) || !IsOnlyLetters(textBox11.Text) ||
-                !IsOnlyLetters(textBox3.Text) || !IsOnlyLetters(textBox1.Text))
-            {
-                MessageBox.Show("Name, City, and Barangay must contain letters only.");
-                return;
-            }
-
-            if (!string.IsNullOrWhiteSpace(textBox5.Text) &&
-                (textBox5.Text.Length != 1 || !char.IsLetter(textBox5.Text[0])))
-            {
-                MessageBox.Show("Middle initial must be a single letter.");
-                return;
-            }
-
-            if (!int.TryParse(textBox10.Text, out int age) || age < 18)
-            {
-                MessageBox.Show("Age must be a number and at least 18.");
-                return;
-            }
-
-            if (!IsDigits(textBox9.Text) || textBox9.Text.Length != 11)
-            {
-                MessageBox.Show("Contact number must be exactly 11 digits.");
-                return;
-            }
-
-            if (!IsDigits(textBox2.Text))
-            {
-                MessageBox.Show("Zip Code must be numeric.");
-                return;
-            }
-
-            if (!textBox8.Text.Contains("@") || !textBox8.Text.Contains("."))
-            {
-                MessageBox.Show("Email format is invalid.");
-                return;
-            }
-
-            // --- Confirm Save ---
+            // Confirm save operation with user
             var result = MessageBox.Show(
                 "Are you sure you want to save? Please double-check your information.",
-                "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                "Confirm Save",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                var newCustomer = new Customer
-                {
-                    FirstName = textBox4.Text,
-                    LastName = textBox11.Text,
-                    MiddleInnitial = textBox5.Text,
-                    Age = textBox10.Text,
-                    ContactNumber = textBox9.Text,
-                    LicenseNumber = textBox7.Text,
-                    Email = textBox8.Text,
-                    City = textBox3.Text,
-                    Barangay = textBox1.Text,
-                    ZipCode = textBox2.Text
-                };
-
-                CustomerService.AddCustomer(newCustomer);
-                MessageBox.Show("Customer added successfully!");
-                this.Close();
+                SaveCustomer();
             }
         }
 
+        /// <summary>
+        /// Close button click handler
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void textBox5_TextChanged(object sender, EventArgs e) { }
-        private void textBox4_TextChanged(object sender, EventArgs e) { }
-        private void label2_Click(object sender, EventArgs e) { }
-        private void textBox3_TextChanged(object sender, EventArgs e) { }
-        private void textBox2_TextChanged(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void label5_Click(object sender, EventArgs e) { }
-        private void textBox7_TextChanged(object sender, EventArgs e) { }
-        private void label13_Click(object sender, EventArgs e) { }
-        private void textBox8_TextChanged(object sender, EventArgs e) { }
-        private void label16_Click(object sender, EventArgs e) { }
-        private void label14_Click(object sender, EventArgs e) { }
-        private void textBox11_TextChanged(object sender, EventArgs e) { }
-        private void textBox9_TextChanged(object sender, EventArgs e) { }
-        private void textBox10_TextChanged(object sender, EventArgs e) { }
-    }
+        #endregion
 
+        #region Private Helper Methods
+        /// <summary>
+        /// Validates all input fields for customer data
+        /// </summary>
+        /// <returns>True if all validations pass, false otherwise</returns>
+        private bool ValidateAllFields()
+        {
+            // Check for required fields
+            if (!ValidateRequiredFields())
+                return false;
+
+            // Validate text-only fields
+            if (!ValidateTextFields())
+                return false;
+
+            // Validate middle initial if provided
+            if (!ValidateMiddleInitial())
+                return false;
+
+            // Validate numeric fields
+            if (!ValidateNumericFields())
+                return false;
+
+            // Validate email format
+            if (!ValidateEmail())
+                return false;
+
+            if (!ValidateLicenseNumber()) 
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if all required fields are filled
+        /// </summary>
+        private bool ValidateRequiredFields()
+        {
+            if (string.IsNullOrWhiteSpace(textBox4.Text) ||   // FirstName
+                string.IsNullOrWhiteSpace(textBox11.Text) ||  // LastName
+                string.IsNullOrWhiteSpace(textBox10.Text) ||  // Age
+                string.IsNullOrWhiteSpace(textBox9.Text) ||   // Contact
+                string.IsNullOrWhiteSpace(textBox8.Text) ||   // Email
+                string.IsNullOrWhiteSpace(textBox7.Text) ||   // License #
+                string.IsNullOrWhiteSpace(textBox3.Text) ||   // City
+                string.IsNullOrWhiteSpace(textBox1.Text) ||   // Barangay
+                string.IsNullOrWhiteSpace(textBox2.Text))     // Zipcode
+            {
+                MessageBox.Show("All fields except middle initial are required.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Validates fields that should contain only letters
+        /// </summary>
+        private bool ValidateTextFields()
+        {
+            if (!IsOnlyLetters(textBox4.Text) ||   // FirstName
+                !IsOnlyLetters(textBox11.Text) ||  // LastName
+                !IsOnlyLetters(textBox3.Text) ||   // City
+                !IsOnlyLetters(textBox1.Text))     // Barangay
+            {
+                MessageBox.Show("Name, City, and Barangay must contain letters only.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Validates middle initial format if provided
+        /// </summary>
+        private bool ValidateMiddleInitial()
+        {
+            if (!string.IsNullOrWhiteSpace(textBox5.Text) &&
+                (textBox5.Text.Length != 1 || !char.IsLetter(textBox5.Text[0])))
+            {
+                MessageBox.Show("Middle initial must be a single letter.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Validates numeric fields (age, contact, zipcode)
+        /// </summary>
+        private bool ValidateNumericFields()
+        {
+            // Validate age
+            if (!int.TryParse(textBox10.Text, out int age) || age < 18)
+            {
+                MessageBox.Show("Age must be a number and at least 18.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validate contact number
+            if (!IsDigits(textBox9.Text) || textBox9.Text.Length != 11)
+            {
+                MessageBox.Show("Contact number must be exactly 11 digits.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validate zip code
+            if (!IsDigits(textBox2.Text))
+            {
+                MessageBox.Show("Zip Code must be numeric.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidateLicenseNumber()
+        {
+            string license = textBox7.Text.Trim().ToUpper();
+
+            // Pattern: 1 letter + 2 digits, dash, 3 digits, dash, 6 digits
+            if (!System.Text.RegularExpressions.Regex.IsMatch(license, @"^[A-Z]\d{2}-\d{3}-\d{6}$"))
+            {
+                MessageBox.Show("License Number format is invalid.\nExpected format: LDD-DDD-DDDDDD",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Validates email format
+        /// </summary>
+        private bool ValidateEmail()
+        {
+            if (!textBox8.Text.Contains("@") || !textBox8.Text.Contains("."))
+            {
+                MessageBox.Show("Email format is invalid.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Creates and saves the new customer object
+        /// </summary>
+        private void SaveCustomer()
+        {
+            try
+            {
+                var newCustomer = new Customer
+                {
+                    FirstName = textBox4.Text.Trim(),
+                    LastName = textBox11.Text.Trim(),
+                    MiddleInnitial = textBox5.Text.Trim(),
+                    Age = textBox10.Text.Trim(),
+                    ContactNumber = textBox9.Text.Trim(),
+                    LicenseNumber = textBox7.Text.Trim(),
+                    Email = textBox8.Text.Trim(),
+                    City = textBox3.Text.Trim(),
+                    Barangay = textBox1.Text.Trim(),
+                    ZipCode = textBox2.Text.Trim()
+                };
+
+                CustomerService.AddCustomer(newCustomer);
+                MessageBox.Show("Customer added successfully!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving customer: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Helper method to check if string contains only letters and spaces
+        /// </summary>
+        private bool IsOnlyLetters(string input) => input.All(c => char.IsLetter(c) || c == ' ');
+
+        /// <summary>
+        /// Helper method to check if string contains only digits
+        /// </summary>
+        private bool IsDigits(string input) => input.All(char.IsDigit);
+        #endregion
+
+    }
 }

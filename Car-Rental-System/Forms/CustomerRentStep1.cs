@@ -4,6 +4,9 @@ using Car_Rental_System.Services;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.IO;
+using System.Drawing;
 
 namespace Car_Rental_System
 {
@@ -18,16 +21,23 @@ namespace Car_Rental_System
             InitializeComponent();
             customerSelected = customer;
             _admin = admin;
-            this.FormClosing += CustomerRentStep1_FormClosing;
+
+            InitializeEventHandlers();
             LoadAvailableCars();
             LoadBrandFilter();
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            button1.Click += button1_Click;
-            button3.Click += button3_Click;
-            button4.Click += button4_Click;
-
-
         }
+
+        private void InitializeEventHandlers()
+        {
+            this.FormClosing += CustomerRentStep1_FormClosing;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            button1.Click += BackToProfileButton_Click;
+            button3.Click += BackToAdminButton_Click;
+            button4.Click += ReturnCarButton_Click;
+            button6.Click += ProceedButton_Click;
+        }
+
+        // Form Event Handlers
         private void CustomerRentStep1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && e.CloseReason != CloseReason.ApplicationExitCall)
@@ -52,96 +62,8 @@ namespace Car_Rental_System
             }
         }
 
-        //list ng car na available
-        private List<Car> LoadAvailableCarsFromDb()
-        {
-            using (var list = new CarRentalDbContext())
-            {
-                return list.Cars.Where(c => c.IsAvailable).ToList();
-            }
-        }
-        //dynamic for box
-        private void LoadAvailableCars(string selectedBrand = "All")
-        {
-            var cars = LoadAvailableCarsFromDb();
-
-            if (selectedBrand != "All")
-            {
-                cars = cars.Where(c => c.Brand == selectedBrand).ToList();
-            }
-
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var car in cars)
-            {
-                Panel carPanel = new Panel
-                {
-                    Width = 200,
-                    Height = 260,
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Margin = new Padding(10)
-                };
-
-                PictureBox carPictureBox = new PictureBox
-                {
-                    Width = 180,
-                    Height = 120,
-                    Location = new Point(10, 10),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    SizeMode = PictureBoxSizeMode.StretchImage
-                };
-
-                if (!string.IsNullOrEmpty(car.ImagePath) && File.Exists(car.ImagePath))
-                {
-                    carPictureBox.Image = Image.FromFile(car.ImagePath);
-                }
-
-                Label carLabel = new Label
-                {
-                    Text = $"{car.Brand} {car.Model}",
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    AutoSize = false,
-                    Width = 180,
-                    Height = 30,
-                    Location = new Point(10, 140),
-                    Font = new Font("Arial", 10, FontStyle.Bold)
-                };
-
-                Button viewBtn = new Button
-                {
-                    Text = "View Car Details",
-                    Width = 180,
-                    Height = 30,
-                    Location = new Point(10, 175),
-                    Tag = car
-                };
-                viewBtn.Click += button8_Click_1;
-
-                Button selectBtn = new Button
-                {
-                    Text = "Select",
-                    Width = 180,
-                    Height = 30,
-                    Location = new Point(10, 210),
-                    Tag = car
-                };
-                selectBtn.Click += (s, e) =>
-                {
-                    _selectedCar = (Car)((Button)s).Tag;
-                    textBox1.Text = $"{_selectedCar.Brand} {_selectedCar.Model}";
-                };
-
-
-                carPanel.Controls.Add(carPictureBox);
-                carPanel.Controls.Add(carLabel);
-                carPanel.Controls.Add(viewBtn);
-                carPanel.Controls.Add(selectBtn);
-
-
-                flowLayoutPanel1.Controls.Add(carPanel);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        // Button Click Events
+        private void BackToProfileButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBox1.Text))
             {
@@ -160,7 +82,26 @@ namespace Car_Rental_System
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void BackToAdminButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                var result = MessageBox.Show(
+                    "You have selected a car. Are you sure you want to go back to the Admin view (Manage Customers)?",
+                    "Confirm Navigation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                    return;
+            }
+
+            var manageCustomerForm = new ManageCustomer(_admin);
+            this.Hide();
+            manageCustomerForm.Show();
+        }
+
+        private void ReturnCarButton_Click(object sender, EventArgs e)
         {
             using (var db = new CarRentalDbContext())
             {
@@ -181,44 +122,7 @@ namespace Car_Rental_System
             }
         }
 
-        //view car details button
-        private void button8_Click_1(object sender, EventArgs e)
-        {
-            Button clickedBtn = sender as Button;
-            if (clickedBtn != null)
-            {
-                Car selectedCar = clickedBtn.Tag as Car;
-                if (selectedCar != null)
-                {
-                    CustomerCarDetails detailsForm = new CustomerCarDetails(selectedCar, customerSelected, _admin);
-                    detailsForm.Show();
-                    this.Hide();
-                }
-            }
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                var result = MessageBox.Show(
-                    "You have selected a car. Are you sure you want to go back to the Admin view (Manage Customers)?",
-                    "Confirm Navigation",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result != DialogResult.Yes)
-                    return;
-            }
-
-            var manageCustomerForm = new ManageCustomer(_admin);
-            this.Hide();
-            manageCustomerForm.Show();
-            
-        }
-
-
-        //proceed button
-        private void button6_Click(object sender, EventArgs e)
+        private void ProceedButton_Click(object sender, EventArgs e)
         {
             if (_selectedCar != null)
             {
@@ -243,14 +147,123 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Please select a car before proceeding.", "No Car Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
-        //filter by brand
+
+        private void ViewCarDetailsButton_Click(object sender, EventArgs e)
+        {
+            Button clickedBtn = sender as Button;
+            if (clickedBtn?.Tag is Car selectedCar)
+            {
+                CustomerCarDetails detailsForm = new CustomerCarDetails(selectedCar, customerSelected, _admin);
+                detailsForm.Show();
+                this.Hide();
+            }
+        }
+
+        // UI Events
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedBrand = comboBox1.SelectedItem.ToString();
+            LoadAvailableCars(selectedBrand);
+        }
+
+        // Private Helper Methods
+        private List<Car> LoadAvailableCarsFromDb()
+        {
+            using (var context = new CarRentalDbContext())
+            {
+                return context.Cars.Where(c => c.IsAvailable).ToList();
+            }
+        }
+
+        private void LoadAvailableCars(string selectedBrand = "All")
+        {
+            var cars = LoadAvailableCarsFromDb();
+
+            if (selectedBrand != "All")
+            {
+                cars = cars.Where(c => c.Brand == selectedBrand).ToList();
+            }
+
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var car in cars)
+            {
+                CreateCarPanel(car);
+            }
+        }
+
+        private void CreateCarPanel(Car car)
+        {
+            Panel carPanel = new Panel
+            {
+                Width = 200,
+                Height = 260,
+                BorderStyle = BorderStyle.FixedSingle,
+                Margin = new Padding(10)
+            };
+
+            PictureBox carPictureBox = new PictureBox
+            {
+                Width = 180,
+                Height = 120,
+                Location = new Point(10, 10),
+                BorderStyle = BorderStyle.FixedSingle,
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+
+            if (!string.IsNullOrEmpty(car.ImagePath) && File.Exists(car.ImagePath))
+            {
+                carPictureBox.Image = Image.FromFile(car.ImagePath);
+            }
+
+            Label carLabel = new Label
+            {
+                Text = $"{car.Brand} {car.Model}",
+                TextAlign = ContentAlignment.MiddleCenter,
+                AutoSize = false,
+                Width = 180,
+                Height = 30,
+                Location = new Point(10, 140),
+                Font = new Font("Arial", 10, FontStyle.Bold)
+            };
+
+            Button viewBtn = new Button
+            {
+                Text = "View Car Details",
+                Width = 180,
+                Height = 30,
+                Location = new Point(10, 175),
+                Tag = car
+            };
+            viewBtn.Click += ViewCarDetailsButton_Click;
+
+            Button selectBtn = new Button
+            {
+                Text = "Select",
+                Width = 180,
+                Height = 30,
+                Location = new Point(10, 210),
+                Tag = car
+            };
+            selectBtn.Click += (s, e) =>
+            {
+                _selectedCar = (Car)((Button)s).Tag;
+                textBox1.Text = $"{_selectedCar.Brand} {_selectedCar.Model}";
+            };
+
+            carPanel.Controls.Add(carPictureBox);
+            carPanel.Controls.Add(carLabel);
+            carPanel.Controls.Add(viewBtn);
+            carPanel.Controls.Add(selectBtn);
+
+            flowLayoutPanel1.Controls.Add(carPanel);
+        }
+
         private void LoadBrandFilter()
         {
-            using (var brandcar = new CarRentalDbContext())
+            using (var context = new CarRentalDbContext())
             {
-                var brands = brandcar.Cars
+                var brands = context.Cars
                     .Where(c => c.IsAvailable)
                     .Select(c => c.Brand)
                     .Distinct()
@@ -263,17 +276,5 @@ namespace Car_Rental_System
                 comboBox1.SelectedIndex = 0;
             }
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedBrand = comboBox1.SelectedItem.ToString();
-            LoadAvailableCars(selectedBrand);
-        }
-
-
-        private void button5_Click(object sender, EventArgs e) { }
-
-        private void pictureBox2_Click(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        { }
     }
 }

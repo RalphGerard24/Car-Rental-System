@@ -2,38 +2,32 @@
 using Car_Rental_System.Models;
 using Car_Rental_System.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
     public partial class AddCars : Form
     {
-        private string selectedImagePath = string.Empty; // To store the path of the selected image
+        private string selectedImagePath = string.Empty;
         private string savedImagePath = string.Empty;
+        private Car EditingCar;
+
+        // Constructor for Add mode
         public AddCars()
         {
             InitializeComponent();
-            this.button2.Click += new System.EventHandler(this.saveCarButton_Click);
-            this.button1.Click += new EventHandler(this.uploadImageButton_Click);
-
-
+            this.button2.Click += saveCarButton_Click;
+            this.button1.Click += uploadImageButton_Click;
         }
 
-        //Editing constructor to handle editing an existing car
-        private Car EditingCar;
+        // Constructor for Edit mode
         public AddCars(Car carToEdit) : this()
         {
             EditingCar = carToEdit;
             this.Text = "Edit Car";
-
-            MessageBox.Show("Editing Car ID: " + EditingCar.CarId);
 
             textBox2.Text = carToEdit.Model;
             textBox4.Text = carToEdit.Brand;
@@ -42,8 +36,8 @@ namespace Car_Rental_System
             textBox5.Text = carToEdit.Color;
             textBox7.Text = carToEdit.PriceRate.ToString();
             dateTimePicker1.Value = carToEdit.DateRegistered;
-            selectedImagePath = Path.Combine(Application.StartupPath, carToEdit.ImagePath);
 
+            selectedImagePath = Path.Combine(Application.StartupPath, carToEdit.ImagePath);
             if (File.Exists(selectedImagePath))
             {
                 pictureBox1.Image = Image.FromFile(selectedImagePath);
@@ -51,74 +45,38 @@ namespace Car_Rental_System
             }
         }
 
+        // Save/Add/Update Car Button
         private void saveCarButton_Click(object sender, EventArgs e)
         {
-            // --- Field Presence Check ---
-            if (string.IsNullOrWhiteSpace(textBox2.Text) ||  // Model
-                string.IsNullOrWhiteSpace(textBox4.Text) ||  // Brand
-                string.IsNullOrWhiteSpace(textBox6.Text) ||  // Plate Number
-                string.IsNullOrWhiteSpace(textBox3.Text) ||  // Year
-                string.IsNullOrWhiteSpace(textBox5.Text) ||  // Color
-                string.IsNullOrWhiteSpace(textBox7.Text))    // Price
+            if (!ValidateInputFields()) return;
+
+            if (!int.TryParse(textBox3.Text, out int year) ||
+                !int.TryParse(textBox7.Text, out int priceRate) || priceRate <= 0)
             {
-                MessageBox.Show("Please fill all required fields.");
+                MessageBox.Show("Year and Price must be valid numbers.");
                 return;
             }
 
-            // --- Integer Validations ---
-            if (!int.TryParse(textBox3.Text, out int year))
-            {
-                MessageBox.Show("Year must be a valid number.");
-                return;
-            }
-
-            if (!int.TryParse(textBox7.Text, out int priceRate) || priceRate <= 0)
-            {
-                MessageBox.Show("Price Rate must be a positive number.");
-                return;
-            }
-
-            // --- Color Validation ---
             if (!textBox5.Text.All(c => char.IsLetter(c) || c == ' '))
             {
                 MessageBox.Show("Color must only contain letters and spaces.");
                 return;
             }
 
-            using (var db = new CarRentalDbContext())
+            if (!IsValidPlateNumberFormat(textBox6.Text.ToUpper()))
             {
-                bool plateExists = db.Cars.Any(c =>
-                    c.PlateNumber == textBox6.Text &&
-                    (EditingCar == null || c.CarId != EditingCar.CarId)); // Exclude current car when editing
-
-                if (plateExists)
-                {
-                    MessageBox.Show("A car with this Plate Number already exists.");
-                    return;
-                }
-            }
-
-
-            // --- Image validation ---
-            if (string.IsNullOrWhiteSpace(selectedImagePath) || !File.Exists(selectedImagePath))
-            {
-                MessageBox.Show("Please attach a valid car image.");
+                MessageBox.Show("Invalid Plate Number format. Format must be 'LLL DDDD'.");
                 return;
             }
 
+            if (!ValidateImage()) return;
+
+            if (!ValidatePlateNumberUniqueness()) return;
+
             try
             {
-                // Save image to Images folder
-                string imagesFolder = Path.Combine(Application.StartupPath, "Images");
-                Directory.CreateDirectory(imagesFolder);
+                string imagePathForDatabase = SaveImageFile();
 
-                string imageFileName = Guid.NewGuid().ToString() + Path.GetExtension(selectedImagePath);
-                savedImagePath = Path.Combine(imagesFolder, imageFileName);
-                File.Copy(selectedImagePath, savedImagePath, true);
-
-                string imagePathForDatabase = Path.Combine("Images", imageFileName);
-
-                // Create Car 
                 var car = new Car
                 {
                     Model = textBox2.Text,
@@ -134,14 +92,14 @@ namespace Car_Rental_System
 
                 if (EditingCar != null)
                 {
-                    car.CarId = EditingCar.CarId; 
+                    car.CarId = EditingCar.CarId;
                     CarService.UpdateCar(car);
-                    MessageBox.Show("Car updated in database.");
+                    MessageBox.Show("Car updated successfully.");
                 }
                 else
                 {
                     CarService.AddCar(car);
-                    MessageBox.Show("Car added successfully!");
+                    MessageBox.Show("New car added successfully.");
                 }
 
                 var manageForm = new ManageCars();
@@ -152,15 +110,16 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Error saving car:\n" + ex.Message);
             }
-
         }
 
-        //upload image button click event
+        // Upload Image Button
         private void uploadImageButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-            openFileDialog.Title = "Select Car Image";
+            using OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                Title = "Select Car Image"
+            };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -170,24 +129,71 @@ namespace Car_Rental_System
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // Validation Helpers
+        private bool ValidateInputFields()
         {
+            if (string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox6.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox5.Text) ||
+                string.IsNullOrWhiteSpace(textBox7.Text))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return false;
+            }
+            return true;
+        }
 
-        }
-        private void button3_Click(object sender, EventArgs e)
+        private bool ValidateImage()
         {
-            this.Close();
+            if (string.IsNullOrWhiteSpace(selectedImagePath) || !File.Exists(selectedImagePath))
+            {
+                MessageBox.Show("Please attach a valid car image.");
+                return false;
+            }
+            return true;
         }
-        private void addCars_Load(object sender, EventArgs e)
-        { }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        { }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        { }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        { }
-        private void label6_Click(object sender, EventArgs e)
-        { }
+
+        private bool ValidatePlateNumberUniqueness()
+        {
+            using var db = new CarRentalDbContext();
+            bool plateExists = db.Cars.Any(c =>
+                c.PlateNumber == textBox6.Text &&
+                (EditingCar == null || c.CarId != EditingCar.CarId));
+
+            if (plateExists)
+            {
+                MessageBox.Show("Plate Number already exists.");
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsValidPlateNumberFormat(string plate)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(plate, @"^[A-Z]{3} \d{4}$");
+        }
+
+
+        private string SaveImageFile()
+        {
+            string imagesFolder = Path.Combine(Application.StartupPath, "Images");
+            Directory.CreateDirectory(imagesFolder);
+
+            string imageFileName = Guid.NewGuid() + Path.GetExtension(selectedImagePath);
+            savedImagePath = Path.Combine(imagesFolder, imageFileName);
+            File.Copy(selectedImagePath, savedImagePath, true);
+
+            return Path.Combine("Images", imageFileName);
+        }
+
+   
+
+
+
+
+
 
     }
 }

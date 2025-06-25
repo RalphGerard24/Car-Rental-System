@@ -128,7 +128,7 @@
             button1.TabIndex = 24;
             button1.Text = "Dashboard";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            //button1.Click += button1_Click;
             // 
             // label1
             // 

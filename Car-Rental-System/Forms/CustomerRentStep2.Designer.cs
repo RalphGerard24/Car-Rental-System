@@ -172,7 +172,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(135, 27);
             dateTimePicker1.TabIndex = 0;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            //dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // button5
             // 
@@ -183,7 +183,7 @@
             button5.TabIndex = 42;
             button5.Text = "Back";
             button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+           // button5.Click += button5_Click;
             // 
             // groupBox3
             // 
@@ -211,7 +211,7 @@
             groupBox3.TabIndex = 36;
             groupBox3.TabStop = false;
             groupBox3.Text = "Customer Details";
-            groupBox3.Enter += groupBox3_Enter;
+            //groupBox3.Enter += groupBox3_Enter;
             // 
             // textBox14
             // 
@@ -312,7 +312,7 @@
             label17.Size = new Size(148, 22);
             label17.TabIndex = 20;
             label17.Text = "Customer Name";
-            label17.Click += label17_Click;
+            //label17.Click += label17_Click;
             // 
             // label14
             // 
@@ -333,7 +333,7 @@
             textBox11.ReadOnly = true;
             textBox11.Size = new Size(243, 29);
             textBox11.TabIndex = 21;
-            textBox11.TextChanged += textBox11_TextChanged;
+           // textBox11.TextChanged += textBox11_TextChanged;
             // 
             // textBox9
             // 
@@ -406,7 +406,7 @@
             label12.Size = new Size(54, 22);
             label12.TabIndex = 19;
             label12.Text = "Price";
-            label12.Click += label12_Click;
+          //  label12.Click += label12_Click;
             // 
             // textBox16
             // 
@@ -426,7 +426,7 @@
             label11.Size = new Size(60, 22);
             label11.TabIndex = 17;
             label11.Text = "Brand";
-            label11.Click += label11_Click;
+           // label11.Click += label11_Click;
             // 
             // textBox15
             // 
@@ -525,7 +525,7 @@
             button6.TabIndex = 29;
             button6.Text = "Proceed";
             button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+           // button6.Click += button6_Click;
             // 
             // button7
             // 

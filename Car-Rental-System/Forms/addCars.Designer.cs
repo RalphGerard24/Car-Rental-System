@@ -78,7 +78,7 @@
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "Edit Car Details";
-            groupBox1.Enter += groupBox1_Enter;
+          //  groupBox1.Enter += groupBox1_Enter;
             // 
             // textBox7
             // 
@@ -164,7 +164,7 @@
             label6.Size = new Size(56, 22);
             label6.TabIndex = 14;
             label6.Text = "Color";
-            label6.Click += label6_Click;
+          //  label6.Click += label6_Click;
             // 
             // textBox6
             // 
@@ -212,7 +212,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(229, 29);
             textBox2.TabIndex = 9;
-            textBox2.TextChanged += textBox2_TextChanged;
+           // textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -252,7 +252,7 @@
             button2.TabIndex = 27;
             button2.Text = "Save";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+           // button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -263,7 +263,7 @@
             button3.TabIndex = 28;
             button3.Text = "Cancel";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+           // button3.Click += button3_Click;
             // 
             // AddCars
             // 
@@ -277,7 +277,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddCars";
             Text = " ";
-            Load += addCars_Load;
+          //  Load += addCars_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

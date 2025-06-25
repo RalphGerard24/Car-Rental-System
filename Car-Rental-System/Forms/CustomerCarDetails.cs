@@ -1,13 +1,9 @@
 ﻿using Car_Rental_System.Services;
 using Car_Rental_System.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Car_Rental_System
@@ -15,16 +11,21 @@ namespace Car_Rental_System
     public partial class CustomerCarDetails : Form
     {
         private Customer _currentCustomer;
-        private Car selectedCar;
+        private Car _selectedCar;
         private Admin _admin;
 
+        // Constructor - Initializes the CustomerCarDetails form with car, customer, and admin data
         public CustomerCarDetails(Car car, Customer customer, Admin admin)
         {
             InitializeComponent();
-            selectedCar = car;
+            _selectedCar = car;
             _currentCustomer = customer;
+            _admin = admin;
+
             LoadCarData();
         }
+
+        // Button Click Events
         private void button3_Click_1(object sender, EventArgs e)
         {
             CustomerRentStep1 rentForm = new CustomerRentStep1(_currentCustomer, _admin);
@@ -32,31 +33,51 @@ namespace Car_Rental_System
             this.Hide();
         }
 
+        // Private Helper Methods
         private void LoadCarData()
         {
-            //textBox1.Text = selectedCar.CarId.ToString();
-            textBox2.Text = selectedCar.Model;
-            textBox5.Text = selectedCar.PriceRate.ToString();
-            textBox6.Text = selectedCar.Color;
-            textBox4.Text = selectedCar.PlateNumber;
-            textBox3.Text = selectedCar.DateRegistered.ToShortDateString();
-            textBox7.Text = selectedCar.Brand;
-            pictureBox1.Image = Image.FromFile(selectedCar.ImagePath);
+            // Load car information into textboxes
+            textBox2.Text = _selectedCar.Model;
+            textBox5.Text = _selectedCar.PriceRate.ToString("F2");
+            textBox6.Text = _selectedCar.Color;
+            textBox4.Text = _selectedCar.PlateNumber;
+            textBox3.Text = _selectedCar.DateRegistered.ToShortDateString();
+            textBox7.Text = _selectedCar.Brand;
+
+            // Load and properly display car image
+            LoadCarImage();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void LoadCarImage()
         {
+            try
+            {
+                if (!string.IsNullOrEmpty(_selectedCar.ImagePath) && File.Exists(_selectedCar.ImagePath))
+                {
+                    // Load the image and set proper display properties
+                    using (var originalImage = Image.FromFile(_selectedCar.ImagePath))
+                    {
+                        pictureBox1.Image = new Bitmap(originalImage);
+                    }
 
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
+                    // Set PictureBox properties for proper image scaling
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                else
+                {
+                    // Set placeholder or default image if car image not found
+                    pictureBox1.Image = null;
+                    pictureBox1.BackColor = Color.LightGray;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle image loading errors gracefully
+                pictureBox1.Image = null;
+                pictureBox1.BackColor = Color.LightGray;
+                MessageBox.Show($"Error loading car image: {ex.Message}", "Image Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

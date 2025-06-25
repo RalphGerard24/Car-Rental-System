@@ -128,7 +128,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(229, 29);
             textBox5.TabIndex = 39;
-            textBox5.TextChanged += textBox5_TextChanged;
+          //  textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
             // 
@@ -148,7 +148,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(229, 29);
             textBox4.TabIndex = 37;
-            textBox4.TextChanged += textBox4_TextChanged;
+           // textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label5
             // 
@@ -159,7 +159,7 @@
             label5.Size = new Size(101, 22);
             label5.TabIndex = 36;
             label5.Text = "Last Name";
-            label5.Click += label5_Click;
+           // label5.Click += label5_Click;
             // 
             // textBox3
             // 
@@ -169,7 +169,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(229, 29);
             textBox3.TabIndex = 35;
-            textBox3.TextChanged += textBox3_TextChanged;
+           // textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label4
             // 
@@ -189,7 +189,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(229, 29);
             textBox2.TabIndex = 33;
-            textBox2.TextChanged += textBox2_TextChanged;
+           // textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -209,7 +209,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(229, 29);
             textBox1.TabIndex = 31;
-            textBox1.TextChanged += textBox1_TextChanged;
+          //  textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -220,7 +220,7 @@
             label2.Size = new Size(89, 22);
             label2.TabIndex = 30;
             label2.Text = "Barangay";
-            label2.Click += label2_Click;
+         //   label2.Click += label2_Click;
             // 
             // textBox7
             // 
@@ -230,7 +230,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(229, 29);
             textBox7.TabIndex = 29;
-            textBox7.TextChanged += textBox7_TextChanged;
+            //textBox7.TextChanged += textBox7_TextChanged;
             // 
             // label13
             // 
@@ -241,7 +241,7 @@
             label13.Size = new Size(146, 44);
             label13.TabIndex = 28;
             label13.Text = "Driver's License\r\nNo.\r\n";
-            label13.Click += label13_Click;
+           // label13.Click += label13_Click;
             // 
             // textBox8
             // 
@@ -251,7 +251,7 @@
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(229, 29);
             textBox8.TabIndex = 27;
-            textBox8.TextChanged += textBox8_TextChanged;
+           // textBox8.TextChanged += textBox8_TextChanged;
             // 
             // label17
             // 
@@ -272,7 +272,7 @@
             label14.Size = new Size(133, 22);
             label14.TabIndex = 26;
             label14.Text = "Email Address";
-            label14.Click += label14_Click;
+          //  label14.Click += label14_Click;
             // 
             // textBox11
             // 
@@ -282,7 +282,7 @@
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(229, 29);
             textBox11.TabIndex = 21;
-            textBox11.TextChanged += textBox11_TextChanged;
+          //  textBox11.TextChanged += textBox11_TextChanged;
             // 
             // textBox9
             // 
@@ -292,7 +292,7 @@
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(229, 29);
             textBox9.TabIndex = 25;
-            textBox9.TextChanged += textBox9_TextChanged;
+            //textBox9.TextChanged += textBox9_TextChanged;
             // 
             // label16
             // 
@@ -303,7 +303,7 @@
             label16.Size = new Size(45, 22);
             label16.TabIndex = 22;
             label16.Text = "Age";
-            label16.Click += label16_Click;
+           // label16.Click += label16_Click;
             // 
             // label15
             // 
@@ -323,7 +323,7 @@
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(229, 29);
             textBox10.TabIndex = 23;
-            textBox10.TextChanged += textBox10_TextChanged;
+           // textBox10.TextChanged += textBox10_TextChanged;
             // 
             // button1
             // 

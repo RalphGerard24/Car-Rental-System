@@ -36,7 +36,6 @@
             label6 = new Label();
             textBox6 = new TextBox();
             label5 = new Label();
-            button5 = new Button();
             textBox7 = new TextBox();
             label2 = new Label();
             textBox2 = new TextBox();
@@ -88,7 +87,6 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(textBox6);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(textBox7);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(textBox2);
@@ -105,7 +103,6 @@
             groupBox1.TabIndex = 22;
             groupBox1.TabStop = false;
             groupBox1.Text = "Customer Details";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // textBox15
             // 
@@ -166,16 +163,6 @@
             label5.TabIndex = 31;
             label5.Text = "City/State";
             label5.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(15, 446);
-            button5.Name = "button5";
-            button5.Size = new Size(324, 33);
-            button5.TabIndex = 30;
-            button5.Text = "Edit";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
             // 
             // textBox7
             // 
@@ -334,7 +321,6 @@
             label10.Size = new Size(147, 22);
             label10.TabIndex = 25;
             label10.Text = " Payment Status";
-            label10.Click += label10_Click;
             // 
             // label13
             // 
@@ -449,6 +435,7 @@
             Font = new Font("Arial", 11.25F);
             Name = "CustomerProfile";
             Text = "Dashboard - Car Rental System";
+           // Load += CustomerProfile_Load;
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

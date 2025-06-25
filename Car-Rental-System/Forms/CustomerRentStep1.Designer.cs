@@ -122,7 +122,7 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(174, 29);
             textBox1.TabIndex = 49;
-            textBox1.TextChanged += textBox1_TextChanged;
+            //textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -167,7 +167,7 @@
             button5.TabIndex = 49;
             button5.Text = "Select";
             button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+           // button5.Click += button5_Click;
             // 
             // textBox2
             // 
@@ -188,7 +188,7 @@
             button8.TabIndex = 47;
             button8.Text = "View Car Details";
             button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click_1;
+            //button8.Click += button8_Click_1;
             // 
             // pictureBox2
             // 
@@ -198,7 +198,7 @@
             pictureBox2.Size = new Size(175, 157);
             pictureBox2.TabIndex = 46;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            //pictureBox2.Click += pictureBox2_Click;
             // 
             // label3
             // 
@@ -219,7 +219,7 @@
             button6.TabIndex = 29;
             button6.Text = "Proceed";
             button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            //button6.Click += button6_Click;
             // 
             // label2
             // 
@@ -259,7 +259,7 @@
             button3.TabIndex = 28;
             button3.Text = "Back to Admin";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            //button3.Click += button3_Click;
             // 
             // CustomerRentStep1
             // 

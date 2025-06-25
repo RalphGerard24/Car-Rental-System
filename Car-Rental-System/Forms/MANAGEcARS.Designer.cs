@@ -84,7 +84,7 @@
             groupBox1.Size = new Size(422, 35);
             groupBox1.TabIndex = 27;
             groupBox1.TabStop = false;
-            groupBox1.Enter += groupBox1_Enter;
+           // groupBox1.Enter += groupBox1_Enter;
             // 
             // radioButton3
             // 
@@ -109,7 +109,7 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Available";
             radioButton2.UseVisualStyleBackColor = true;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            //radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // radioButton1
             // 
@@ -122,7 +122,7 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "All";
             radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += FilterAvailability_CheckedChanged;
+            //radioButton1.CheckedChanged += FilterAvailability_CheckedChanged;
             // 
             // comboBox2
             // 
@@ -141,7 +141,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(870, 396);
             dataGridView1.TabIndex = 25;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            //dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label2
             // 
@@ -169,7 +169,7 @@
             button6.TabIndex = 22;
             button6.Text = "Add";
             button6.UseVisualStyleBackColor = true;
-            button6.Click += AddNewCarButton_Click;
+           // button6.Click += AddNewCarButton_Click;
             // 
             // button4
             // 
@@ -180,7 +180,7 @@
             button4.TabIndex = 11;
             button4.Text = "Customers";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            //button4.Click += button4_Click;
             // 
             // button2
             // 
@@ -201,7 +201,7 @@
             button1.TabIndex = 9;
             button1.Text = "Dashboard";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            //button1.Click += button1_Click_1;
             // 
             // label1
             // 
@@ -221,7 +221,7 @@
             button3.TabIndex = 15;
             button3.Text = "Rental Records";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            //button3.Click += button3_Click;
             // 
             // ManageCars
             // 
@@ -238,7 +238,7 @@
             Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ManageCars";
             Text = "Manage Cars - Car Rental System";
-            Load += ManageCar_Loads;
+            //Load += ManageCar_Loads;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);

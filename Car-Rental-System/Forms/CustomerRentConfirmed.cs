@@ -5,8 +5,6 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-
-
 namespace Car_Rental_System
 {
     public partial class CustomerRentConfirmed : Form
@@ -23,25 +21,31 @@ namespace Car_Rental_System
             _carId = carId;
             _transactionId = transactionId;
             _admin = admin;
+
+            InitializeEventHandlers();
             LoadRentData();
         }
 
+        private void InitializeEventHandlers()
+        {
+            button1.Click += FinishButton_Click;
+        }
+
+        // Button Click Events
+        private void FinishButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You successfully rented the car.", "Rental Confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dashboard = new AdminDashboard(_admin);
+            dashboard.Show();
+            this.Close();
+        }
+
+        // Private Helper Methods
         private void LoadRentData()
         {
             textBox1.Text = _customerId.ToString();
             textBox2.Text = _carId.ToString();
             textBox4.Text = _transactionId;
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("You successfully rented the car.");
-            var dashboard = new AdminDashboard(_admin);
-            dashboard.Show();
-            this.Close();
-        }
-
     }
-
-
 }
-

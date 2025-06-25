@@ -308,7 +308,7 @@
             groupBox2.TabIndex = 20;
             groupBox2.TabStop = false;
             groupBox2.Text = "Customer Details";
-            groupBox2.Enter += groupBox2_Enter;
+          //  groupBox2.Enter += groupBox2_Enter;
             // 
             // textBox7
             // 
@@ -429,7 +429,7 @@
             textBox10.ReadOnly = true;
             textBox10.Size = new Size(229, 29);
             textBox10.TabIndex = 23;
-            textBox10.TextChanged += textBox10_TextChanged;
+          //  textBox10.TextChanged += textBox10_TextChanged;
             // 
             // textBox13
             // 
@@ -440,7 +440,7 @@
             textBox13.ReadOnly = true;
             textBox13.Size = new Size(229, 29);
             textBox13.TabIndex = 30;
-            textBox13.TextChanged += textBox13_TextChanged;
+          //  textBox13.TextChanged += textBox13_TextChanged;
             // 
             // textBox14
             // 
@@ -451,7 +451,7 @@
             textBox14.ReadOnly = true;
             textBox14.Size = new Size(229, 29);
             textBox14.TabIndex = 31;
-            textBox14.TextChanged += textBox14_TextChanged;
+            //textBox14.TextChanged += textBox14_TextChanged;
             // 
             // textBox15
             // 
@@ -462,7 +462,7 @@
             textBox15.ReadOnly = true;
             textBox15.Size = new Size(229, 29);
             textBox15.TabIndex = 33;
-            textBox15.TextChanged += textBox15_TextChanged;
+          //  textBox15.TextChanged += textBox15_TextChanged;
             // 
             // textBox16
             // 
@@ -473,7 +473,7 @@
             textBox16.ReadOnly = true;
             textBox16.Size = new Size(229, 29);
             textBox16.TabIndex = 32;
-            textBox16.TextChanged += textBox16_TextChanged;
+           // textBox16.TextChanged += textBox16_TextChanged;
             // 
             // radioButton1
             // 
