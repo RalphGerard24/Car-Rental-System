@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Car_Rental_System.Forms;
 
 namespace Car_Rental_System
@@ -10,9 +11,11 @@ namespace Car_Rental_System
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
+            // Load global font once
+            FontManager.LoadCustomFont();
+
             Application.Run(new LoginPage());
         }
     }

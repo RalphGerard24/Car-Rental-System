@@ -91,5 +91,10 @@ namespace Car_Rental_System.Forms
 
             dataGridView1.DataSource = rentalData;
         }
+
+        private void RentalRecords_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

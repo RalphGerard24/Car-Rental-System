@@ -75,7 +75,7 @@ namespace Car_Rental_System
             }
         }
 
-        
+
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -146,8 +146,8 @@ namespace Car_Rental_System
                 }
             }
 
-           // SetFieldsReadOnly(true);
-           // button5.Text = "Edit";
+            // SetFieldsReadOnly(true);
+            // button5.Text = "Edit";
             //_isEditMode = false;
         }
 
@@ -163,6 +163,9 @@ namespace Car_Rental_System
             textBox7.ReadOnly = readOnly;
         }
 
-     
+        private void CustomerProfile_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

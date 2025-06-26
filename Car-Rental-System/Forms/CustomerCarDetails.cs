@@ -79,5 +79,29 @@ namespace Car_Rental_System
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                // Only change the font family, keep the control's original size and style
+                ctrl.Font = new Font(font.FontFamily, ctrl.Font.Size, ctrl.Font.Style);
+
+                if (ctrl.HasChildren)
+                    ApplyFont(ctrl, font);
+            }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            ApplyFont(this, FontManager.GlobalFont);
+        }
+
     }
 }

@@ -152,5 +152,15 @@ namespace Car_Rental_System
 
             textBox4.Text = _totalCost.ToString("F2");
         }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void roundedPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -29,159 +29,259 @@
         private void InitializeComponent()
         {
             button7 = new Button();
-            groupBox2 = new GroupBox();
-            comboBoxCity = new ComboBox();
-            button5 = new Button();
-            dataGridView1 = new DataGridView();
-            label2 = new Label();
-            comboBoxAge = new ComboBox();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
-            label1 = new Label();
             button3 = new Button();
-            groupBox2.SuspendLayout();
+            label1 = new Label();
+            roundedPanel1 = new Car_Rental_System.Controls.RoundedPanel();
+            label4 = new Label();
+            roundedPanel3 = new Car_Rental_System.Controls.RoundedPanel();
+            button5 = new Button();
+            comboBoxCity = new ComboBox();
+            label3 = new Label();
+            comboBoxAge = new ComboBox();
+            roundedPanel4 = new Car_Rental_System.Controls.RoundedPanel();
+            dataGridView1 = new DataGridView();
+            roundedPanel2 = new Car_Rental_System.Controls.RoundedPanel();
+            roundedPanel1.SuspendLayout();
+            roundedPanel3.SuspendLayout();
+            roundedPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            roundedPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // button7
             // 
+            button7.Anchor = AnchorStyles.None;
+            button7.BackColor = Color.FromArgb(154, 214, 212);
+            button7.FlatStyle = FlatStyle.Popup;
+            button7.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button7.ForeColor = Color.FromArgb(0, 76, 76);
             button7.Location = new Point(1132, 29);
             button7.Name = "button7";
-            button7.Size = new Size(86, 62);
+            button7.Size = new Size(201, 63);
             button7.TabIndex = 21;
             button7.Text = "Log Out";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(comboBoxCity);
-            groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(dataGridView1);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(comboBoxAge);
-            groupBox2.Font = new Font("Arial", 11.25F);
-            groupBox2.Location = new Point(304, 108);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(913, 486);
-            groupBox2.TabIndex = 20;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Customers";
-            // 
-            // comboBoxCity
-            // 
-            comboBoxCity.FormattingEnabled = true;
-            comboBoxCity.Location = new Point(266, 445);
-            comboBoxCity.Name = "comboBoxCity";
-            comboBoxCity.Size = new Size(121, 30);
-            comboBoxCity.TabIndex = 27;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(735, 435);
-            button5.Name = "button5";
-            button5.Size = new Size(158, 40);
-            button5.TabIndex = 26;
-            button5.Text = "Add Customer";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 33);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(870, 396);
-            dataGridView1.TabIndex = 25;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 448);
-            label2.Name = "label2";
-            label2.Size = new Size(77, 22);
-            label2.TabIndex = 24;
-            label2.Text = "Filter by";
-            // 
-            // comboBoxAge
-            // 
-            comboBoxAge.FormattingEnabled = true;
-            comboBoxAge.Location = new Point(117, 445);
-            comboBoxAge.Name = "comboBoxAge";
-            comboBoxAge.Size = new Size(121, 30);
-            comboBoxAge.TabIndex = 23;
+            button7.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
-            button4.Font = new Font("Arial", 11.25F);
-            button4.Location = new Point(40, 369);
+            button4.Anchor = AnchorStyles.None;
+            button4.BackColor = Color.FromArgb(154, 214, 212);
+            button4.FlatStyle = FlatStyle.Popup;
+            button4.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button4.ForeColor = Color.FromArgb(0, 76, 76);
+            button4.Location = new Point(22, 313);
             button4.Name = "button4";
-            button4.Size = new Size(245, 99);
+            button4.Size = new Size(187, 123);
             button4.TabIndex = 18;
             button4.Text = "Customers";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
-            button2.Font = new Font("Arial", 11.25F);
-            button2.Location = new Point(40, 242);
+            button2.Anchor = AnchorStyles.None;
+            button2.BackColor = Color.FromArgb(154, 214, 212);
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button2.ForeColor = Color.FromArgb(0, 76, 76);
+            button2.Location = new Point(22, 169);
             button2.Name = "button2";
-            button2.Size = new Size(245, 99);
+            button2.Size = new Size(187, 123);
             button2.TabIndex = 17;
             button2.Text = "Manage Cars";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
-            button1.Font = new Font("Arial", 11.25F);
-            button1.Location = new Point(40, 117);
+            button1.Anchor = AnchorStyles.None;
+            button1.BackColor = Color.FromArgb(154, 214, 212);
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button1.ForeColor = Color.FromArgb(0, 76, 76);
+            button1.Location = new Point(22, 21);
             button1.Name = "button1";
-            button1.Size = new Size(245, 99);
+            button1.Size = new Size(187, 123);
             button1.TabIndex = 16;
             button1.Text = "Dashboard";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(20, 29);
-            label1.Name = "label1";
-            label1.Size = new Size(328, 68);
-            label1.TabIndex = 15;
-            label1.Text = "Car Rental";
             // 
             // button3
             // 
-            button3.Location = new Point(40, 491);
+            button3.Anchor = AnchorStyles.None;
+            button3.BackColor = Color.FromArgb(154, 214, 212);
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button3.ForeColor = Color.FromArgb(0, 76, 76);
+            button3.Location = new Point(22, 457);
             button3.Name = "button3";
-            button3.Size = new Size(245, 87);
+            button3.Size = new Size(187, 123);
             button3.TabIndex = 22;
             button3.Text = "Rental Records";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Poppins", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(0, 110, 108);
+            label1.Location = new Point(20, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(295, 84);
+            label1.TabIndex = 15;
+            label1.Text = "Car Rental";
+            // 
+            // roundedPanel1
+            // 
+            roundedPanel1.Anchor = AnchorStyles.None;
+            roundedPanel1.BackColor = Color.FromArgb(0, 110, 108);
+            roundedPanel1.Controls.Add(button3);
+            roundedPanel1.Controls.Add(button4);
+            roundedPanel1.Controls.Add(button2);
+            roundedPanel1.Controls.Add(button1);
+            roundedPanel1.CornerRadius = 20;
+            roundedPanel1.Location = new Point(42, 112);
+            roundedPanel1.Name = "roundedPanel1";
+            roundedPanel1.Size = new Size(232, 599);
+            roundedPanel1.TabIndex = 23;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.None;
+            label4.AutoSize = true;
+            label4.Font = new Font("Poppins", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(17, 87, 99);
+            label4.Location = new Point(23, 14);
+            label4.Name = "label4";
+            label4.Size = new Size(240, 65);
+            label4.TabIndex = 2;
+            label4.Text = "Customers";
+            // 
+            // roundedPanel3
+            // 
+            roundedPanel3.Anchor = AnchorStyles.None;
+            roundedPanel3.BackColor = Color.FromArgb(0, 110, 108);
+            roundedPanel3.Controls.Add(button5);
+            roundedPanel3.Controls.Add(comboBoxCity);
+            roundedPanel3.Controls.Add(label3);
+            roundedPanel3.Controls.Add(comboBoxAge);
+            roundedPanel3.CornerRadius = 20;
+            roundedPanel3.Location = new Point(17, 509);
+            roundedPanel3.Name = "roundedPanel3";
+            roundedPanel3.Size = new Size(988, 71);
+            roundedPanel3.TabIndex = 3;
+            // 
+            // button5
+            // 
+            button5.Anchor = AnchorStyles.None;
+            button5.BackColor = Color.FromArgb(154, 214, 212);
+            button5.FlatStyle = FlatStyle.Popup;
+            button5.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button5.ForeColor = Color.FromArgb(0, 76, 76);
+            button5.Location = new Point(774, 15);
+            button5.Name = "button5";
+            button5.Size = new Size(192, 45);
+            button5.TabIndex = 26;
+            button5.Text = "Add Customer";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
+            // comboBoxCity
+            // 
+            comboBoxCity.Anchor = AnchorStyles.None;
+            comboBoxCity.FormattingEnabled = true;
+            comboBoxCity.Location = new Point(252, 24);
+            comboBoxCity.Name = "comboBoxCity";
+            comboBoxCity.Size = new Size(121, 25);
+            comboBoxCity.TabIndex = 27;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(22, 23);
+            label3.Name = "label3";
+            label3.Size = new Size(74, 28);
+            label3.TabIndex = 24;
+            label3.Text = "Filter by";
+            // 
+            // comboBoxAge
+            // 
+            comboBoxAge.Anchor = AnchorStyles.None;
+            comboBoxAge.FormattingEnabled = true;
+            comboBoxAge.Location = new Point(116, 24);
+            comboBoxAge.Name = "comboBoxAge";
+            comboBoxAge.Size = new Size(121, 25);
+            comboBoxAge.TabIndex = 23;
+            // 
+            // roundedPanel4
+            // 
+            roundedPanel4.Anchor = AnchorStyles.None;
+            roundedPanel4.BackColor = Color.White;
+            roundedPanel4.Controls.Add(dataGridView1);
+            roundedPanel4.CornerRadius = 20;
+            roundedPanel4.Location = new Point(23, 80);
+            roundedPanel4.Name = "roundedPanel4";
+            roundedPanel4.Size = new Size(982, 408);
+            roundedPanel4.TabIndex = 4;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.Anchor = AnchorStyles.None;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(5, 6);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(971, 396);
+            dataGridView1.TabIndex = 25;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // roundedPanel2
+            // 
+            roundedPanel2.Anchor = AnchorStyles.None;
+            roundedPanel2.BackColor = Color.FromArgb(154, 214, 212);
+            roundedPanel2.Controls.Add(roundedPanel4);
+            roundedPanel2.Controls.Add(roundedPanel3);
+            roundedPanel2.Controls.Add(label4);
+            roundedPanel2.CornerRadius = 20;
+            roundedPanel2.Location = new Point(303, 112);
+            roundedPanel2.Name = "roundedPanel2";
+            roundedPanel2.Size = new Size(1026, 599);
+            roundedPanel2.TabIndex = 24;
             // 
             // ManageCustomer
             // 
-            AutoScaleDimensions = new SizeF(11F, 22F);
+            AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1239, 614);
-            Controls.Add(button3);
+            BackColor = Color.White;
+            ClientSize = new Size(1370, 749);
+            Controls.Add(roundedPanel2);
+            Controls.Add(roundedPanel1);
             Controls.Add(button7);
-            Controls.Add(groupBox2);
-            Controls.Add(button4);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(label1);
             Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MaximumSize = new Size(1386, 788);
+            MinimumSize = new Size(1364, 766);
             Name = "ManageCustomer";
-            Text = "Form1";
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Customers - Car Rental System";
+            WindowState = FormWindowState.Maximized;
+            Load += ManageCustomer_Load;
+            roundedPanel1.ResumeLayout(false);
+            roundedPanel3.ResumeLayout(false);
+            roundedPanel3.PerformLayout();
+            roundedPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            roundedPanel2.ResumeLayout(false);
+            roundedPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,16 +289,20 @@
         #endregion
 
         private Button button7;
-        private GroupBox groupBox2;
-        private DataGridView dataGridView1;
-        private Label label2;
-        private ComboBox comboBoxAge;
         private Button button4;
         private Button button2;
         private Button button1;
-        private Label label1;
-        private Button button5;
         private Button button3;
+        private Label label1;
+        private Controls.RoundedPanel roundedPanel1;
+        private Label label4;
+        private Controls.RoundedPanel roundedPanel3;
+        private Button button5;
         private ComboBox comboBoxCity;
+        private Label label3;
+        private ComboBox comboBoxAge;
+        private Controls.RoundedPanel roundedPanel4;
+        private DataGridView dataGridView1;
+        private Controls.RoundedPanel roundedPanel2;
     }
 }

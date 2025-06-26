@@ -2,7 +2,11 @@
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.WinForms;
+using SkiaSharp;
+using LiveChartsCore.SkiaSharpView.Painting;
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
@@ -10,11 +14,25 @@ namespace Car_Rental_System.Forms
     public partial class AdminDashboard : Form
     {
         private readonly Admin _currentAdmin;
+        private CartesianChart salesChart;
+
 
         public AdminDashboard(Admin admin)
         {
             InitializeComponent();
             _currentAdmin = admin;
+            // Create and add the chart to the form
+            salesChart = new CartesianChart
+            {
+                Dock = DockStyle.Top,
+                Height = 300,
+                Margin = new Padding(10)
+            };
+
+            panel6.Controls.Add(salesChart);
+            panel6.Controls.SetChildIndex(salesChart, 0);
+
+
             LoadDashboardData();
 
             // Navigation buttons
@@ -37,53 +55,51 @@ namespace Car_Rental_System.Forms
             };
 
             button3.Click += button3_Click;
-
-
-
         }
-
-        //private System.Windows.Forms.DataVisualization.Charting.Chart chartSales;
 
         private void LoadDashboardData()
         {
             using var context = new CarRentalDbContext();
 
             var salesPerDay = context.Rentals
-                .Where(r => r.RentDatee >= DateTime.Now.AddDays(-7))
-                .GroupBy(r => r.RentDatee.Date)
-                .Select(g => new { Date = g.Key, Count = g.Count() })
-                .ToList();
+           .Where(r => r.RentDatee >= DateTime.Now.AddDays(-30)) // last 30 days
+           .AsEnumerable()
+           .GroupBy(r => r.RentDatee.Date) // group by actual day
+           .Select(g => new { Day = g.Key.ToShortDateString(), Count = g.Count() })
+           .OrderBy(x => DateTime.Parse(x.Day))
+           .ToList();
 
-            // Create the line series
+            // Create Line Series
             var lineSeries = new LineSeries<int>
             {
-                Values = salesPerDay.Select(x => x.Count).ToArray()
+                Values = salesPerDay.Select(x => x.Count).ToArray(),
+                Name = "Rentals per Day",
+                Stroke = new SolidColorPaint(SKColors.Blue, 2),
+                Fill = null
             };
 
-            // Assign X-axis labels
-            chartSales.XAxes = new[]
+            // Assign series to chart
+            salesChart.Series = new ISeries[] { lineSeries };
+
+            // X-axis labels
+            salesChart.XAxes = new[]
             {
-                new Axis
-                {
-                    Labels = salesPerDay.Select(x => x.Date.ToShortDateString()).ToArray(),
-                    LabelsRotation = 15,
-                    Name = "Date"
+               new Axis
+                  {
+                Labels = salesPerDay.Select(x => x.Day).ToArray(),
+                LabelsRotation = 15,
+                Name = "Date"
                 }
-            };
+             };
 
-            chartSales.YAxes = new[]
+            // Y-axis
+            salesChart.YAxes = new[]
             {
-                new Axis
-                {
-                    Name = "Rentals"
-                }
+            new Axis
+                 {
+                   Name = "Total Rentals"
+                  }
             };
-
-            // Assign the series to the chart
-            chartSales.Series = new ISeries[] { lineSeries };
-
-
-
 
             // 1. Total Customers
             int customerCount = context.Customers.Count();
@@ -94,7 +110,7 @@ namespace Car_Rental_System.Forms
             labelCarCount.Text = carCount.ToString();
 
             // 3. Cars on Rent
-            int rentedCount = context.Rentals.Count(r => r.ReturnDate == null);
+            int rentedCount = context.Rentals.Count(r => r.ActualReturnDate == null);
             labelCarsOnRent.Text = rentedCount.ToString();
 
             // 4. Available Cars
@@ -102,11 +118,16 @@ namespace Car_Rental_System.Forms
             labelCarsAvailable.Text = availableCount.ToString();
 
             // 5. Total Revenue (optional: use ActualReturnDate to exclude ongoing)
-            double totalRevenue = context.Rentals
-                .Where(r => r.TotalCost.HasValue)
-                .Sum(r => r.TotalCost.Value);
-            labelRevenue.Text = totalRevenue.ToString("C"); // "₱0.00"
+            using (var db = new CarRentalDbContext())
+            {
+                var totalRevenueBeforeVAT = db.Rentals
+                    .Where(r => r.TotalCost != null && r.ActualReturnDate != null)
+                    .Sum(r => r.TotalCost.Value / 1.12);
+
+                labelRevenue.Text = totalRevenueBeforeVAT.ToString("C");
+            }
         }
+
         private void label3_Click(object sender, EventArgs e)
         {
 

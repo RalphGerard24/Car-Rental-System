@@ -24,6 +24,11 @@ namespace Car_Rental_System.Forms
 
             // TODO: Load and populate customer data here
         }
+
+        private void roundedPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

@@ -47,5 +47,29 @@ namespace Car_Rental_System
             textBox2.Text = _carId.ToString();
             textBox4.Text = _transactionId;
         }
+
+        private void CustomerRentConfirmed_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                // Only change the font family, keep the control's original size and style
+                ctrl.Font = new Font(font.FontFamily, ctrl.Font.Size, ctrl.Font.Style);
+
+                if (ctrl.HasChildren)
+                    ApplyFont(ctrl, font);
+            }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            ApplyFont(this, FontManager.GlobalFont);
+        }
+
     }
 }
