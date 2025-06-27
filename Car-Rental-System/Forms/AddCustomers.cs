@@ -169,6 +169,17 @@ namespace Car_Rental_System
                 return false;
             }
 
+            using (var db = new CarRentalDbContext())
+            {
+                bool exists = db.Customers.Any(c => c.LicenseNumber.ToUpper() == license);
+                if (exists)
+                {
+                    MessageBox.Show("License Number already exists in the system.",
+                        "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
             return true;
         }
 

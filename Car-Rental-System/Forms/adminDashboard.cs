@@ -102,23 +102,23 @@ namespace Car_Rental_System.Forms
                   }
             };
 
-            // 1. Total Customers
+            // Total Customers
             int customerCount = context.Customers.Count();
             labelCustomerCount.Text = customerCount.ToString();
 
-            // 2. Total Cars
+            // Total Cars
             int carCount = context.Cars.Count();
             labelCarCount.Text = carCount.ToString();
 
-            // 3. Cars on Rent
+            // Cars on Rent
             int rentedCount = context.Rentals.Count(r => r.ActualReturnDate == null);
             labelCarsOnRent.Text = rentedCount.ToString();
 
-            // 4. Available Cars
+            // Available Cars
             int availableCount = context.Cars.Count(c => c.IsAvailable);
             labelCarsAvailable.Text = availableCount.ToString();
 
-            // 5. Total Revenue (optional: use ActualReturnDate to exclude ongoing)
+            // Total Revenue (optional: use ActualReturnDate to exclude ongoing)
             using (var db = new CarRentalDbContext())
             {
                 var totalRevenueBeforeVAT = db.Rentals
