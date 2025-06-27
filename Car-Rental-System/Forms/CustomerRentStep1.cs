@@ -276,5 +276,22 @@ namespace Car_Rental_System
                 comboBox1.SelectedIndex = 0;
             }
         }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            ApplyFont(this, FontManager.GlobalFont); // ← use the shared global font
+        }
+
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                // Keep size and style, only change font family
+                ctrl.Font = new Font(font.FontFamily, ctrl.Font.Size, ctrl.Font.Style);
+
+                if (ctrl.HasChildren)
+                    ApplyFont(ctrl, font);
+            }
+        }
     }
 }
