@@ -6,10 +6,7 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    /// <summary>
     /// Form for adding new customers to the car rental system
-    /// Includes comprehensive validation for all customer fields
-    /// </summary>
     public partial class AddCustomers : Form
     {
         #region Constructor
@@ -19,10 +16,10 @@ namespace Car_Rental_System
         }
         #endregion
 
-        #region Button Click Events
-        /// <summary>
+        #region Button Click Events 
         /// Save button click handler - validates and saves new customer
-        /// </summary>
+        /// 
+
         private void button6_Click(object sender, EventArgs e)
         {
             // Perform comprehensive validation before saving
@@ -42,9 +39,7 @@ namespace Car_Rental_System
             }
         }
 
-        /// <summary>
         /// Close button click handler
-        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -52,9 +47,8 @@ namespace Car_Rental_System
         #endregion
 
         #region Private Helper Methods
-        /// <summary>
+ 
         /// Validates all input fields for customer data
-        /// </summary>
         /// <returns>True if all validations pass, false otherwise</returns>
         private bool ValidateAllFields()
         {
@@ -85,9 +79,7 @@ namespace Car_Rental_System
             return true;
         }
 
-        /// <summary>
         /// Checks if all required fields are filled
-        /// </summary>
         private bool ValidateRequiredFields()
         {
             if (string.IsNullOrWhiteSpace(textBox4.Text) ||   // FirstName
@@ -107,9 +99,7 @@ namespace Car_Rental_System
             return true;
         }
 
-        /// <summary>
         /// Validates fields that should contain only letters
-        /// </summary>
         private bool ValidateTextFields()
         {
             if (!IsOnlyLetters(textBox4.Text) ||   // FirstName
@@ -124,9 +114,7 @@ namespace Car_Rental_System
             return true;
         }
 
-        /// <summary>
         /// Validates middle initial format if provided
-        /// </summary>
         private bool ValidateMiddleInitial()
         {
             if (!string.IsNullOrWhiteSpace(textBox5.Text) &&
@@ -139,9 +127,7 @@ namespace Car_Rental_System
             return true;
         }
 
-        /// <summary>
         /// Validates numeric fields (age, contact, zipcode)
-        /// </summary>
         private bool ValidateNumericFields()
         {
             // Validate age
@@ -186,10 +172,7 @@ namespace Car_Rental_System
             return true;
         }
 
-
-        /// <summary>
         /// Validates email format
-        /// </summary>
         private bool ValidateEmail()
         {
             if (!textBox8.Text.Contains("@") || !textBox8.Text.Contains("."))
@@ -201,9 +184,7 @@ namespace Car_Rental_System
             return true;
         }
 
-        /// <summary>
         /// Creates and saves the new customer object
-        /// </summary>
         private void SaveCustomer()
         {
             try
@@ -234,21 +215,18 @@ namespace Car_Rental_System
             }
         }
 
-        /// <summary>
         /// Helper method to check if string contains only letters and spaces
-        /// </summary>
         private bool IsOnlyLetters(string input) => input.All(c => char.IsLetter(c) || c == ' ');
 
-        /// <summary>
         /// Helper method to check if string contains only digits
-        /// </summary>
+
         private bool IsDigits(string input) => input.All(char.IsDigit);
         #endregion
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            ApplyFont(this, FontManager.GlobalFont); // ← use the shared global font
+            ApplyFont(this, FontManager.GlobalFont); // use the shared global font
         }
 
         private void ApplyFont(Control parent, Font font)

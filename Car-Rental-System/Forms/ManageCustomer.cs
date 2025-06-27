@@ -5,10 +5,9 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System.Forms
 {
-    /// <summary>
+   
     /// Form for managing customers in the car rental system
     /// Provides functionality to view, add, delete customers and access customer profiles
-    /// </summary>
     public partial class ManageCustomer : Form
     {
         #region Fields
@@ -16,9 +15,8 @@ namespace Car_Rental_System.Forms
         #endregion
 
         #region Constructors
-        /// <summary>
+        
         /// Constructor with admin parameter - sets up navigation and admin context
-        /// </summary>
         /// <param name="admin">The current admin user for context and navigation</param>
         public ManageCustomer(Admin admin) : this()
         {
@@ -26,9 +24,8 @@ namespace Car_Rental_System.Forms
             SetupNavigationEvents();
         }
 
-        /// <summary>
         /// Default constructor - initializes form components and loads customer data
-        /// </summary>
+ 
         public ManageCustomer()
         {
             InitializeComponent();
@@ -38,9 +35,8 @@ namespace Car_Rental_System.Forms
         #endregion
 
         #region Form Initialization
-        /// <summary>
+        
         /// Sets up navigation button events for admin dashboard navigation
-        /// </summary>
         private void SetupNavigationEvents()
         {
             // Dashboard navigation
@@ -53,22 +49,17 @@ namespace Car_Rental_System.Forms
             button3.Click += button3_Click;
         }
 
-        /// <summary>
         /// Initializes DataGridView settings and events
-        /// </summary>
         private void InitializeDataGrid()
         {
             dataGridView1.CellClick += dataGridView1_CellClick;
-            comboBoxAge.SelectedIndexChanged += (s, e) => ApplyFilters();
-            comboBoxCity.SelectedIndexChanged += (s, e) => ApplyFilters();
 
         }
         #endregion
 
         #region Button Click Events
-        /// <summary>
         /// Add Customer button click handler
-        /// </summary>
+      
         private void button5_Click(object sender, EventArgs e)
         {
             var addCustomerForm = new AddCustomers();
@@ -76,20 +67,16 @@ namespace Car_Rental_System.Forms
             addCustomerForm.Show();
         }
 
-        /// <summary>
         /// Navigate to Rental Records
-        /// </summary>
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
             var rentalRecordsForm = new RentalRecords(_currentAdmin);
             rentalRecordsForm.FormClosed += (_, __) => this.Close();
-            this.Hide();
-            rentalRecordsForm.Show();
-        }
+            rentalRecordsForm.ShowDialog();
 
-        /// <summary>
+        }
         /// Navigate to Admin Dashboard
-        /// </summary>
         private void NavigateToDashboard(object sender, EventArgs e)
         {
             var dashboardForm = new AdminDashboard(_currentAdmin);
@@ -98,9 +85,7 @@ namespace Car_Rental_System.Forms
             dashboardForm.Show();
         }
 
-        /// <summary>
         /// Navigate to Manage Cars form
-        /// </summary>
         private void NavigateToManageCars(object sender, EventArgs e)
         {
             var manageCarsForm = new ManageCars(_currentAdmin);
@@ -111,10 +96,10 @@ namespace Car_Rental_System.Forms
         #endregion
 
         #region DataGridView Events
-        /// <summary>
+     
         /// Handles cell clicks in the customer data grid
         /// Processes Delete and View Customer button clicks
-        /// </summary>
+     
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Validate row and column selection
@@ -148,24 +133,7 @@ namespace Car_Rental_System.Forms
         #endregion
 
         #region Private Helper Methods
-        /// <summary>
-        /// Loads all customers into the DataGridView and sets up action columns
-        /// </summary>
-        /// 
-        private void ApplyFilters()
-        {
-            string selectedCity = comboBoxCity.SelectedItem?.ToString();
-            string selectedAgeStr = comboBoxAge.SelectedItem?.ToString();
-
-            int? selectedAge = null;
-
-            if (int.TryParse(selectedAgeStr, out int parsedAge))
-                selectedAge = parsedAge;
-
-            var filteredCustomers = CustomerService.GetFilteredCustomers(selectedAge, selectedCity);
-            dataGridView1.DataSource = filteredCustomers;
-        }
-
+        
         private void LoadCustomers()
         {
             try
@@ -206,9 +174,7 @@ namespace Car_Rental_System.Forms
             }
         }
 
-        /// <summary>
         /// Handles customer deletion with confirmation
-        /// </summary>
         /// <param name="customerId">ID of customer to delete</param>
         private void HandleDeleteCustomer(int customerId)
         {
@@ -235,9 +201,7 @@ namespace Car_Rental_System.Forms
             }
         }
 
-        /// <summary>
         /// Handles viewing customer profile
-        /// </summary>
         /// <param name="customerId">ID of customer to view</param>
         private void HandleViewCustomer(int customerId)
         {
@@ -265,15 +229,6 @@ namespace Car_Rental_System.Forms
         }
         #endregion
 
-        #region Empty Event Handlers (Required for Designer)
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void button1_Click(object sender, EventArgs e) { }
-        #endregion
-
-        private void ManageCustomer_Load(object sender, EventArgs e)
-        {
-
-        }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -290,6 +245,16 @@ namespace Car_Rental_System.Forms
                 if (ctrl.HasChildren)
                     ApplyFont(ctrl, font);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            LoginPage loginForm = new LoginPage();
+            loginForm.Show();
+
+            this.Close();
         }
     }
 }

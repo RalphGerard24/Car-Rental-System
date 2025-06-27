@@ -258,7 +258,6 @@ namespace Car_Rental_System
 
             flowLayoutPanel1.Controls.Add(carPanel);
         }
-
         private void LoadBrandFilter()
         {
             using (var context = new CarRentalDbContext())

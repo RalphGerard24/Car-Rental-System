@@ -72,17 +72,12 @@ namespace Car_Rental_System
             }
             catch (Exception ex)
             {
-                // Handle image loading errors gracefully
+                // Handle image loading errors 
                 pictureBox1.Image = null;
                 pictureBox1.BackColor = Color.LightGray;
                 MessageBox.Show($"Error loading car image: {ex.Message}", "Image Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void ApplyFont(Control parent, Font font)

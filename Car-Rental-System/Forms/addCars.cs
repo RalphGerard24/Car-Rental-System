@@ -206,14 +206,12 @@ namespace Car_Rental_System
             ApplyFont(this, FontManager.GlobalFont);
         }
 
-        private void AddCars_Load(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
+            var manageCarsForm = new ManageCars();
+            manageCarsForm.FormClosed += (_, __) => this.Close();
+            this.Hide();
+            manageCarsForm.Show();
         }
     }
 }

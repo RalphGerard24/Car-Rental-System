@@ -38,9 +38,6 @@
             label4 = new Label();
             roundedPanel3 = new Car_Rental_System.Controls.RoundedPanel();
             button5 = new Button();
-            comboBoxCity = new ComboBox();
-            label3 = new Label();
-            comboBoxAge = new ComboBox();
             roundedPanel4 = new Car_Rental_System.Controls.RoundedPanel();
             dataGridView1 = new DataGridView();
             roundedPanel2 = new Car_Rental_System.Controls.RoundedPanel();
@@ -56,7 +53,7 @@
             button7.Anchor = AnchorStyles.None;
             button7.BackColor = Color.FromArgb(154, 214, 212);
             button7.FlatStyle = FlatStyle.Popup;
-            button7.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button7.ForeColor = Color.FromArgb(0, 76, 76);
             button7.Location = new Point(1132, 29);
             button7.Name = "button7";
@@ -64,13 +61,14 @@
             button7.TabIndex = 21;
             button7.Text = "Log Out";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button4
             // 
             button4.Anchor = AnchorStyles.None;
             button4.BackColor = Color.FromArgb(154, 214, 212);
             button4.FlatStyle = FlatStyle.Popup;
-            button4.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button4.ForeColor = Color.FromArgb(0, 76, 76);
             button4.Location = new Point(22, 313);
             button4.Name = "button4";
@@ -84,7 +82,7 @@
             button2.Anchor = AnchorStyles.None;
             button2.BackColor = Color.FromArgb(154, 214, 212);
             button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button2.ForeColor = Color.FromArgb(0, 76, 76);
             button2.Location = new Point(22, 169);
             button2.Name = "button2";
@@ -98,7 +96,7 @@
             button1.Anchor = AnchorStyles.None;
             button1.BackColor = Color.FromArgb(154, 214, 212);
             button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button1.ForeColor = Color.FromArgb(0, 76, 76);
             button1.Location = new Point(22, 21);
             button1.Name = "button1";
@@ -106,14 +104,14 @@
             button1.TabIndex = 16;
             button1.Text = "Dashboard";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+           // button1.Click += button1_Click;
             // 
             // button3
             // 
             button3.Anchor = AnchorStyles.None;
             button3.BackColor = Color.FromArgb(154, 214, 212);
             button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button3.ForeColor = Color.FromArgb(0, 76, 76);
             button3.Location = new Point(22, 457);
             button3.Name = "button3";
@@ -127,11 +125,11 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Poppins", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 110, 108);
             label1.Location = new Point(20, 29);
             label1.Name = "label1";
-            label1.Size = new Size(295, 84);
+            label1.Size = new Size(324, 69);
             label1.TabIndex = 15;
             label1.Text = "Car Rental";
             // 
@@ -153,11 +151,11 @@
             // 
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
-            label4.Font = new Font("Poppins", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(17, 87, 99);
             label4.Location = new Point(23, 14);
             label4.Name = "label4";
-            label4.Size = new Size(240, 65);
+            label4.Size = new Size(260, 54);
             label4.TabIndex = 2;
             label4.Text = "Customers";
             // 
@@ -166,9 +164,6 @@
             roundedPanel3.Anchor = AnchorStyles.None;
             roundedPanel3.BackColor = Color.FromArgb(0, 110, 108);
             roundedPanel3.Controls.Add(button5);
-            roundedPanel3.Controls.Add(comboBoxCity);
-            roundedPanel3.Controls.Add(label3);
-            roundedPanel3.Controls.Add(comboBoxAge);
             roundedPanel3.CornerRadius = 20;
             roundedPanel3.Location = new Point(17, 509);
             roundedPanel3.Name = "roundedPanel3";
@@ -180,7 +175,7 @@
             button5.Anchor = AnchorStyles.None;
             button5.BackColor = Color.FromArgb(154, 214, 212);
             button5.FlatStyle = FlatStyle.Popup;
-            button5.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button5.ForeColor = Color.FromArgb(0, 76, 76);
             button5.Location = new Point(774, 15);
             button5.Name = "button5";
@@ -189,36 +184,6 @@
             button5.Text = "Add Customer";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
-            // 
-            // comboBoxCity
-            // 
-            comboBoxCity.Anchor = AnchorStyles.None;
-            comboBoxCity.FormattingEnabled = true;
-            comboBoxCity.Location = new Point(252, 24);
-            comboBoxCity.Name = "comboBoxCity";
-            comboBoxCity.Size = new Size(121, 25);
-            comboBoxCity.TabIndex = 27;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.None;
-            label3.AutoSize = true;
-            label3.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(22, 23);
-            label3.Name = "label3";
-            label3.Size = new Size(74, 28);
-            label3.TabIndex = 24;
-            label3.Text = "Filter by";
-            // 
-            // comboBoxAge
-            // 
-            comboBoxAge.Anchor = AnchorStyles.None;
-            comboBoxAge.FormattingEnabled = true;
-            comboBoxAge.Location = new Point(116, 24);
-            comboBoxAge.Name = "comboBoxAge";
-            comboBoxAge.Size = new Size(121, 25);
-            comboBoxAge.TabIndex = 23;
             // 
             // roundedPanel4
             // 
@@ -242,7 +207,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(971, 396);
             dataGridView1.TabIndex = 25;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+          //  dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // roundedPanel2
             // 
@@ -259,10 +224,10 @@
             // 
             // ManageCustomer
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1368, 741);
             Controls.Add(roundedPanel2);
             Controls.Add(roundedPanel1);
             Controls.Add(button7);
@@ -274,10 +239,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Customers - Car Rental System";
             WindowState = FormWindowState.Maximized;
-            Load += ManageCustomer_Load;
+            //Load += ManageCustomer_Load;
             roundedPanel1.ResumeLayout(false);
             roundedPanel3.ResumeLayout(false);
-            roundedPanel3.PerformLayout();
             roundedPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             roundedPanel2.ResumeLayout(false);
@@ -298,9 +262,6 @@
         private Label label4;
         private Controls.RoundedPanel roundedPanel3;
         private Button button5;
-        private ComboBox comboBoxCity;
-        private Label label3;
-        private ComboBox comboBoxAge;
         private Controls.RoundedPanel roundedPanel4;
         private DataGridView dataGridView1;
         private Controls.RoundedPanel roundedPanel2;

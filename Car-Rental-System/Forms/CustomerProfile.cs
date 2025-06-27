@@ -12,7 +12,6 @@ namespace Car_Rental_System
     {
         private Admin _admin;
         private Customer _currentCustomer;
-        private bool _isEditMode = false;
 
         // Constructor - Initializes the CustomerProfile form with customer and admin data
         public CustomerProfile(Customer customer, Admin admin)
@@ -25,7 +24,6 @@ namespace Car_Rental_System
             this.FormClosing += CustomerProfile_FormClosing;
             button3.Click += button3_Click;     // Back to Admin
             button4.Click += button4_Click;     // Return button
-            //button5.Click += button5_Click;     // Edit/Save button
             button6.Click += button6_Click;     // View status
 
             LoadCustomerData();
@@ -74,9 +72,6 @@ namespace Car_Rental_System
                 }
             }
         }
-
-
-
         private void button6_Click(object sender, EventArgs e)
         {
             using (var db = new CarRentalDbContext())
@@ -146,11 +141,7 @@ namespace Car_Rental_System
                 }
             }
 
-            // SetFieldsReadOnly(true);
-            // button5.Text = "Edit";
-            //_isEditMode = false;
         }
-
         private void SetFieldsReadOnly(bool readOnly)
         {
             textBox3.ReadOnly = readOnly;
@@ -161,11 +152,6 @@ namespace Car_Rental_System
             textBox15.ReadOnly = readOnly;
             textBox2.Text = _currentCustomer.Email;
             textBox7.ReadOnly = readOnly;
-        }
-
-        private void CustomerProfile_Load(object sender, EventArgs e)
-        {
-
         }
 
         protected override void OnLoad(EventArgs e)

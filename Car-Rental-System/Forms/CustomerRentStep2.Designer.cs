@@ -434,7 +434,7 @@
             textBox6.ReadOnly = true;
             textBox6.Size = new Size(300, 36);
             textBox6.TabIndex = 13;
-            textBox6.TextChanged += textBox6_TextChanged;
+           // textBox6.TextChanged += textBox6_TextChanged;
             // 
             // label7
             // 
@@ -589,7 +589,7 @@
             roundedPanel3.Name = "roundedPanel3";
             roundedPanel3.Size = new Size(653, 169);
             roundedPanel3.TabIndex = 45;
-            roundedPanel3.Paint += roundedPanel3_Paint;
+           // roundedPanel3.Paint += roundedPanel3_Paint;
             // 
             // label5
             // 

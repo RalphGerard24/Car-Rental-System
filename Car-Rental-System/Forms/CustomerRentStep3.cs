@@ -57,8 +57,14 @@ namespace Car_Rental_System
         // Private Helper Methods
         private void LoadRentDetails()
         {
-            textBox1.Text = _currentCustomer.CustomerId.ToString();
-            textBox2.Text = _selectedCar.CarId.ToString();
+            string middleInitial = string.IsNullOrWhiteSpace(_currentCustomer.MiddleInnitial)
+        ? ""
+        : $"{_currentCustomer.MiddleInnitial}.";
+
+            textBox1.Text = $"{_currentCustomer.LastName}, {_currentCustomer.FirstName} {middleInitial}";
+
+            // Format: Brand Model
+            textBox2.Text = $"{_selectedCar.Brand} {_selectedCar.Model}";
 
             // Calculate rental duration with time consideration
             TimeSpan duration = _returnDateTime - _rentDateTime;
@@ -73,9 +79,9 @@ namespace Car_Rental_System
             textBox7.Text = taxAmount.ToString("F2");
             textBox4.Text = _totalCost.ToString("F2");
 
-            // Display date and time
-            textBox3.Text = _rentDateTime.ToString("yyyy-MM-dd HH:mm");
-            textBox5.Text = _returnDateTime.ToString("yyyy-MM-dd HH:mm");
+            // Display date
+            textBox3.Text = _rentDateTime.ToString("yyyy-MM-dd");
+            textBox5.Text = _returnDateTime.ToString("yyyy-MM-dd");
         }
 
         private void ProcessRental()

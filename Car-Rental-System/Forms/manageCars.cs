@@ -259,10 +259,11 @@ namespace Car_Rental_System.Forms
 
         private void NavigateToRentalRecords()
         {
-            var rentalRecords = new RentalRecords(_currentAdmin);
-            rentalRecords.FormClosed += (_, __) => this.Close();
-            rentalRecords.Show();
             this.Hide();
+            var rentalRecordsForm = new RentalRecords(_currentAdmin);
+            rentalRecordsForm.FormClosed += (_, __) => this.Close();
+            rentalRecordsForm.ShowDialog();
+
         }
 
         private void NavigateToAddCarForm()
@@ -271,16 +272,6 @@ namespace Car_Rental_System.Forms
             addCarForm.FormClosed += (_, __) => { this.Show(); UpdateCarListBasedOnFilters(); };
             addCarForm.Show();
             this.Hide();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -298,6 +289,16 @@ namespace Car_Rental_System.Forms
                 if (ctrl.HasChildren)
                     ApplyFont(ctrl, font);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            LoginPage loginForm = new LoginPage();
+            loginForm.Show();
+
+            this.Close();
         }
     }
 }

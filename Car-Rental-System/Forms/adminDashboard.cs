@@ -55,6 +55,7 @@ namespace Car_Rental_System.Forms
             };
 
             button3.Click += button3_Click;
+
         }
 
         private void LoadDashboardData()
@@ -128,28 +129,19 @@ namespace Car_Rental_System.Forms
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            RentalRecords rentalRecordsForm = new RentalRecords(_currentAdmin);
-            rentalRecordsForm.FormClosed += (s, args) => this.Close();
             this.Hide();
-            rentalRecordsForm.Show();
+            var rentalRecordsForm = new RentalRecords(_currentAdmin);
+            rentalRecordsForm.FormClosed += (_, __) => this.Close();
+            rentalRecordsForm.ShowDialog();
+
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            ApplyFont(this, FontManager.GlobalFont); // ← use the shared global font
+            ApplyFont(this, FontManager.GlobalFont); // use the shared global font
         }
 
         private void ApplyFont(Control parent, Font font)
@@ -163,5 +155,16 @@ namespace Car_Rental_System.Forms
                     ApplyFont(ctrl, font);
             }
         }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+
+            LoginPage loginForm = new LoginPage();
+            loginForm.Show();
+
+            this.Close();
+        }
+
     }
 }

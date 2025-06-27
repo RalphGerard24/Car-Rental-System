@@ -503,7 +503,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer - Car Rental System";
             WindowState = FormWindowState.Maximized;
-            Load += CustomerProfile_Load;
+           // Load += CustomerProfile_Load;
             roundedPanel1.ResumeLayout(false);
             roundedPanel2.ResumeLayout(false);
             roundedPanel2.PerformLayout();

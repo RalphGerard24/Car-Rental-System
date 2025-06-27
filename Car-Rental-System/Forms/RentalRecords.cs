@@ -27,28 +27,32 @@ namespace Car_Rental_System.Forms
         {
             var dashboardForm = new AdminDashboard(_currentAdmin);
             dashboardForm.FormClosed += (_, __) => this.Close();
-            dashboardForm.Show();
             this.Hide();
+            dashboardForm.Show();
         }
 
         private void buttonManageCars_Click(object sender, EventArgs e)
         {
             var manageCarsForm = new ManageCars(_currentAdmin);
             manageCarsForm.FormClosed += (_, __) => this.Close();
-            manageCarsForm.Show();
             this.Hide();
+            manageCarsForm.Show();
         }
 
         private void buttonManageCustomers_Click(object sender, EventArgs e)
         {
             var manageCustomerForm = new ManageCustomer(_currentAdmin);
             manageCustomerForm.FormClosed += (_, __) => this.Close();
-            manageCustomerForm.Show();
             this.Hide();
+            manageCustomerForm.Show();
         }
+
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            LoginPage loginForm = new LoginPage();
+            loginForm.Show();
             this.Close();
         }
 
@@ -90,11 +94,6 @@ namespace Car_Rental_System.Forms
                 .ToList();
 
             dataGridView1.DataSource = rentalData;
-        }
-
-        private void RentalRecords_Load(object sender, EventArgs e)
-        {
-
         }
         protected override void OnLoad(EventArgs e)
         {

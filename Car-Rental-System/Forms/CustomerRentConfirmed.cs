@@ -43,14 +43,16 @@ namespace Car_Rental_System
         // Private Helper Methods
         private void LoadRentData()
         {
-            textBox1.Text = _customerId.ToString();
-            textBox2.Text = _carId.ToString();
+            using var db = new CarRentalDbContext();
+
+            // Fetch customer and car data from the database
+            var customer = db.Customers.FirstOrDefault(c => c.CustomerId == _customerId);
+            var car = db.Cars.FirstOrDefault(c => c.CarId == _carId);
+
+            string middleInitial = string.IsNullOrWhiteSpace(customer.MiddleInnitial) ? "" : $"{customer.MiddleInnitial}.";
+            textBox1.Text = $"{customer.LastName}, {customer.FirstName} {middleInitial}";
+            textBox2.Text = $"{car.Brand} {car.Model}";
             textBox4.Text = _transactionId;
-        }
-
-        private void CustomerRentConfirmed_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void ApplyFont(Control parent, Font font)

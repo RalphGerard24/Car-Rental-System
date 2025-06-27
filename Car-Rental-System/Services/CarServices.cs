@@ -7,11 +7,11 @@ namespace Car_Rental_System.Services
 {
     public static class CarService
     {
-        /// <summary>
+
         /// Adds a new car to the database
-        /// </summary>
         /// <param name="car">Car object to be added</param>
         /// <exception cref="ArgumentNullException">Thrown when car is null</exception>
+        /// 
         public static void AddCar(Car car)
         {
             if (car == null)
@@ -22,12 +22,11 @@ namespace Car_Rental_System.Services
             db.SaveChanges();
         }
 
-        /// <summary>
         /// Updates an existing car in the database
-        /// </summary>
         /// <param name="updatedCar">Car object with updated information</param>
         /// <exception cref="ArgumentNullException">Thrown when updatedCar is null</exception>
         /// <returns>True if car was updated, false if car not found</returns>
+       
         public static bool UpdateCar(Car updatedCar)
         {
             if (updatedCar == null)
@@ -44,9 +43,7 @@ namespace Car_Rental_System.Services
             return true;
         }
 
-        /// <summary>
         /// Deletes a car from the database
-        /// </summary>
         /// <param name="carId">ID of the car to delete</param>
         /// <returns>True if car was deleted, false if car not found</returns>
         public static bool DeleteCar(int carId)
@@ -62,9 +59,8 @@ namespace Car_Rental_System.Services
             return true;
         }
 
-        /// <summary>
+       
         /// Retrieves a car by its ID
-        /// </summary>
         /// <param name="carId">ID of the car to retrieve</param>
         /// <returns>Car object if found, null otherwise</returns>
         public static Car GetCarById(int carId)
@@ -73,9 +69,8 @@ namespace Car_Rental_System.Services
             return db.Cars.Find(carId);
         }
 
-        /// <summary>
+    
         /// Gets filtered list of cars based on brand, year, and availability
-        /// </summary>
         /// <param name="brand">Brand filter (null or "All" for no filter)</param>
         /// <param name="year">Year filter (null or "All" for no filter)</param>
         /// <param name="isAvailable">Availability filter (null for no filter)</param>
@@ -93,9 +88,7 @@ namespace Car_Rental_System.Services
 
         }
 
-        /// <summary>
         /// Gets all distinct car brands from the database
-        /// </summary>
         /// <returns>List of unique car brands</returns>
         public static List<string> GetDistinctBrands()
         {
@@ -108,9 +101,7 @@ namespace Car_Rental_System.Services
                 .ToList();
         }
 
-        /// <summary>
         /// Gets all distinct car years from the database
-        /// </summary>
         /// <returns>List of unique car years</returns>
         public static List<string> GetDistinctYears()
         {
@@ -123,18 +114,14 @@ namespace Car_Rental_System.Services
                 .ToList();
         }
 
-        /// <summary>
         /// Gets all available cars
-        /// </summary>
         /// <returns>List of available cars</returns>
         public static List<Car> GetAvailableCars()
         {
             return GetFilteredCars(null, null, true);
         }
 
-        /// <summary>
         /// Checks if a car with the given plate number already exists
-        /// </summary>
         /// <param name="plateNumber">Plate number to check</param>
         /// <param name="excludeCarId">Car ID to exclude from check (for updates)</param>
         /// <returns>True if plate number exists, false otherwise</returns>

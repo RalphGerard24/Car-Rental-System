@@ -107,7 +107,7 @@ namespace Car_Rental_System
 
         private void LoadReturnInfo()
         {
-            CustomerIDTextBox.Text = _customerId.ToString();
+        
 
             using (var db = new CarRentalDbContext())
             {

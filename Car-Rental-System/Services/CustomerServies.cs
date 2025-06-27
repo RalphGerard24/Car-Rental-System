@@ -5,16 +5,15 @@ using System.Linq;
 
 namespace Car_Rental_System.Services
 {
-    /// <summary>
+  
     /// Service class for managing customer data operations
     /// Provides CRUD operations for Customer entities with proper error handling
-    /// </summary>
+    
     public static class CustomerService
     {
         #region Create Operations
-        /// <summary>
+      
         /// Adds a new customer to the database
-        /// </summary>
         /// <param name="customer">The customer object to add</param>
         public static void AddCustomer(Customer customer)
         {
@@ -25,9 +24,8 @@ namespace Car_Rental_System.Services
         #endregion
 
         #region Read Operations
-        /// <summary>
+
         /// Retrieves a customer by their unique ID
-        /// </summary>
         /// <param name="customerId">The unique identifier of the customer</param>
         /// <returns>Customer object if found, null otherwise</returns>
         public static Customer GetCustomerById(int customerId)
@@ -36,9 +34,7 @@ namespace Car_Rental_System.Services
             return db.Customers.Find(customerId);
         }
 
-        /// <summary>
         /// Retrieves all customers from the database
-        /// </summary>
         /// <returns>List of all customers, empty list if none found</returns>
         public static List<Customer> GetAllCustomers()
         {
@@ -46,9 +42,7 @@ namespace Car_Rental_System.Services
             return db.Customers.ToList();
         }
 
-        /// <summary>
         /// Searches customers by name (first or last name contains search term)
-        /// </summary>
         /// <param name="searchTerm">The term to search for in customer names</param>
         /// <returns>List of customers matching the search criteria</returns>
         public static List<Customer> SearchCustomersByName(string searchTerm)
@@ -74,9 +68,7 @@ namespace Car_Rental_System.Services
             }
         }
 
-        /// <summary>
         /// Checks if a customer exists with the given ID
-        /// </summary>
         /// <param name="customerId">The customer ID to check</param>
         /// <returns>True if customer exists, false otherwise</returns>
         public static bool CustomerExists(int customerId)
@@ -96,9 +88,8 @@ namespace Car_Rental_System.Services
         }
         #endregion
 
-        /// <summary>
+    
         /// Retrieves customers filtered by exact age and/or city
-        /// </summary>
         /// <param name="age">Exact age to filter, or null for any age</param>
         /// <param name="city">City to filter, or null/"All" for any city</param>
         /// <returns>List of customers matching the filters</returns>
@@ -118,12 +109,12 @@ namespace Car_Rental_System.Services
 
 
         #region Update Operations
-        /// <summary>
+  
         /// Updates an existing customer's information
-        /// </summary>
         /// <param name="updatedCustomer">Customer object with updated information</param>
         /// <exception cref="ArgumentNullException">Thrown when updatedCustomer is null</exception>
         /// <exception cref="InvalidOperationException">Thrown when customer not found or update fails</exception>
+        /// 
         public static void UpdateCustomer(Customer updatedCustomer)
         {
             if (updatedCustomer == null)
@@ -170,9 +161,8 @@ namespace Car_Rental_System.Services
         #endregion
 
         #region Delete Operations
-        /// <summary>
+  
         /// Deletes a customer from the database by ID
-        /// </summary>
         /// <param name="customerId">The unique identifier of the customer to delete</param>
         public static void DeleteCustomer(int customerId)
         {
@@ -185,9 +175,7 @@ namespace Car_Rental_System.Services
             }
         }
 
-        /// <summary>
         /// Safely deletes a customer, checking for related records first
-        /// </summary>
         /// <param name="customerId">The customer ID to delete</param>
         /// <returns>True if deleted successfully, false if customer has active rentals</returns>
         public static bool SafeDeleteCustomer(int customerId)
@@ -221,9 +209,8 @@ namespace Car_Rental_System.Services
         #endregion
 
         #region Utility Methods
-        /// <summary>
+
         /// Gets the total count of customers in the database
-        /// </summary>
         /// <returns>Total number of customers</returns>
         public static int GetCustomerCount()
         {
@@ -237,10 +224,7 @@ namespace Car_Rental_System.Services
                 throw new InvalidOperationException($"Failed to get customer count: {ex.Message}", ex);
             }
         }
-
-        /// <summary>
         /// Validates customer data before database operations
-        /// </summary>
         /// <param name="customer">Customer to validate</param>
         /// <returns>True if valid, false otherwise</returns>
         public static bool ValidateCustomerData(Customer customer)

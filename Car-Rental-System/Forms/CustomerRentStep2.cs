@@ -123,12 +123,12 @@ namespace Car_Rental_System
         {
             // Set date pickers to include time
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm";
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             dateTimePicker1.ShowUpDown = false;
             dateTimePicker1.Value = DateTime.Now;
 
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.CustomFormat = "yyyy-MM-dd HH:mm";
+            dateTimePicker2.CustomFormat = "yyyy-MM-dd";
             dateTimePicker2.ShowUpDown = false;
             dateTimePicker2.Value = DateTime.Now.AddDays(1);
 
@@ -151,16 +151,6 @@ namespace Car_Rental_System
             _totalCost = rentDays * _selectedCar.PriceRate;
 
             textBox4.Text = _totalCost.ToString("F2");
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roundedPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
         protected override void OnLoad(EventArgs e)
         {
