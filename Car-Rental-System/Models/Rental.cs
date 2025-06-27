@@ -17,7 +17,7 @@ namespace Car_Rental_System.Models
         public string Status {
             get
             {
-                if (ReturnDate == null)
+                if (ActualReturnDate == null)
                 {
                     return "Rented";
                 }
@@ -41,11 +41,6 @@ namespace Car_Rental_System.Models
             TotalCost = totalCost;
             TransactionCode = transactionId;
             LateFee = lateFee;
-        }
-
-        public static void RentalTest()
-        {
-            Console.WriteLine("Rental.cs is used successfully!!!");
         }
     }
 }

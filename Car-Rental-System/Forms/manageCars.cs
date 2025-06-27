@@ -1,216 +1,304 @@
 ﻿using Car_Rental_System.Models;
 using Car_Rental_System.Services;
 using System;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Car_Rental_System.Forms
 {
     public partial class ManageCars : Form
     {
+        private Admin _currentAdmin;
+
+        // Constructor - Initializes the manage cars form with admin context
+        public ManageCars(Admin admin) : this()
+        {
+            _currentAdmin = admin;
+            SetupAdminEventHandlers();
+        }
+
+        // Default constructor for design-time support
         public ManageCars()
         {
             InitializeComponent();
+            InitializeForm();
+        }
 
-            dataGridView1.CellClick += dataGridView1_CellClick;
+        // Form Event Handlers
+        private void ManageCars_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Form cleanup handled automatically
+        }
 
+        // Button Click Events
+        private void buttonDashboard_Click(object sender, EventArgs e)
+        {
+            NavigateToAdminDashboard();
+        }
+
+        private void buttonManageCustomers_Click(object sender, EventArgs e)
+        {
+            NavigateToManageCustomers();
+        }
+
+        private void buttonRentalRecords_Click(object sender, EventArgs e)
+        {
+            NavigateToRentalRecords();
+        }
+
+        private void buttonAddNewCar_Click(object sender, EventArgs e)
+        {
+            NavigateToAddCarForm();
+        }
+
+        // Value Changed / UI Events
+        private void brandFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateCarListBasedOnFilters();
+        }
+
+        private void yearFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateCarListBasedOnFilters();
+        }
+
+        private void availabilityFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCarListBasedOnFilters();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HandleDataGridCellClick(e);
+        }
+
+        // Private Helper Methods
+        private void InitializeForm()
+        {
             SetupFilterEvents();
             PopulateFilters();
             UpdateCarListBasedOnFilters();
+            AddActionButtons();
+            SetupDataGridEvents();
+        }
 
-            AddEditDeleteButtons();
-
+        private void SetupAdminEventHandlers()
+        {
+            button1.Click += buttonDashboard_Click;
+            button4.Click += buttonManageCustomers_Click;
+            button3.Click += buttonRentalRecords_Click;
+            button6.Click += buttonAddNewCar_Click;
         }
 
         private void SetupFilterEvents()
         {
-            comboBox1.SelectedIndexChanged += (s, e) => UpdateCarListBasedOnFilters();
-            comboBox2.SelectedIndexChanged += (s, e) => UpdateCarListBasedOnFilters();
-
-            radioButton1.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
-            radioButton2.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
-            radioButton3.CheckedChanged += (s, e) => UpdateCarListBasedOnFilters();
+            comboBox1.SelectedIndexChanged += brandFilter_SelectedIndexChanged;
+            comboBox2.SelectedIndexChanged += yearFilter_SelectedIndexChanged;
+            radioButton1.CheckedChanged += availabilityFilter_CheckedChanged;
+            radioButton2.CheckedChanged += availabilityFilter_CheckedChanged;
+            radioButton3.CheckedChanged += availabilityFilter_CheckedChanged;
         }
 
-        private void AddEditDeleteButtons()
+        private void SetupDataGridEvents()
         {
+            dataGridView1.CellClick += dataGridView1_CellClick;
+        }
 
-            if (!dataGridView1.Columns.Contains("Edit"))
-            {
-                var editButton = new DataGridViewButtonColumn
-                {
-                    Name = "Edit",
-                    HeaderText = "Edit",
-                    Text = "Edit",
-                    UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(editButton);
-            }
+        private void AddActionButtons()
+        {
+            AddButtonColumn("Edit", "Edit");
+            AddButtonColumn("Delete", "Delete");
+            AddButtonColumn("View", "View");
+        }
 
-            if (!dataGridView1.Columns.Contains("Delete"))
+        private void AddButtonColumn(string name, string headerText)
+        {
+            if (!dataGridView1.Columns.Contains(name))
             {
-                var deleteButton = new DataGridViewButtonColumn
+                dataGridView1.Columns.Add(new DataGridViewButtonColumn
                 {
-                    Name = "Delete",
-                    HeaderText = "Delete",
-                    Text = "Delete",
+                    Name = name,
+                    HeaderText = headerText,
+                    Text = headerText,
                     UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(deleteButton);
-            }
-
-            if (!dataGridView1.Columns.Contains("View"))
-            {
-                var viewButton = new DataGridViewButtonColumn
-                {
-                    Name = "View",
-                    HeaderText = "View",
-                    Text = "View",
-                    UseColumnTextForButtonValue = true
-                };
-                dataGridView1.Columns.Add(viewButton);
+                });
             }
         }
 
-        //DELETE CARS
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void HandleDataGridCellClick(DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             var row = dataGridView1.Rows[e.RowIndex];
-            var carIdObj = row.Cells["CarId"].Value;
+            var carId = Convert.ToInt32(row.Cells["CarId"].Value);
+            var columnName = dataGridView1.Columns[e.ColumnIndex].Name;
 
-            if (carIdObj == null)
+            switch (columnName)
             {
-                MessageBox.Show("Car ID not found.");
-                return;
+                case "Delete":
+                    HandleDeleteAction(carId);
+                    break;
+                case "Edit":
+                    HandleEditAction(carId);
+                    break;
+                case "View":
+                    HandleViewAction(carId);
+                    break;
             }
-
-            int carId = Convert.ToInt32(carIdObj);
-
-            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
-
-            if (colName == "Delete")
-            {
-                var confirm = MessageBox.Show("Are you sure you want to delete this car?", "Confirm", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
-                {
-                    CarService.DeleteCar(carId);
-                    UpdateCarListBasedOnFilters();
-                }
-            }
-            else if (colName == "Edit")
-            {
-                var car = CarService.GetCarById(carId);
-                if (car != null)
-                {
-                    var editForm = new addCars(car);
-                    editForm.FormClosed += (s, args) => { this.Show(); UpdateCarListBasedOnFilters(); };
-                    this.Hide();
-                    editForm.Show();
-                }
-            }
-
-            else if (colName == "View")
-            {
-                using (var db = new CarRentalDbContext())
-                {
-                    var rental = db.Rentals
-                        .Where(r => r.CarId == carId)
-                        .OrderByDescending(r => r.RentDatee)
-                        .FirstOrDefault(); 
-
-                    if (rental != null)
-                    {
-                        var viewForm = new carDetails(rental.RentalId);
-                        viewForm.Show();
-                    }
-                    else
-                    {
-                        var viewForm = new carDetails(carId, true); 
-                        viewForm.Show();
-                    }
-                }
-            }
-
-
         }
 
-        private void AddNewCarButton_Click(object sender, EventArgs e)
+        private void HandleDeleteAction(int carId)
         {
-            var addCarForm = new addCars();
-            this.Hide();
-            addCarForm.FormClosed += (s, args) =>
+            var result = MessageBox.Show("Are you sure you want to delete this car?",
+                                       "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                this.Show();
+                CarService.DeleteCar(carId);
                 UpdateCarListBasedOnFilters();
-            };
-            addCarForm.Show();
+                MessageBox.Show("Car deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void HandleEditAction(int carId)
+        {
+            var car = CarService.GetCarById(carId);
+            if (car != null)
+            {
+                var editForm = new AddCars(car);
+                editForm.FormClosed += (_, __) => { this.Show(); UpdateCarListBasedOnFilters(); };
+                editForm.Show();
+                this.Hide();
+            }
+        }
+
+        private void HandleViewAction(int carId)
+        {
+            using (var db = new CarRentalDbContext())
+            {
+                var rental = db.Rentals
+                              .Where(r => r.CarId == carId)
+                              .OrderByDescending(r => r.RentDatee)
+                              .FirstOrDefault();
+
+                Form viewForm = rental != null
+                    ? new CarDetails(rental.RentalId)
+                    : new CarDetails(carId, true);
+
+                viewForm.FormClosed += (_, __) => this.Close();
+                viewForm.Show();
+                this.Hide();
+            }
         }
 
         private void UpdateCarListBasedOnFilters()
         {
-            string selectedBrand = comboBox1.SelectedItem?.ToString();
-            string selectedYear = comboBox2.SelectedItem?.ToString();
-            bool? isAvailable = null;
-
-            if (radioButton2.Checked) isAvailable = true;
-            else if (radioButton3.Checked) isAvailable = false;
+            string selectedBrand = GetSelectedFilterValue(comboBox1);
+            string selectedYear = GetSelectedFilterValue(comboBox2);
+            bool? isAvailable = GetAvailabilityFilter();
 
             dataGridView1.DataSource = CarService.GetFilteredCars(selectedBrand, selectedYear, isAvailable);
         }
 
+        private string GetSelectedFilterValue(ComboBox comboBox)
+        {
+            var selectedValue = comboBox.SelectedItem?.ToString();
+            return selectedValue == "All" ? null : selectedValue;
+        }
+
+        private bool? GetAvailabilityFilter()
+        {
+            if (radioButton2.Checked) return true;
+            if (radioButton3.Checked) return false;
+            return null;
+        }
 
         private void PopulateFilters()
+        {
+            PopulateBrandFilter();
+            PopulateYearFilter();
+            SetDefaultFilters();
+        }
+
+        private void PopulateBrandFilter()
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add("All");
             comboBox1.Items.AddRange(CarService.GetDistinctBrands().ToArray());
             comboBox1.SelectedIndex = 0;
+        }
 
+        private void PopulateYearFilter()
+        {
             comboBox2.Items.Clear();
             comboBox2.Items.Add("All");
             comboBox2.Items.AddRange(CarService.GetDistinctYears().ToArray());
             comboBox2.SelectedIndex = 0;
+        }
 
+        private void SetDefaultFilters()
+        {
             radioButton1.Checked = true;
         }
 
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void NavigateToAdminDashboard()
         {
-
+            var dashboard = new AdminDashboard(_currentAdmin);
+            dashboard.FormClosed += (_, __) => this.Close();
+            dashboard.Show();
+            this.Hide();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void NavigateToManageCustomers()
         {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FilterAvailability_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ManageCar_Loads(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var customers = new customers();
+            var customers = new ManageCustomer(_currentAdmin);
+            customers.FormClosed += (_, __) => this.Close();
             customers.Show();
             this.Hide();
+        }
+
+        private void NavigateToRentalRecords()
+        {
+            this.Hide();
+            var rentalRecordsForm = new RentalRecords(_currentAdmin);
+            rentalRecordsForm.FormClosed += (_, __) => this.Close();
+            rentalRecordsForm.ShowDialog();
+
+        }
+
+        private void NavigateToAddCarForm()
+        {
+            var addCarForm = new AddCars();
+            addCarForm.FormClosed += (_, __) => { this.Show(); UpdateCarListBasedOnFilters(); };
+            addCarForm.Show();
+            this.Hide();
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            ApplyFont(this, FontManager.GlobalFont); // ← use the shared global font
+        }
+
+        private void ApplyFont(Control parent, Font font)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                // Keep size and style, only change font family
+                ctrl.Font = new Font(font.FontFamily, ctrl.Font.Size, ctrl.Font.Style);
+
+                if (ctrl.HasChildren)
+                    ApplyFont(ctrl, font);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            LoginPage loginForm = new LoginPage();
+            loginForm.Show();
+
+            this.Close();
         }
     }
 }
