@@ -171,5 +171,10 @@ namespace Car_Rental_System
                     ApplyFont(ctrl, font);
             }
         }
+
+        private void CustomerProfile_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -82,11 +82,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Poppins", 12F);
+            label7.Font = new Font("Microsoft Sans Serif", 12F);
             label7.ForeColor = Color.White;
             label7.Location = new Point(27, 363);
             label7.Name = "label7";
-            label7.Size = new Size(77, 28);
+            label7.Size = new Size(82, 25);
             label7.TabIndex = 35;
             label7.Text = "Zipcode";
             label7.TextAlign = ContentAlignment.TopCenter;
@@ -105,11 +105,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Poppins", 12F);
+            label6.Font = new Font("Microsoft Sans Serif", 12F);
             label6.ForeColor = Color.White;
             label6.Location = new Point(27, 304);
             label6.Name = "label6";
-            label6.Size = new Size(91, 28);
+            label6.Size = new Size(96, 25);
             label6.TabIndex = 33;
             label6.Text = "Barangay";
             label6.TextAlign = ContentAlignment.TopCenter;
@@ -128,11 +128,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Poppins", 12F);
+            label5.Font = new Font("Microsoft Sans Serif", 12F);
             label5.ForeColor = Color.White;
             label5.Location = new Point(27, 244);
             label5.Name = "label5";
-            label5.Size = new Size(93, 28);
+            label5.Size = new Size(98, 25);
             label5.TabIndex = 31;
             label5.Text = "City/State";
             label5.TextAlign = ContentAlignment.TopCenter;
@@ -151,11 +151,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Poppins", 12F);
+            label2.Font = new Font("Microsoft Sans Serif", 12F);
             label2.ForeColor = Color.White;
             label2.Location = new Point(27, 474);
             label2.Name = "label2";
-            label2.Size = new Size(132, 56);
+            label2.Size = new Size(150, 50);
             label2.TabIndex = 28;
             label2.Text = "Driver's License\r\nNo.\r\n";
             // 
@@ -173,22 +173,22 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Poppins", 12F);
+            label17.Font = new Font("Microsoft Sans Serif", 12F);
             label17.ForeColor = Color.White;
             label17.Location = new Point(27, 74);
             label17.Name = "label17";
-            label17.Size = new Size(142, 28);
+            label17.Size = new Size(154, 25);
             label17.TabIndex = 20;
             label17.Text = "Customer Name";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Poppins", 12F);
+            label3.Font = new Font("Microsoft Sans Serif", 12F);
             label3.ForeColor = Color.White;
             label3.Location = new Point(27, 427);
             label3.Name = "label3";
-            label3.Size = new Size(124, 28);
+            label3.Size = new Size(138, 25);
             label3.TabIndex = 26;
             label3.Text = "Email Address";
             // 
@@ -217,22 +217,22 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Poppins", 12F);
+            label16.Font = new Font("Microsoft Sans Serif", 12F);
             label16.ForeColor = Color.White;
             label16.Location = new Point(27, 129);
             label16.Name = "label16";
-            label16.Size = new Size(44, 28);
+            label16.Size = new Size(48, 25);
             label16.TabIndex = 22;
             label16.Text = "Age";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Poppins", 12F);
+            label4.Font = new Font("Microsoft Sans Serif", 12F);
             label4.ForeColor = Color.White;
             label4.Location = new Point(27, 188);
             label4.Name = "label4";
-            label4.Size = new Size(105, 28);
+            label4.Size = new Size(115, 25);
             label4.TabIndex = 24;
             label4.Text = "Contact No.";
             // 
@@ -251,7 +251,7 @@
             // 
             button6.BackColor = Color.FromArgb(154, 214, 212);
             button6.FlatStyle = FlatStyle.Popup;
-            button6.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button6.ForeColor = Color.FromArgb(0, 76, 76);
             button6.Location = new Point(28, 508);
             button6.Name = "button6";
@@ -263,11 +263,11 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Poppins", 12F);
+            label14.Font = new Font("Microsoft Sans Serif", 12F);
             label14.ForeColor = Color.White;
             label14.Location = new Point(33, 77);
             label14.Name = "label14";
-            label14.Size = new Size(61, 28);
+            label14.Size = new Size(66, 25);
             label14.TabIndex = 16;
             label14.Text = "Model";
             // 
@@ -294,22 +294,22 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Poppins", 12F);
+            label10.Font = new Font("Microsoft Sans Serif", 12F);
             label10.ForeColor = Color.White;
             label10.Location = new Point(28, 314);
             label10.Name = "label10";
-            label10.Size = new Size(141, 28);
+            label10.Size = new Size(155, 25);
             label10.TabIndex = 25;
             label10.Text = " Payment Status";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Poppins", 12F);
+            label13.Font = new Font("Microsoft Sans Serif", 12F);
             label13.ForeColor = Color.White;
             label13.Location = new Point(33, 133);
             label13.Name = "label13";
-            label13.Size = new Size(55, 28);
+            label13.Size = new Size(61, 25);
             label13.TabIndex = 18;
             label13.Text = "Make";
             // 
@@ -336,22 +336,22 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Poppins", 12F);
+            label11.Font = new Font("Microsoft Sans Serif", 12F);
             label11.ForeColor = Color.White;
             label11.Location = new Point(33, 252);
             label11.Name = "label11";
-            label11.Size = new Size(85, 28);
+            label11.Size = new Size(94, 25);
             label11.TabIndex = 23;
             label11.Text = "Due Date";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Poppins", 12F);
+            label12.Font = new Font("Microsoft Sans Serif", 12F);
             label12.ForeColor = Color.White;
             label12.Location = new Point(33, 192);
             label12.Name = "label12";
-            label12.Size = new Size(54, 28);
+            label12.Size = new Size(59, 25);
             label12.TabIndex = 20;
             label12.Text = "Color";
             // 
@@ -369,7 +369,7 @@
             // 
             button4.BackColor = Color.FromArgb(154, 214, 212);
             button4.FlatStyle = FlatStyle.Popup;
-            button4.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button4.ForeColor = Color.FromArgb(0, 76, 76);
             button4.Location = new Point(20, 402);
             button4.Name = "button4";
@@ -382,7 +382,7 @@
             // 
             button2.BackColor = Color.FromArgb(154, 214, 212);
             button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button2.ForeColor = Color.FromArgb(0, 76, 76);
             button2.Location = new Point(20, 215);
             button2.Name = "button2";
@@ -396,7 +396,7 @@
             // 
             button1.BackColor = Color.FromArgb(154, 214, 212);
             button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button1.ForeColor = Color.FromArgb(0, 76, 76);
             button1.Location = new Point(20, 25);
             button1.Name = "button1";
@@ -408,11 +408,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Poppins", 36F, FontStyle.Bold);
+            label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(0, 110, 108);
             label1.Location = new Point(23, 25);
             label1.Name = "label1";
-            label1.Size = new Size(295, 84);
+            label1.Size = new Size(324, 69);
             label1.TabIndex = 8;
             label1.Text = "Car Rental";
             // 
@@ -420,7 +420,7 @@
             // 
             button3.BackColor = Color.FromArgb(154, 214, 212);
             button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Poppins Medium", 12F, FontStyle.Bold);
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button3.ForeColor = Color.FromArgb(0, 76, 76);
             button3.Location = new Point(1130, 34);
             button3.Name = "button3";
@@ -489,7 +489,7 @@
             // 
             // CustomerProfile
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1370, 749);
@@ -503,7 +503,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer - Car Rental System";
             WindowState = FormWindowState.Maximized;
-           // Load += CustomerProfile_Load;
+            Load += CustomerProfile_Load;
             roundedPanel1.ResumeLayout(false);
             roundedPanel2.ResumeLayout(false);
             roundedPanel2.PerformLayout();

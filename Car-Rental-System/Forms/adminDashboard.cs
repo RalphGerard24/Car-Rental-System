@@ -165,6 +165,5 @@ namespace Car_Rental_System.Forms
 
             this.Close();
         }
-
     }
 }

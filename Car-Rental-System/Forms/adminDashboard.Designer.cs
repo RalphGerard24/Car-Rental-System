@@ -69,17 +69,18 @@ namespace Car_Rental_System.Forms
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 110, 108);
-            label1.Location = new Point(33, 27);
+            label1.Location = new Point(45, 42);
             label1.Name = "label1";
-            label1.Size = new Size(324, 69);
+            label1.Size = new Size(408, 55);
             label1.TabIndex = 0;
             label1.Text = "Car Rental";
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.None;
             button1.BackColor = Color.FromArgb(154, 214, 212);
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
@@ -93,6 +94,7 @@ namespace Car_Rental_System.Forms
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.None;
             button2.BackColor = Color.FromArgb(154, 214, 212);
             button2.FlatStyle = FlatStyle.Popup;
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
@@ -106,6 +108,7 @@ namespace Car_Rental_System.Forms
             // 
             // button4
             // 
+            button4.Anchor = AnchorStyles.None;
             button4.BackColor = Color.FromArgb(154, 214, 212);
             button4.FlatStyle = FlatStyle.Popup;
             button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
@@ -119,6 +122,7 @@ namespace Car_Rental_System.Forms
             // 
             // panel6
             // 
+            panel6.Anchor = AnchorStyles.None;
             panel6.ForeColor = Color.White;
             panel6.Location = new Point(26, 97);
             panel6.Name = "panel6";
@@ -127,123 +131,125 @@ namespace Car_Rental_System.Forms
             // 
             // labelRevenue
             // 
-            labelRevenue.AutoSize = true;
+            labelRevenue.Anchor = AnchorStyles.None;
             labelRevenue.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelRevenue.ForeColor = Color.White;
-            labelRevenue.Location = new Point(9, 46);
+            labelRevenue.Location = new Point(9, 47);
             labelRevenue.Name = "labelRevenue";
-            labelRevenue.Size = new Size(372, 69);
+            labelRevenue.Size = new Size(458, 76);
             labelRevenue.TabIndex = 1;
             labelRevenue.Text = "000,000,000";
+            //labelRevenue.Click += labelRevenue_Click;
             // 
             // label11
             // 
-            label11.AutoSize = true;
+            label11.Anchor = AnchorStyles.None;
             label11.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(20, 27);
+            label11.Location = new Point(20, 16);
             label11.Name = "label11";
-            label11.Size = new Size(104, 25);
+            label11.Size = new Size(164, 38);
             label11.TabIndex = 0;
             label11.Text = "Revenue:";
+            //label11.Click += label11_Click;
             // 
             // labelCarsAvailable
             // 
-            labelCarsAvailable.AutoSize = true;
+            labelCarsAvailable.Anchor = AnchorStyles.None;
             labelCarsAvailable.Font = new Font("Microsoft Sans Serif", 72F);
             labelCarsAvailable.ForeColor = Color.White;
-            labelCarsAvailable.Location = new Point(411, -6);
+            labelCarsAvailable.Location = new Point(338, 0);
             labelCarsAvailable.Name = "labelCarsAvailable";
-            labelCarsAvailable.Size = new Size(124, 135);
+            labelCarsAvailable.Size = new Size(204, 132);
             labelCarsAvailable.TabIndex = 1;
-            labelCarsAvailable.Text = "0";
+            labelCarsAvailable.Text = "00";
             // 
             // label9
             // 
-            label9.AutoSize = true;
+            label9.Anchor = AnchorStyles.None;
             label9.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label9.ForeColor = Color.White;
             label9.Location = new Point(27, 51);
             label9.Name = "label9";
-            label9.Size = new Size(142, 25);
+            label9.Size = new Size(185, 31);
             label9.TabIndex = 0;
             label9.Text = "Car Available";
             // 
             // labelCarsOnRent
             // 
-            labelCarsOnRent.AutoSize = true;
+            labelCarsOnRent.Anchor = AnchorStyles.None;
             labelCarsOnRent.Font = new Font("Microsoft Sans Serif", 72F);
             labelCarsOnRent.ForeColor = Color.White;
-            labelCarsOnRent.Location = new Point(412, -6);
+            labelCarsOnRent.Location = new Point(348, 3);
             labelCarsOnRent.Name = "labelCarsOnRent";
-            labelCarsOnRent.Size = new Size(124, 135);
+            labelCarsOnRent.Size = new Size(194, 129);
             labelCarsOnRent.TabIndex = 1;
-            labelCarsOnRent.Text = "0";
-            // labelCarsOnRent.Click += label6_Click;
+            labelCarsOnRent.Text = "00";
+            //labelCarsOnRent.Click += labelCarsOnRent_Click;
             // 
             // label7
             // 
-            label7.AutoSize = true;
+            label7.Anchor = AnchorStyles.None;
             label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
             label7.Location = new Point(27, 59);
             label7.Name = "label7";
-            label7.Size = new Size(138, 25);
+            label7.Size = new Size(239, 51);
             label7.TabIndex = 0;
             label7.Text = "Cars on Rent";
             // 
             // labelCarCount
             // 
-            labelCarCount.AutoSize = true;
+            labelCarCount.Anchor = AnchorStyles.None;
             labelCarCount.Font = new Font("Microsoft Sans Serif", 72F);
             labelCarCount.ForeColor = Color.White;
-            labelCarCount.Location = new Point(412, -3);
+            labelCarCount.Location = new Point(343, 0);
             labelCarCount.Name = "labelCarCount";
-            labelCarCount.Size = new Size(124, 135);
+            labelCarCount.Size = new Size(203, 123);
             labelCarCount.TabIndex = 1;
-            labelCarCount.Text = "0";
+            labelCarCount.Text = "00";
             // 
             // label5
             // 
-            label5.AutoSize = true;
+            label5.Anchor = AnchorStyles.None;
             label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label5.ForeColor = Color.White;
             label5.Location = new Point(27, 58);
             label5.Name = "label5";
-            label5.Size = new Size(170, 25);
+            label5.Size = new Size(239, 29);
             label5.TabIndex = 0;
             label5.Text = "Number of Cars:";
             // 
             // labelCustomerCount
             // 
-            labelCustomerCount.AutoSize = true;
+            labelCustomerCount.Anchor = AnchorStyles.None;
             labelCustomerCount.Font = new Font("Microsoft Sans Serif", 72F);
             labelCustomerCount.ForeColor = Color.White;
-            labelCustomerCount.Location = new Point(411, -2);
+            labelCustomerCount.Location = new Point(332, -2);
             labelCustomerCount.Name = "labelCustomerCount";
-            labelCustomerCount.Size = new Size(124, 135);
+            labelCustomerCount.Size = new Size(214, 134);
             labelCustomerCount.TabIndex = 1;
-            labelCustomerCount.Text = "0";
-            // labelCustomerCount.Click += label3_Click;
+            labelCustomerCount.Text = "00";
             // 
             // label2
             // 
-            label2.AutoSize = true;
+            label2.Anchor = AnchorStyles.None;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label2.ForeColor = Color.White;
             label2.Location = new Point(27, 58);
             label2.Name = "label2";
-            label2.Size = new Size(228, 25);
+            label2.Size = new Size(239, 32);
             label2.TabIndex = 0;
             label2.Text = "Number of Customers:";
             // 
             // button7
             // 
+            button7.Anchor = AnchorStyles.None;
             button7.BackColor = Color.FromArgb(154, 214, 212);
             button7.FlatStyle = FlatStyle.Popup;
             button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button7.ForeColor = Color.FromArgb(0, 76, 76);
-            button7.Location = new Point(1128, 27);
+            button7.Location = new Point(1140, 42);
             button7.Name = "button7";
             button7.Size = new Size(201, 63);
             button7.TabIndex = 7;
@@ -253,6 +259,7 @@ namespace Car_Rental_System.Forms
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.None;
             button3.BackColor = Color.FromArgb(154, 214, 212);
             button3.FlatStyle = FlatStyle.Popup;
             button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
@@ -267,110 +274,117 @@ namespace Car_Rental_System.Forms
             // 
             // roundedPanel1
             // 
+            roundedPanel1.Anchor = AnchorStyles.None;
             roundedPanel1.BackColor = Color.FromArgb(0, 110, 108);
             roundedPanel1.Controls.Add(button3);
             roundedPanel1.Controls.Add(button1);
             roundedPanel1.Controls.Add(button2);
             roundedPanel1.Controls.Add(button4);
             roundedPanel1.CornerRadius = 20;
-            roundedPanel1.Location = new Point(42, 112);
+            roundedPanel1.Location = new Point(54, 127);
             roundedPanel1.Name = "roundedPanel1";
             roundedPanel1.Size = new Size(232, 599);
             roundedPanel1.TabIndex = 9;
             // 
             // roundedPanel2
             // 
+            roundedPanel2.Anchor = AnchorStyles.None;
             roundedPanel2.BackColor = Color.FromArgb(51, 153, 155);
             roundedPanel2.Controls.Add(labelCustomerCount);
             roundedPanel2.Controls.Add(label2);
             roundedPanel2.CornerRadius = 20;
-            roundedPanel2.Location = new Point(780, 114);
+            roundedPanel2.Location = new Point(792, 129);
             roundedPanel2.Name = "roundedPanel2";
             roundedPanel2.Size = new Size(549, 132);
             roundedPanel2.TabIndex = 10;
             // 
             // roundedPanel3
             // 
+            roundedPanel3.Anchor = AnchorStyles.None;
             roundedPanel3.BackColor = Color.FromArgb(51, 153, 155);
             roundedPanel3.Controls.Add(label5);
             roundedPanel3.Controls.Add(labelCarCount);
             roundedPanel3.CornerRadius = 20;
-            roundedPanel3.Location = new Point(780, 269);
+            roundedPanel3.Location = new Point(792, 284);
             roundedPanel3.Name = "roundedPanel3";
             roundedPanel3.Size = new Size(549, 132);
             roundedPanel3.TabIndex = 11;
             // 
             // roundedPanel4
             // 
+            roundedPanel4.Anchor = AnchorStyles.None;
             roundedPanel4.BackColor = Color.FromArgb(51, 153, 155);
             roundedPanel4.Controls.Add(labelCarsAvailable);
             roundedPanel4.Controls.Add(label4);
             roundedPanel4.Controls.Add(label9);
             roundedPanel4.CornerRadius = 20;
-            roundedPanel4.Location = new Point(780, 579);
+            roundedPanel4.Location = new Point(792, 594);
             roundedPanel4.Name = "roundedPanel4";
             roundedPanel4.Size = new Size(549, 132);
             roundedPanel4.TabIndex = 12;
             // 
             // label4
             // 
-            label4.AutoSize = true;
+            label4.Anchor = AnchorStyles.None;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label4.ForeColor = Color.White;
             label4.Location = new Point(-235, 23);
             label4.Name = "label4";
-            label4.Size = new Size(138, 25);
+            label4.Size = new Size(115, 20);
             label4.TabIndex = 0;
             label4.Text = "Cars on Rent";
             // 
             // roundedPanel5
             // 
+            roundedPanel5.Anchor = AnchorStyles.None;
             roundedPanel5.BackColor = Color.FromArgb(51, 153, 155);
             roundedPanel5.Controls.Add(labelCarsOnRent);
             roundedPanel5.Controls.Add(label7);
             roundedPanel5.CornerRadius = 20;
-            roundedPanel5.Location = new Point(780, 425);
+            roundedPanel5.Location = new Point(792, 440);
             roundedPanel5.Name = "roundedPanel5";
             roundedPanel5.Size = new Size(549, 132);
             roundedPanel5.TabIndex = 13;
             // 
             // roundedPanel6
             // 
+            roundedPanel6.Anchor = AnchorStyles.None;
             roundedPanel6.BackColor = Color.FromArgb(51, 153, 155);
             roundedPanel6.Controls.Add(labelRevenue);
             roundedPanel6.Controls.Add(label11);
             roundedPanel6.CornerRadius = 20;
-            roundedPanel6.Location = new Point(307, 569);
+            roundedPanel6.Location = new Point(319, 584);
             roundedPanel6.Name = "roundedPanel6";
             roundedPanel6.Size = new Size(436, 142);
             roundedPanel6.TabIndex = 14;
+           // roundedPanel6.Paint += roundedPanel6_Paint;
             // 
             // roundedPanel7
             // 
+            roundedPanel7.Anchor = AnchorStyles.None;
             roundedPanel7.BackColor = Color.FromArgb(154, 214, 212);
             roundedPanel7.Controls.Add(panel6);
             roundedPanel7.Controls.Add(label3);
             roundedPanel7.CornerRadius = 20;
-            roundedPanel7.Location = new Point(307, 114);
+            roundedPanel7.Location = new Point(319, 129);
             roundedPanel7.Name = "roundedPanel7";
             roundedPanel7.Size = new Size(436, 421);
             roundedPanel7.TabIndex = 15;
             // 
             // label3
             // 
-            label3.AutoSize = true;
+            label3.Anchor = AnchorStyles.None;
             label3.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(17, 87, 99);
-            label3.Location = new Point(16, 21);
+            label3.Location = new Point(20, 19);
             label3.Name = "label3";
-            label3.Size = new Size(324, 54);
+            label3.Size = new Size(360, 59);
             label3.TabIndex = 1;
             label3.Text = "Weekly Rents";
             // 
             // AdminDashboard
             // 
-            AutoScaleDimensions = new SizeF(11F, 22F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             ClientSize = new Size(1370, 749);
             Controls.Add(roundedPanel7);
@@ -383,25 +397,21 @@ namespace Car_Rental_System.Forms
             Controls.Add(label1);
             Controls.Add(roundedPanel1);
             Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MaximumSize = new Size(1388, 796);
+            MinimumSize = new Size(1388, 796);
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard - Car Rental System";
             WindowState = FormWindowState.Maximized;
+           // Load += AdminDashboard_Load;
             roundedPanel1.ResumeLayout(false);
             roundedPanel2.ResumeLayout(false);
-            roundedPanel2.PerformLayout();
             roundedPanel3.ResumeLayout(false);
-            roundedPanel3.PerformLayout();
             roundedPanel4.ResumeLayout(false);
-            roundedPanel4.PerformLayout();
             roundedPanel5.ResumeLayout(false);
-            roundedPanel5.PerformLayout();
             roundedPanel6.ResumeLayout(false);
-            roundedPanel6.PerformLayout();
             roundedPanel7.ResumeLayout(false);
-            roundedPanel7.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

@@ -67,13 +67,12 @@
             button7.FlatStyle = FlatStyle.Popup;
             button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             button7.ForeColor = Color.FromArgb(0, 76, 76);
-            button7.Location = new Point(1294, 39);
+            button7.Location = new Point(1297, 47);
             button7.Name = "button7";
             button7.Size = new Size(230, 84);
             button7.TabIndex = 28;
             button7.Text = "Log Out";
             button7.UseVisualStyleBackColor = false;
-          //  button7.Click += button7_Click;
             // 
             // dataGridView1
             // 
@@ -84,7 +83,7 @@
             dataGridView1.Location = new Point(11, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1101, 519);
+            dataGridView1.Size = new Size(1388, 790);
             dataGridView1.TabIndex = 25;
             // 
             // button4
@@ -136,7 +135,7 @@
             label1.BackColor = Color.White;
             label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 110, 108);
-            label1.Location = new Point(21, 25);
+            label1.Location = new Point(24, 33);
             label1.Name = "label1";
             label1.Size = new Size(324, 69);
             label1.TabIndex = 23;
@@ -151,7 +150,7 @@
             roundedPanel1.Controls.Add(button4);
             roundedPanel1.Controls.Add(button2);
             roundedPanel1.CornerRadius = 20;
-            roundedPanel1.Location = new Point(48, 149);
+            roundedPanel1.Location = new Point(51, 157);
             roundedPanel1.Margin = new Padding(3, 4, 3, 4);
             roundedPanel1.Name = "roundedPanel1";
             roundedPanel1.Size = new Size(265, 799);
@@ -165,7 +164,7 @@
             roundedPanel2.Controls.Add(roundedPanel3);
             roundedPanel2.Controls.Add(label4);
             roundedPanel2.CornerRadius = 20;
-            roundedPanel2.Location = new Point(346, 149);
+            roundedPanel2.Location = new Point(349, 157);
             roundedPanel2.Margin = new Padding(3, 4, 3, 4);
             roundedPanel2.Name = "roundedPanel2";
             roundedPanel2.Size = new Size(1173, 799);
@@ -208,21 +207,17 @@
             // 
             // RentalRecords
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
-            ClientSize = new Size(1563, 988);
+            ClientSize = new Size(1582, 1003);
             Controls.Add(roundedPanel2);
             Controls.Add(roundedPanel1);
             Controls.Add(button7);
             Controls.Add(label1);
-            MaximumSize = new Size(1581, 1035);
-            MinimumSize = new Size(1556, 1006);
             Name = "RentalRecords";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "Rental Records - Car Rental System";
             WindowState = FormWindowState.Maximized;
-           // Load += RentalRecords_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             roundedPanel1.ResumeLayout(false);
             roundedPanel2.ResumeLayout(false);

@@ -85,9 +85,9 @@
             label12.ForeColor = Color.White;
             label12.Location = new Point(30, 596);
             label12.Name = "label12";
-            label12.Size = new Size(832, 25);
+            label12.Size = new Size(724, 25);
             label12.TabIndex = 40;
-            label12.Text = "*A penalty fee of {Amount} will be charged for each day the car is not returned past its due date.";
+            label12.Text = "*A penalty fee will be charged for each day the car is not returned past its due date.";
             // 
             // textBox7
             // 
